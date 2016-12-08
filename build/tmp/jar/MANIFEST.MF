@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Implementation-Title: Rose-Hulman Reverse Engineered Design Applicatio
+ n
+Implementation-Version: ${version}
+
