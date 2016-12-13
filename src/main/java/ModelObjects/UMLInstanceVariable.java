@@ -7,7 +7,11 @@ public class UMLInstanceVariable {
 
 	String type;
 	String name;
-	List<UMLKeyWord> keys;
+	
+	public UMLInstanceVariable(String type, String name) {
+		this.type = type;
+		this.name = name;
+	}
 	
 	public String getName() {
 		return this.name;
@@ -15,9 +19,5 @@ public class UMLInstanceVariable {
 	
 	public String getType() {
 		return this.type;
-	}
-	
-	public List<UMLKeyWord> getInstanceVars() {
-		return Collections.unmodifiableList(keys);
 	}
 }

@@ -6,24 +6,25 @@ import java.util.List;
 public class UMLMethod {
 	
 	String sig;
-	String type;
-	List<UMLKeyWord> keys;
-	List<UMLInstanceVariable> instVars;
+	String returnType;
+	List<UMLParameter> params;
+	
+	public UMLMethod(String sig, String returnType, List<UMLParameter> params) {
+		this.sig = sig;
+		this.returnType = returnType;
+		this.params = params;
+	}
 	
 	public String getSigniture() {
 		return this.sig;
 	}
 	
-	public String getType() {
-		return this.type;
+	public String getReturnType() {
+		return this.returnType;
 	}
 	
-	public List<UMLInstanceVariable> getInstanceVars() {
-		return Collections.unmodifiableList(instVars);
-	}
-	
-	public List<UMLKeyWord> getKeyWords() {
-		return Collections.unmodifiableList(keys);
+	public List<UMLParameter> getParameters() {
+		return Collections.unmodifiableList(params);
 	}
 
 }

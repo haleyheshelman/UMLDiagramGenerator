@@ -7,7 +7,13 @@ public class UMLClass implements UMLFile{
 
 	List<UMLMethod> methods;
 	List<UMLInstanceVariable> instVars;
-	List<UMLFile> supClassInterface;
+	String name;
+	
+	public UMLClass(String name, List<UMLMethod> methods, List<UMLInstanceVariable> instVars) {
+		this.methods = methods;
+		this.instVars = instVars;
+		this.name = name;
+	}
 	
 	@Override
 	public List<UMLMethod> getMethods() {
@@ -18,8 +24,12 @@ public class UMLClass implements UMLFile{
 		return Collections.unmodifiableList(instVars);
 	}
 	
-	public List<UMLFile> getSuperClassAndInterfaces() {
-		return Collections.unmodifiableList(supClassInterface);
+	public void addMethod(UMLMethod method) {
+		this.methods.add(method);
+	}
+	
+	public void addInstanceVariable(UMLInstanceVariable ia) {
+		this.instVars.add(ia);
 	}
 	
 }

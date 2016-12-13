@@ -1,6 +1,7 @@
 package edu.rosehulman.csse374.revengd;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.objectweb.asm.ClassReader;
@@ -14,6 +15,12 @@ import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
+import ModelObjects.Extend;
+import ModelObjects.IRelationship;
+import ModelObjects.Implement;
+import ModelObjects.UMLClass;
+import Parsers.ClassParser;
+
 // FIXME: everything about this class is completely terribly designed.
 // If your code even remotely resembles this class, you will be sad.
 public class DesignParser {
@@ -26,6 +33,7 @@ public class DesignParser {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException,
 			ClassNotFoundException {
 
@@ -35,36 +43,35 @@ public class DesignParser {
 		// FIXME: this code has POOR DESIGN. If you keep this code as-is for
 		// your main method, you will be sad about your grade.
 
+		List<UMLClass> classes = new ArrayList<UMLClass>();
+		List<IRelationship> rels = new ArrayList<IRelationship>();
+		ClassParser newClassParser = new ClassParser();
+		
 		for (String className : args) {
-			// ASM's ClassReader does the heavy lifting of parsing the compiled
-			// Java class.
-			// TODO: verify you have your JavaDocs set up so Eclipse can load
-			// ASM's JavaDocs and tell you what this is.
 			ClassReader reader = new ClassReader(className);
 
-			// There are NO ASM ClassVisitors, MethodVisitors, or FieldVisitors
-			// here.
-			// These ASM classes are dead to you. Do NOT use them at any point
-			// during the term.
-
-			// ClassNode contains all of the data about a parsed class
-			// Do NOT subclass ClassNode.
-			// Do NOT override any methods starting with the word "visit";
-			// these methods are dead to you.
 			ClassNode classNode = new ClassNode();
-
-			// Tell the Reader to parse the specified class and store its data
-			// in our ClassNode.
-			// EXPAND_FRAMES means: I want my code to work. Always pass this.
 			reader.accept(classNode, ClassReader.EXPAND_FRAMES);
 
 			// Now we can navigate the classNode and look for things we are
 			// interested in.
-			printClass(classNode);
-
-			printFields(classNode);
-
-			printMethods(classNode);
+	
+			if(!classNode.superName.equals("Object") && classNode.superName != null) {
+				rels.add(new Extend(classNode.name, classNode.superName));
+			}
+			
+			for (String interfaceName : (List<String>) classNode.interfaces) {
+				rels.add(new Implement(classNode.name, interfaceName));
+			}
+			
+			
+			UMLClass newClass = new UMLClass(classNode.name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
+			classes.add(newClass);
+//			printClass(classNode);
+//
+//			printFields(classNode);
+//
+//			printMethods(classNode);
 
 			// TODO: Use GOOD DESIGN to parse the classes of interest and store
 			// them.
