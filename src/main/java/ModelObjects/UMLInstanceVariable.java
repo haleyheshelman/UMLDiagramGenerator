@@ -20,4 +20,10 @@ public class UMLInstanceVariable {
 	public String getType() {
 		return this.type;
 	}
+	
+	public String toString(){
+		StringBuilder s = new StringBuilder();
+		s.append(type + " " + name);
+		return s.toString();
+	}
 }

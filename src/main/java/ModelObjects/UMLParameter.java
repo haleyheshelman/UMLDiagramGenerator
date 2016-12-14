@@ -8,4 +8,10 @@ public class UMLParameter {
 		this.type = type;
 		this.name = name;
 	}
+	
+	public String toString(){
+		StringBuilder s = new StringBuilder();
+		s.append(type + " " + name);
+		return s.toString();
+	}
 }

@@ -33,6 +33,11 @@ public class DesignParser {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
+	
+	String hello;
+	String goodbye;
+	int k;
+	
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException,
 			ClassNotFoundException {
@@ -67,6 +72,7 @@ public class DesignParser {
 			
 			UMLClass newClass = new UMLClass(classNode.name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
 			classes.add(newClass);
+			System.out.println(newClass.toString());
 //			printClass(classNode);
 //
 //			printFields(classNode);

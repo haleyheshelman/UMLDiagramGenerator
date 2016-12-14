@@ -14,11 +14,15 @@ public class MethodParser {
 	public static UMLMethod parseMethod(MethodNode m) {
 		
 		String returnType =Type.getReturnType(m.desc).getClassName();
-		String sig = m.desc;
+		String sig = m.name;
 		
 		List<UMLParameter> params = new ArrayList<UMLParameter>();
+		List<MethodNode> names = m.parameters;
 		for (Type argType : Type.getArgumentTypes(m.desc)) {
-			params.add(new UMLParameter(argType.getClassName(), "param"));
+			String s = argType.getClassName();
+			s = s.substring(s.lastIndexOf('.') + 1);
+			params.add(new UMLParameter(s, "param"));
+
 		}
 		
 		return new UMLMethod(sig, returnType, params);

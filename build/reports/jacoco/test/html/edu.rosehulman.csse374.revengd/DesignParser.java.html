@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DesignParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RevEngD</a> &gt; <a href="index.source.html" class="el_package">edu.rosehulman.csse374.revengd</a> &gt; <span class="el_source">DesignParser.java</span></div><h1>DesignParser.java</h1><pre class="source lang-java linenums">package edu.rosehulman.csse374.revengd;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.objectweb.asm.ClassReader;
@@ -14,9 +15,15 @@ import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
+import ModelObjects.Extend;
+import ModelObjects.IRelationship;
+import ModelObjects.Implement;
+import ModelObjects.UMLClass;
+import Parsers.ClassParser;
+
 // FIXME: everything about this class is completely terribly designed.
 // If your code even remotely resembles this class, you will be sad.
-<span class="nc" id="L19">public class DesignParser {</span>
+<span class="nc" id="L26">public class DesignParser {</span>
 	/**
 	 * Reads in a list of Java Classes and reverse engineers their design.
 	 * 
@@ -26,6 +33,7 @@ import org.objectweb.asm.tree.VarInsnNode;
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
+	@SuppressWarnings(&quot;unchecked&quot;)
 	public static void main(String[] args) throws IOException,
 			ClassNotFoundException {
 
@@ -35,127 +43,126 @@ import org.objectweb.asm.tree.VarInsnNode;
 		// FIXME: this code has POOR DESIGN. If you keep this code as-is for
 		// your main method, you will be sad about your grade.
 
-<span class="nc bnc" id="L38" title="All 2 branches missed.">		for (String className : args) {</span>
-			// ASM's ClassReader does the heavy lifting of parsing the compiled
-			// Java class.
-			// TODO: verify you have your JavaDocs set up so Eclipse can load
-			// ASM's JavaDocs and tell you what this is.
-<span class="nc" id="L43">			ClassReader reader = new ClassReader(className);</span>
+<span class="nc" id="L46">		List&lt;UMLClass&gt; classes = new ArrayList&lt;UMLClass&gt;();</span>
+<span class="nc" id="L47">		List&lt;IRelationship&gt; rels = new ArrayList&lt;IRelationship&gt;();</span>
+<span class="nc" id="L48">		ClassParser newClassParser = new ClassParser();</span>
+		
+<span class="nc bnc" id="L50" title="All 2 branches missed.">		for (String className : args) {</span>
+<span class="nc" id="L51">			ClassReader reader = new ClassReader(className);</span>
 
-			// There are NO ASM ClassVisitors, MethodVisitors, or FieldVisitors
-			// here.
-			// These ASM classes are dead to you. Do NOT use them at any point
-			// during the term.
-
-			// ClassNode contains all of the data about a parsed class
-			// Do NOT subclass ClassNode.
-			// Do NOT override any methods starting with the word &quot;visit&quot;;
-			// these methods are dead to you.
-<span class="nc" id="L54">			ClassNode classNode = new ClassNode();</span>
-
-			// Tell the Reader to parse the specified class and store its data
-			// in our ClassNode.
-			// EXPAND_FRAMES means: I want my code to work. Always pass this.
-<span class="nc" id="L59">			reader.accept(classNode, ClassReader.EXPAND_FRAMES);</span>
+<span class="nc" id="L53">			ClassNode classNode = new ClassNode();</span>
+<span class="nc" id="L54">			reader.accept(classNode, ClassReader.EXPAND_FRAMES);</span>
 
 			// Now we can navigate the classNode and look for things we are
 			// interested in.
-<span class="nc" id="L63">			printClass(classNode);</span>
-
-<span class="nc" id="L65">			printFields(classNode);</span>
-
-<span class="nc" id="L67">			printMethods(classNode);</span>
+	
+<span class="nc bnc" id="L59" title="All 4 branches missed.">			if(!classNode.superName.equals(&quot;Object&quot;) &amp;&amp; classNode.superName != null) {</span>
+<span class="nc" id="L60">				rels.add(new Extend(classNode.name, classNode.superName));</span>
+			}
+			
+<span class="nc bnc" id="L63" title="All 2 branches missed.">			for (String interfaceName : (List&lt;String&gt;) classNode.interfaces) {</span>
+<span class="nc" id="L64">				rels.add(new Implement(classNode.name, interfaceName));</span>
+<span class="nc" id="L65">			}</span>
+			
+			
+<span class="nc" id="L68">			UMLClass newClass = new UMLClass(classNode.name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));</span>
+<span class="nc" id="L69">			classes.add(newClass);</span>
+//			printClass(classNode);
+//
+//			printFields(classNode);
+//
+//			printMethods(classNode);
 
 			// TODO: Use GOOD DESIGN to parse the classes of interest and store
 			// them.
 		}
-<span class="nc" id="L72">	}</span>
+<span class="nc" id="L79">	}</span>
 
 	// FIXME: is it GOOD DESIGN to have a class where everything is static?
 	private static void printClass(ClassNode classNode) {
-<span class="nc" id="L76">		System.out.println(&quot;Class's JVM internal name: &quot; + classNode.name);</span>
-<span class="nc" id="L77">		System.out.println(&quot;User-friendly name: &quot;</span>
-<span class="nc" id="L78">				+ Type.getObjectType(classNode.name).getClassName());</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">		System.out.println(&quot;public? &quot;</span>
+<span class="nc" id="L83">		System.out.println(&quot;Class's JVM internal name: &quot; + classNode.name);</span>
+<span class="nc" id="L84">		System.out.println(&quot;User-friendly name: &quot;</span>
+<span class="nc" id="L85">				+ Type.getObjectType(classNode.name).getClassName());</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">		System.out.println(&quot;public? &quot;</span>
 				+ ((classNode.access &amp; Opcodes.ACC_PUBLIC) &gt; 0));
-<span class="nc" id="L81">		System.out.println(&quot;Extends: &quot; + classNode.superName);</span>
-<span class="nc" id="L82">		System.out.println(&quot;Implements: &quot; + classNode.interfaces);</span>
+<span class="nc" id="L88">		System.out.println(&quot;Extends: &quot; + classNode.superName);</span>
+<span class="nc" id="L89">		System.out.println(&quot;Implements: &quot; + classNode.interfaces);</span>
 
-<span class="nc" id="L84">	}</span>
+<span class="nc" id="L91">	}</span>
 
 	private static void printFields(ClassNode classNode) {
 		// Print all fields (note the cast; ASM doesn't store generic
 		// data with its Lists)
 		@SuppressWarnings(&quot;unchecked&quot;)
-<span class="nc" id="L90">		List&lt;FieldNode&gt; fields = (List&lt;FieldNode&gt;) classNode.fields;</span>
-<span class="nc bnc" id="L91" title="All 2 branches missed.">		for (FieldNode field : fields) {</span>
-<span class="nc" id="L92">			System.out.println(&quot;	Field: &quot; + field.name);</span>
-<span class="nc" id="L93">			System.out.println(&quot;	Internal JVM type: &quot; + field.desc);</span>
-<span class="nc" id="L94">			System.out.println(&quot;	User-friendly type: &quot;</span>
-<span class="nc" id="L95">					+ Type.getType(field.desc));</span>
+<span class="nc" id="L97">		List&lt;FieldNode&gt; fields = (List&lt;FieldNode&gt;) classNode.fields;</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">		for (FieldNode field : fields) {</span>
+<span class="nc" id="L99">			System.out.println(&quot;	Field: &quot; + field.name);</span>
+<span class="nc" id="L100">			System.out.println(&quot;	Internal JVM type: &quot; + field.desc);</span>
+<span class="nc" id="L101">			System.out.println(&quot;	User-friendly type: &quot;</span>
+<span class="nc" id="L102">					+ Type.getType(field.desc));</span>
 			// Query the access modifiers with the ACC_* constants.
 
-<span class="nc bnc" id="L98" title="All 2 branches missed.">			System.out.println(&quot;	public? &quot;</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">			System.out.println(&quot;	public? &quot;</span>
 					+ ((field.access &amp; Opcodes.ACC_PUBLIC) &gt; 0));
 			// How do you tell if something has default access? (ie no
 			// access modifiers?)
 
-<span class="nc" id="L103">			System.out.println();</span>
-<span class="nc" id="L104">		}</span>
-<span class="nc" id="L105">	}</span>
+<span class="nc" id="L110">			System.out.println();</span>
+<span class="nc" id="L111">		}</span>
+<span class="nc" id="L112">	}</span>
 
 	private static void printMethods(ClassNode classNode) {
 		@SuppressWarnings(&quot;unchecked&quot;)
-<span class="nc" id="L109">		List&lt;MethodNode&gt; methods = (List&lt;MethodNode&gt;) classNode.methods;</span>
-<span class="nc bnc" id="L110" title="All 2 branches missed.">		for (MethodNode method : methods) {</span>
-<span class="nc" id="L111">			System.out.println(&quot;	Method: &quot; + method.name);</span>
-<span class="nc" id="L112">			System.out</span>
-<span class="nc" id="L113">					.println(&quot;	Internal JVM method signature: &quot; + method.desc);</span>
+<span class="nc" id="L116">		List&lt;MethodNode&gt; methods = (List&lt;MethodNode&gt;) classNode.methods;</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">		for (MethodNode method : methods) {</span>
+<span class="nc" id="L118">			System.out.println(&quot;	Method: &quot; + method.name);</span>
+<span class="nc" id="L119">			System.out</span>
+<span class="nc" id="L120">					.println(&quot;	Internal JVM method signature: &quot; + method.desc);</span>
 
-<span class="nc" id="L115">			System.out.println(&quot;	Return type: &quot;</span>
-<span class="nc" id="L116">					+ Type.getReturnType(method.desc).getClassName());</span>
+<span class="nc" id="L122">			System.out.println(&quot;	Return type: &quot;</span>
+<span class="nc" id="L123">					+ Type.getReturnType(method.desc).getClassName());</span>
 
-<span class="nc" id="L118">			System.out.println(&quot;	Args: &quot;);</span>
-<span class="nc bnc" id="L119" title="All 2 branches missed.">			for (Type argType : Type.getArgumentTypes(method.desc)) {</span>
-<span class="nc" id="L120">				System.out.println(&quot;		&quot; + argType.getClassName());</span>
+<span class="nc" id="L125">			System.out.println(&quot;	Args: &quot;);</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">			for (Type argType : Type.getArgumentTypes(method.desc)) {</span>
+<span class="nc" id="L127">				System.out.println(&quot;		&quot; + argType.getClassName());</span>
 				// FIXME: what is the argument's VARIABLE NAME?
 			}
 
 			// Query the access modifiers with the ACC_* constants.
-<span class="nc bnc" id="L125" title="All 2 branches missed.">			System.out.println(&quot;	public? &quot;</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">			System.out.println(&quot;	public? &quot;</span>
 					+ ((method.access &amp; Opcodes.ACC_PUBLIC) &gt; 0));
-<span class="nc bnc" id="L127" title="All 2 branches missed.">			System.out.println(&quot;	static? &quot;</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">			System.out.println(&quot;	static? &quot;</span>
 					+ ((method.access &amp; Opcodes.ACC_STATIC) &gt; 0));
 			// How do you tell if something has default access? (ie no
 			// access modifiers?)
 
-<span class="nc" id="L132">			System.out.println();</span>
+<span class="nc" id="L139">			System.out.println();</span>
 
 			// Print the method's instructions
-<span class="nc" id="L135">			printInstructions(method);</span>
-<span class="nc" id="L136">		}</span>
-<span class="nc" id="L137">	}</span>
+<span class="nc" id="L142">			printInstructions(method);</span>
+<span class="nc" id="L143">		}</span>
+<span class="nc" id="L144">	}</span>
 
 	private static void printInstructions(MethodNode methodNode) {
-<span class="nc" id="L140">		InsnList instructions = methodNode.instructions;</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">		for (int i = 0; i &lt; instructions.size(); i++) {</span>
+<span class="nc" id="L147">		InsnList instructions = methodNode.instructions;</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">		for (int i = 0; i &lt; instructions.size(); i++) {</span>
 
 			// We don't know immediately what kind of instruction we have.
-<span class="nc" id="L144">			AbstractInsnNode insn = instructions.get(i);</span>
+<span class="nc" id="L151">			AbstractInsnNode insn = instructions.get(i);</span>
 
 			// Now we have to cast the instruction to its correct type based on
 			// the opCode.
 			// FIXME: this code has POOR DESIGN.
-<span class="nc bnc" id="L149" title="All 2 branches missed.">			if (insn instanceof MethodInsnNode) {</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">			if (insn instanceof MethodInsnNode) {</span>
 				// A method call of some sort; what other useful fields does
 				// this object have?
-<span class="nc" id="L152">				MethodInsnNode methodCall = (MethodInsnNode) insn;</span>
-<span class="nc" id="L153">				System.out.println(&quot;		Call method: &quot; + methodCall.owner + &quot; &quot;</span>
+<span class="nc" id="L159">				MethodInsnNode methodCall = (MethodInsnNode) insn;</span>
+<span class="nc" id="L160">				System.out.println(&quot;		Call method: &quot; + methodCall.owner + &quot; &quot;</span>
 						+ methodCall.name);
-<span class="nc bnc" id="L155" title="All 2 branches missed.">			} else if (insn instanceof VarInsnNode) {</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">			} else if (insn instanceof VarInsnNode) {</span>
 				// Some some kind of variable *LOAD or *STORE operation.
-<span class="nc" id="L157">				VarInsnNode varInsn = (VarInsnNode) insn;</span>
-<span class="nc" id="L158">				int opCode = varInsn.getOpcode();</span>
+<span class="nc" id="L164">				VarInsnNode varInsn = (VarInsnNode) insn;</span>
+<span class="nc" id="L165">				int opCode = varInsn.getOpcode();</span>
 				// See VarInsnNode.setOpcode for the list of possible values of
 				// opCode. These are from a variable-related subset of Java
 				// opcodes.
@@ -164,6 +171,6 @@ import org.objectweb.asm.tree.VarInsnNode;
 			// This list of direct known subclasses may be useful:
 			// http://asm.ow2.org/asm50/javadoc/user/org/objectweb/asm/tree/AbstractInsnNode.html
 		}
-<span class="nc" id="L167">	}</span>
+<span class="nc" id="L174">	}</span>
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>

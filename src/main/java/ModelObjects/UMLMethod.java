@@ -26,5 +26,15 @@ public class UMLMethod {
 	public List<UMLParameter> getParameters() {
 		return Collections.unmodifiableList(params);
 	}
+	
+	public String toString(){
+		StringBuilder s = new StringBuilder();
+		s.append(returnType + " " + sig + "(");
+		for(int i = 0; i<params.size();i++){
+			s.append(params.get(i).toString());
+		}
+		s.append(")\n");
+		return s.toString();
+	}
 
 }

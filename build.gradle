@@ -19,8 +19,7 @@ mainClassName = "edu.rosehulman.csse374.revengd.DesignParser"
 
 // TODO: Update the args value to choose what classes to run. Here is just an example. 
 run {
-    args 	"edu.rosehulman.csse374.revengd.DesignParser", 
-    		"java.lang.String"
+    args 	"edu.rosehulman.csse374.revengd.DesignParser"
 }
 
 sourceCompatibility = 1.8
