@@ -14,4 +14,10 @@ public class UMLParameter {
 		s.append(type + " " + name);
 		return s.toString();
 	}
+
+	public String toGraphViz() {
+		StringBuilder s = new StringBuilder();
+		s.append(type + " " + name);
+		return s.toString();
+	}
 }

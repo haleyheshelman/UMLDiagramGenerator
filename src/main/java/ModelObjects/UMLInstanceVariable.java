@@ -7,10 +7,12 @@ public class UMLInstanceVariable {
 
 	String type;
 	String name;
+	boolean isPublic;
 	
-	public UMLInstanceVariable(String type, String name) {
+	public UMLInstanceVariable(String type, String name, boolean isPublic) {
 		this.type = type;
 		this.name = name;
+		this.isPublic = isPublic;
 	}
 	
 	public String getName() {
@@ -23,7 +25,22 @@ public class UMLInstanceVariable {
 	
 	public String toString(){
 		StringBuilder s = new StringBuilder();
-		s.append(type + " " + name);
+		s.append(isPublic + " " + type + " " + name);
+		return s.toString();
+	}
+
+	public String toGraphViz() {
+		StringBuilder s = new StringBuilder();
+		
+		if (this.isPublic) {
+			s.append("+ ");
+		} else {
+			s.append("- ");
+		}
+		
+		s.append(this.name + " : ");
+		s.append(this.type +"\\l");
+	
 		return s.toString();
 	}
 }

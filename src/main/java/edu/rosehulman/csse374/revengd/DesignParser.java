@@ -69,10 +69,11 @@ public class DesignParser {
 				rels.add(new Implement(classNode.name, interfaceName));
 			}
 			
-			
-			UMLClass newClass = new UMLClass(classNode.name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
+			String name = classNode.name;
+			name = name.substring(name.lastIndexOf('/') + 1);
+			UMLClass newClass = new UMLClass(name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
 			classes.add(newClass);
-			System.out.println(newClass.toString());
+			System.out.println(newClass.toGraphViz());
 //			printClass(classNode);
 //
 //			printFields(classNode);

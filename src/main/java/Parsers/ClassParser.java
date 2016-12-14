@@ -3,6 +3,7 @@ package Parsers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
@@ -31,7 +32,13 @@ public class ClassParser {
 		List<FieldNode> fields = (List<FieldNode>) c.fields;
 
 		for (FieldNode f : fields) {
-			vars.add(new UMLInstanceVariable(Type.getType(f.desc).toString(), f.name));
+			Type t = Type.getType(f.desc);
+			String s = t.getClassName();
+			s = s.substring(s.lastIndexOf('.') + 1);
+			
+			boolean p = (f.access & Opcodes.ACC_PUBLIC) > 0;
+			
+			vars.add(new UMLInstanceVariable(s, f.name, p));
 		}
 		return vars;
 	}

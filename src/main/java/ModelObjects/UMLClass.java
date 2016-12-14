@@ -41,11 +41,33 @@ public class UMLClass implements UMLFile{
 		m.append("]\n");
 		m.append("[");
 		for(int i = 0; i< instVars.size();i++){
-			m.append(instVars.get(i).toString() + " ");
+			m.append(instVars.get(i).toString() + ", ");
 		}
 		m.append("]\n");
 		return m.toString();
 		
+	}
+	
+	public String toGraphViz() {
+		StringBuilder s = new StringBuilder();
+		s.append(this.name + "[label=\"{ ");
+		s.append(this.name + "|");
+		
+		for (UMLInstanceVariable var : this.instVars) {
+			s.append(var.toGraphViz());
+		}
+		
+		s.append("|");
+		
+		for (UMLMethod m : this.methods) {
+			s.append(m.toGraphViz());
+		}
+		
+		s.append("}\"]");
+		String output = s.toString();
+		output = output.replace('<', Character.MIN_VALUE);
+		output = output.replace('>', Character.MIN_VALUE);
+		return output;
 	}
 	
 }
