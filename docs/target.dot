@@ -1,0 +1,11 @@
+digraph uml{rankdir=BT;ILineParser[shape = "record",label="{ ILineParser|+ parse(String param ) : String\l}"];
+GoogleLineParser[shape = "record",label="{ GoogleLineParser|+  init() : void\l+ parse(String param ) : String\l}"];
+AmazonLineParser[shape = "record",label="{ AmazonLineParser|+  init() : void\l+ parse(String param ) : String\l}"];
+DataStandardizer[shape = "record",label="{ DataStandardizer|- company : String\l- data : String\l- frame : JFrame\l- topPanel : JPanel\l- txtField : JTextField\l- button : JButton\l- scrollPane : JScrollPane\l- textArea : JTextArea\l- label : JLabel\l- lp : ILineParser\l- companyMap : Map\l|+  init() : void\l- createAndShowGU() : void\l+ execut() : void\l+ parse(String param ) : void\l+ getCompan() : String\l+ getDat() : String\l+ addLineParser(String param, ILineParser param ) : void\l- setLineParser(ILineParser param ) : void\l+ main(String[] param ) : void\l}"];
+GrouponLineParser[shape = "record",label="{ GrouponLineParser|+  init() : void\l+ parse(String param ) : String\l}"];
+MicrosoftLineParser[shape = "record",label="{ MicrosoftLineParser|+  init() : void\l+ parse(String param ) : String\l}"];
+GoogleLineParser->ILineParser [arrowhead="vee"];
+AmazonLineParser->ILineParser [arrowhead="vee"];
+GrouponLineParser->ILineParser [arrowhead="vee"];
+MicrosoftLineParser->ILineParser [arrowhead="vee"];
+}

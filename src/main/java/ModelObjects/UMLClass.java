@@ -50,20 +50,22 @@ public class UMLClass implements UMLFile{
 	
 	public String toGraphViz() {
 		StringBuilder s = new StringBuilder();
-		s.append(this.name + "[label=\"{ ");
+		s.append(this.name + "[shape = \"record\",");
+		s.append("label=\"{ ");
 		s.append(this.name + "|");
 		
-		for (UMLInstanceVariable var : this.instVars) {
-			s.append(var.toGraphViz());
+		if (!this.instVars.isEmpty()) {
+			for (UMLInstanceVariable var : this.instVars) {
+				s.append(var.toGraphViz());
+			}
+			s.append("|");
 		}
-		
-		s.append("|");
 		
 		for (UMLMethod m : this.methods) {
 			s.append(m.toGraphViz());
 		}
 		
-		s.append("}\"]");
+		s.append("}\"];");
 		String output = s.toString();
 		output = output.replace('<', ' ');
 		output = output.replace('>', ' ');

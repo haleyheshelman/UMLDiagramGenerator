@@ -16,6 +16,7 @@ public class MethodParser {
 	public static UMLMethod parseMethod(MethodNode m) {
 		
 		String returnType =Type.getReturnType(m.desc).getClassName();
+		returnType = returnType.substring(returnType.lastIndexOf('.') + 1);
 		String sig = m.name;
 		
 		List<UMLParameter> params = new ArrayList<UMLParameter>();

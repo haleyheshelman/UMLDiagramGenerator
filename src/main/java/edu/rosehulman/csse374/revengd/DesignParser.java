@@ -1,6 +1,9 @@
 package edu.rosehulman.csse374.revengd;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,8 @@ public class DesignParser {
 		List<UMLClass> classes = new ArrayList<UMLClass>();
 		List<IRelationship> rels = new ArrayList<IRelationship>();
 		ClassParser newClassParser = new ClassParser();
+		StringBuilder s = new StringBuilder();
+		s.append("digraph uml{rankdir=BT;");
 		
 		for (String className : args) {
 			ClassReader reader = new ClassReader(className);
@@ -74,8 +79,8 @@ public class DesignParser {
 			name = name.substring(name.lastIndexOf('/') + 1);
 			UMLClass newClass = new UMLClass(name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
 			classes.add(newClass);
-			System.out.println(newClass.toGraphViz());
-			System.out.println("\n");
+			s.append(newClass.toGraphViz());
+			s.append("\n");
 //			printClass(classNode);
 //
 //			printFields(classNode);
@@ -86,8 +91,26 @@ public class DesignParser {
 			// them.
 		}
 		for (IRelationship r : rels) {
-			System.out.println(r.getGraphViz());
-			System.out.println("\n");
+			s.append(r.getGraphViz());
+			s.append("\n");
+		}
+		s.append("}");
+		
+		String fileName = "docs/target.dot";
+		File targetFile = new File(fileName);
+		OutputStream outputStream = new FileOutputStream(targetFile);
+		outputStream.write(s.toString().getBytes());
+		outputStream.close();
+		
+		String command = "/Applications/GraphViz.app/Contents/MacOS/GraphViz";
+		
+		try{
+			ProcessBuilder processBuilder = new ProcessBuilder(command, fileName);
+		
+			// Start and add the process to the processes list
+			Process process = processBuilder.start();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
