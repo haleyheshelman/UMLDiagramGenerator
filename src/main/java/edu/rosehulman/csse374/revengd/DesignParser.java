@@ -60,8 +60,9 @@ public class DesignParser {
 
 			// Now we can navigate the classNode and look for things we are
 			// interested in.
-	
-			if(!classNode.superName.equals("Object") && classNode.superName != null) {
+			String superName = classNode.superName;
+			superName = superName.substring(superName.lastIndexOf('/') + 1);
+			if(!superName.equals("Object") && classNode.superName != null) {
 				rels.add(new Extend(classNode.name, classNode.superName));
 			}
 			
@@ -74,6 +75,7 @@ public class DesignParser {
 			UMLClass newClass = new UMLClass(name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
 			classes.add(newClass);
 			System.out.println(newClass.toGraphViz());
+			System.out.println("\n");
 //			printClass(classNode);
 //
 //			printFields(classNode);
@@ -82,6 +84,10 @@ public class DesignParser {
 
 			// TODO: Use GOOD DESIGN to parse the classes of interest and store
 			// them.
+		}
+		for (IRelationship r : rels) {
+			System.out.println(r.getGraphViz());
+			System.out.println("\n");
 		}
 	}
 

@@ -65,8 +65,8 @@ public class UMLClass implements UMLFile{
 		
 		s.append("}\"]");
 		String output = s.toString();
-		output = output.replace('<', Character.MIN_VALUE);
-		output = output.replace('>', Character.MIN_VALUE);
+		output = output.replace('<', ' ');
+		output = output.replace('>', ' ');
 		return output;
 	}
 	
