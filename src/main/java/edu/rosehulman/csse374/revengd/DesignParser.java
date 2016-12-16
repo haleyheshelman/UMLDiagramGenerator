@@ -121,6 +121,7 @@ public class DesignParser {
 		String command = "";
 		if (OS.contains("Windows")){
 			command = "explorer";
+			command = "C:/Program Files (x86)/Graphviz2.38/bin/gvedit.exe";
 		} else if (OS.contains("Mac")) {
 			command = "/Applications/GraphViz.app/Contents/MacOS/GraphViz";
 		} else {
