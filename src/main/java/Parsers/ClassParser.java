@@ -14,7 +14,7 @@ import ModelObjects.UMLMethod;
 
 public class ClassParser {
 
-	public List<UMLMethod> parseMethods(ClassNode c) {
+	public static List<UMLMethod> parseMethods(ClassNode c) {
 		
 		List<UMLMethod> methods = new ArrayList<UMLMethod>();
 		
@@ -26,7 +26,7 @@ public class ClassParser {
 		return methods;
 	}
 
-	public List<UMLInstanceVariable> parseInstanceVariables(ClassNode c) {
+	public static List<UMLInstanceVariable> parseInstanceVariables(ClassNode c) {
 		
 		List<UMLInstanceVariable> vars = new ArrayList<UMLInstanceVariable>();
 		List<FieldNode> fields = (List<FieldNode>) c.fields;

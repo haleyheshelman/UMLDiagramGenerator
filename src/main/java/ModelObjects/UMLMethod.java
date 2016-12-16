@@ -56,7 +56,9 @@ public class UMLMethod {
 		s.append(") : " + this.returnType);
 		s.append("\\l");
 		
-		return s.toString();
+		String output = s.toString();
+		
+		return output;
 	}
 
 }

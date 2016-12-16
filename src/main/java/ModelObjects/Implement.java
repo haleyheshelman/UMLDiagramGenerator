@@ -20,7 +20,7 @@ public class Implement implements Vizable {
 		
 		
 		s.append(this.pair[0] + "->" + this.pair[1]);
-		s.append(" [arrowhead=\"vee\"];");
+		s.append(" [arrowhead=\"vee\",style=\"dashed\"];");
 		
 		return s.toString();
 	}

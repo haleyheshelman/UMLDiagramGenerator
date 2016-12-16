@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,9 @@ import org.objectweb.asm.tree.VarInsnNode;
 
 import ModelObjects.Extend;
 import ModelObjects.Implement;
+import ModelObjects.UMLAbstractClass;
 import ModelObjects.UMLClass;
+import ModelObjects.UMLInterface;
 import ModelObjects.Vizable;
 import Parsers.ClassParser;
 
@@ -37,10 +40,6 @@ public class DesignParser {
 	 * @throws ClassNotFoundException
 	 */
 	
-	String hello;
-	String goodbye;
-	int k;
-	
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException,
 			ClassNotFoundException {
@@ -53,9 +52,9 @@ public class DesignParser {
 
 		List<Vizable> classes = new ArrayList<Vizable>();
 		List<Vizable> rels = new ArrayList<Vizable>();
-		ClassParser newClassParser = new ClassParser();
 		StringBuilder s = new StringBuilder();
 		s.append("digraph uml{rankdir=BT;");
+		Vizable newClass;
 		
 		for (String className : args) {
 			ClassReader reader = new ClassReader(className);
@@ -78,9 +77,19 @@ public class DesignParser {
 			// This makes the class node
 			String name = classNode.name;
 			name = name.substring(name.lastIndexOf('/') + 1);
-			System.out.println(classNode.signature);
-			System.out.println(classNode.attrs);
-			Vizable newClass = new UMLClass(name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
+			
+			System.out.println(classNode.getClass().getModifiers());
+			int mod = classNode.getClass().getModifiers();
+			
+			if (Modifier.isInterface(mod)) {
+				newClass = new UMLInterface(name, ClassParser.parseMethods(classNode));
+				System.out.println("found interface");
+			} else if (Modifier.isAbstract(mod)) {
+				newClass = new UMLAbstractClass(name, ClassParser.parseMethods(classNode), ClassParser.parseInstanceVariables(classNode));
+			} else {
+				newClass = new UMLClass(name, ClassParser.parseMethods(classNode), ClassParser.parseInstanceVariables(classNode));
+			}
+			
 			classes.add(newClass);
 			s.append(newClass.toGraphViz());
 			s.append("\n");

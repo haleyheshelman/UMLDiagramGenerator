@@ -7,7 +7,13 @@ public class UMLAbstractClass implements Vizable{
 
 	List<UMLMethod> methods;
 	List<UMLInstanceVariable> instVars;
-	List<Vizable> supClassInterface;
+	String name;
+	
+	public UMLAbstractClass(String name, List<UMLMethod> methods, List<UMLInstanceVariable> instVars) {
+		this.methods = methods;
+		this.instVars = instVars;
+		this.name = name;
+	}
 	
 	public List<UMLMethod> getMethods() {
 		return Collections.unmodifiableList(methods);
@@ -16,14 +22,29 @@ public class UMLAbstractClass implements Vizable{
 	public List<UMLInstanceVariable> getInstanceVars() {
 		return Collections.unmodifiableList(instVars);
 	}
-	
-	public List<Vizable> getSuperClassAndInterfaces() {
-		return Collections.unmodifiableList(supClassInterface);
-	}
 
 	@Override
 	public String toGraphViz() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder s = new StringBuilder();
+		s.append("<I>" + this.name + "</I>" + "[shape = \"record\",");
+		s.append("label=\"{ ");
+		s.append(this.name + "|");
+		
+		if (!this.instVars.isEmpty()) {
+			for (UMLInstanceVariable var : this.instVars) {
+				s.append(var.toGraphViz());
+			}
+			s.append("|");
+		}
+		
+		for (UMLMethod m : this.methods) {
+			s.append(m.toGraphViz());
+		}
+		
+		s.append("}\"];");
+		String output = s.toString();
+		output = output.replace('<', ' ');
+		output = output.replace('>', ' ');
+		return output;
 	}
 }
