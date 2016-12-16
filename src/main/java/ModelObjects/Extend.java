@@ -1,6 +1,6 @@
 package ModelObjects;
 
-public class Extend implements IRelationship {
+public class Extend implements Vizable {
 
 	String[] pair;
 
@@ -13,12 +13,13 @@ public class Extend implements IRelationship {
 	}
 	
 	@Override
-	public String getGraphViz() {
+	public String toGraphViz() {
 		StringBuilder s = new StringBuilder();
 		s.append(this.pair[0] + "->" + this.pair[1]);
 		s.append(" [arrowhead=\"onormal\"];");
 		
 		return s.toString();
 	}
+
 
 }

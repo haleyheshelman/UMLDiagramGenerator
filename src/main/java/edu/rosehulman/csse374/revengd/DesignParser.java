@@ -19,9 +19,9 @@ import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
 import ModelObjects.Extend;
-import ModelObjects.IRelationship;
 import ModelObjects.Implement;
 import ModelObjects.UMLClass;
+import ModelObjects.Vizable;
 import Parsers.ClassParser;
 
 // FIXME: everything about this class is completely terribly designed.
@@ -51,8 +51,8 @@ public class DesignParser {
 		// FIXME: this code has POOR DESIGN. If you keep this code as-is for
 		// your main method, you will be sad about your grade.
 
-		List<UMLClass> classes = new ArrayList<UMLClass>();
-		List<IRelationship> rels = new ArrayList<IRelationship>();
+		List<Vizable> classes = new ArrayList<Vizable>();
+		List<Vizable> rels = new ArrayList<Vizable>();
 		ClassParser newClassParser = new ClassParser();
 		StringBuilder s = new StringBuilder();
 		s.append("digraph uml{rankdir=BT;");
@@ -75,9 +75,12 @@ public class DesignParser {
 				rels.add(new Implement(classNode.name, interfaceName));
 			}
 			
+			// This makes the class node
 			String name = classNode.name;
 			name = name.substring(name.lastIndexOf('/') + 1);
-			UMLClass newClass = new UMLClass(name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
+			System.out.println(classNode.signature);
+			System.out.println(classNode.attrs);
+			Vizable newClass = new UMLClass(name, newClassParser.parseMethods(classNode), newClassParser.parseInstanceVariables(classNode));
 			classes.add(newClass);
 			s.append(newClass.toGraphViz());
 			s.append("\n");
@@ -90,8 +93,8 @@ public class DesignParser {
 			// TODO: Use GOOD DESIGN to parse the classes of interest and store
 			// them.
 		}
-		for (IRelationship r : rels) {
-			s.append(r.getGraphViz());
+		for (Vizable r : rels) {
+			s.append(r.toGraphViz());
 			s.append("\n");
 		}
 		s.append("}");
@@ -109,7 +112,6 @@ public class DesignParser {
 		if (OS.contains("Windows")){
 			//TODO: write the windows code
 		} else if (OS.contains("Mac")) {
-			//TODO: make sure this correctly identifies MacOS
 			command = "/Applications/GraphViz.app/Contents/MacOS/GraphViz";
 		} else {
 			System.out.println("Error: Unknown operating system. Unable to open GraphViz");

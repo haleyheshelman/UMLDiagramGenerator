@@ -1,6 +1,6 @@
 package ModelObjects;
 
-public class Implement implements IRelationship {
+public class Implement implements Vizable {
 	
 	String[] pair;
 
@@ -14,7 +14,7 @@ public class Implement implements IRelationship {
 	}
 	
 	@Override
-	public String getGraphViz() {
+	public String toGraphViz() {
 		StringBuilder s = new StringBuilder();
 		
 		
@@ -24,5 +24,6 @@ public class Implement implements IRelationship {
 		
 		return s.toString();
 	}
+
 
 }
