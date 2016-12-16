@@ -50,7 +50,7 @@ public class UMLClass implements Vizable{
 	public String toGraphViz() {
 		StringBuilder s = new StringBuilder();
 		s.append(this.name + "[shape = \"record\",");
-		s.append("label=\"{ ");
+		s.append("label=<{ ");
 		s.append(this.name + "|");
 		
 		if (!this.instVars.isEmpty()) {
@@ -64,10 +64,10 @@ public class UMLClass implements Vizable{
 			s.append(m.toGraphViz());
 		}
 		
-		s.append("}\"];");
+		s.append("}>];");
 		String output = s.toString();
-		output = output.replace("<", "");
-		output = output.replace(">", "");
+//		output = output.replace("<", "");
+//		output = output.replace(">", "");
 		return output;
 	}
 	

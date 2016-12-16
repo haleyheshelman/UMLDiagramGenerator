@@ -109,6 +109,7 @@ public class DesignParser {
 		s.append("}");
 		String graphInput = s.toString();
 		graphInput = graphInput.replace("$", "");
+		graphInput = graphInput.replace("\\l", "<br/>");
 		
 		String fileName = "docs/target.dot";
 		File targetFile = new File(fileName);
@@ -119,7 +120,7 @@ public class DesignParser {
 		String OS = System.getProperty("os.name");
 		String command = "";
 		if (OS.contains("Windows")){
-			//TODO: write the windows code
+			command = "explorer";
 		} else if (OS.contains("Mac")) {
 			command = "/Applications/GraphViz.app/Contents/MacOS/GraphViz";
 		} else {

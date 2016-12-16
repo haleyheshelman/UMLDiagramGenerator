@@ -27,8 +27,8 @@ public class UMLAbstractClass implements Vizable{
 	public String toGraphViz() {
 		StringBuilder s = new StringBuilder();
 		s.append(this.name + "[shape = \"record\",");
-		s.append("label=\"{ ");
-		s.append("<I>" + this.name  + "</I>" + "|");
+		s.append("label=<{ ");
+		s.append("<i>" + this.name  + "</i>" + "|");
 		
 		if (!this.instVars.isEmpty()) {
 			for (UMLInstanceVariable var : this.instVars) {
@@ -41,7 +41,7 @@ public class UMLAbstractClass implements Vizable{
 			s.append(m.toGraphViz());
 		}
 		
-		s.append("}\"];");
+		s.append("}>];");
 		String output = s.toString();
 //		output = output.replace("<", "");
 //		output = output.replace(">", "");
