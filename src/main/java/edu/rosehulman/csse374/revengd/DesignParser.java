@@ -102,7 +102,16 @@ public class DesignParser {
 		outputStream.write(s.toString().getBytes());
 		outputStream.close();
 		
-		String command = "/Applications/GraphViz.app/Contents/MacOS/GraphViz";
+		String OS = System.getProperty("os.name");
+		String command = "";
+		if (OS.contains("Windows")){
+			//TODO: write the windows code
+		} else if (OS.contains("Mac")) {
+			//TODO: make sure this correctly identifies MacOS
+			command = "/Applications/GraphViz.app/Contents/MacOS/GraphViz";
+		} else {
+			System.out.println("Error: Unknown operating system. Unable to open GraphViz");
+		}
 		
 		try{
 			ProcessBuilder processBuilder = new ProcessBuilder(command, fileName);
