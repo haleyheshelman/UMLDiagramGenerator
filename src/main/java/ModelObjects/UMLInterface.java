@@ -20,9 +20,9 @@ public class UMLInterface implements Vizable {
 	@Override
 	public String toGraphViz() {
 		StringBuilder s = new StringBuilder();
-		s.append("<I>" + this.name + "</I>" + "[shape = \"record\",");
+		s.append(this.name + "[shape = \"record\",");
 		s.append("label=\"{ ");
-		s.append(this.name + "|");
+		s.append("<I>" + this.name + "</I>" + "|");
 		
 		for (UMLMethod m : this.methods) {
 			String add = m.toGraphViz();
@@ -31,8 +31,8 @@ public class UMLInterface implements Vizable {
 		
 		s.append("}\"];");
 		String output = s.toString();
-		output = output.replace('<', ' ');
-		output = output.replace('>', ' ');
+//		output = output.replace("<", "");
+//		output = output.replace(">", "");
 		return output;
 	}
 }

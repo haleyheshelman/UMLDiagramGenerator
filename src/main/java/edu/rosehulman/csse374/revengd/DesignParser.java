@@ -78,12 +78,12 @@ public class DesignParser {
 			String name = classNode.name;
 			name = name.substring(name.lastIndexOf('/') + 1);
 			
-			System.out.println(classNode.getClass().getModifiers());
-			int mod = classNode.getClass().getModifiers();
+
+			int mod = classNode.access;
+//			int mod = 1;
 			
 			if (Modifier.isInterface(mod)) {
 				newClass = new UMLInterface(name, ClassParser.parseMethods(classNode));
-				System.out.println("found interface");
 			} else if (Modifier.isAbstract(mod)) {
 				newClass = new UMLAbstractClass(name, ClassParser.parseMethods(classNode), ClassParser.parseInstanceVariables(classNode));
 			} else {

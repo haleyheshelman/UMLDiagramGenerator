@@ -66,8 +66,8 @@ public class UMLClass implements Vizable{
 		
 		s.append("}\"];");
 		String output = s.toString();
-		output = output.replace('<', ' ');
-		output = output.replace('>', ' ');
+		output = output.replace("<", "");
+		output = output.replace(">", "");
 		return output;
 	}
 	

@@ -57,6 +57,8 @@ public class UMLMethod {
 		s.append("\\l");
 		
 		String output = s.toString();
+		output = output.replace("<", "");
+		output = output.replace(">", "");
 		
 		return output;
 	}
