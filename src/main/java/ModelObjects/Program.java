@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Program {
 
-	List<UMLFile> files;
+	List<Vizable> files;
 
-	public List<UMLFile> getFiles() {
+	public List<Vizable> getFiles() {
 		return Collections.unmodifiableList(files);
 	}
 	

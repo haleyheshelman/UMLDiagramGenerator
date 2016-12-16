@@ -95,11 +95,13 @@ public class DesignParser {
 			s.append("\n");
 		}
 		s.append("}");
+		String graphInput = s.toString();
+		graphInput = graphInput.replace("$", "");
 		
 		String fileName = "docs/target.dot";
 		File targetFile = new File(fileName);
 		OutputStream outputStream = new FileOutputStream(targetFile);
-		outputStream.write(s.toString().getBytes());
+		outputStream.write(graphInput.getBytes());
 		outputStream.close();
 		
 		String OS = System.getProperty("os.name");
@@ -218,3 +220,4 @@ public class DesignParser {
 		}
 	}
 }
+

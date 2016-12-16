@@ -3,7 +3,7 @@ package ModelObjects;
 import java.util.Collections;
 import java.util.List;
 
-public class UMLClass implements UMLFile{
+public class UMLClass implements Vizable{
 
 	List<UMLMethod> methods;
 	List<UMLInstanceVariable> instVars;
@@ -15,7 +15,6 @@ public class UMLClass implements UMLFile{
 		this.name = name;
 	}
 	
-	@Override
 	public List<UMLMethod> getMethods() {
 		return Collections.unmodifiableList(methods);
 	}

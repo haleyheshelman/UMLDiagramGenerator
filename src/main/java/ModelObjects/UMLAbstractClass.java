@@ -3,13 +3,12 @@ package ModelObjects;
 import java.util.Collections;
 import java.util.List;
 
-public class UMLAbstractClass implements UMLFile{
+public class UMLAbstractClass implements Vizable{
 
 	List<UMLMethod> methods;
 	List<UMLInstanceVariable> instVars;
-	List<UMLFile> supClassInterface;
+	List<Vizable> supClassInterface;
 	
-	@Override
 	public List<UMLMethod> getMethods() {
 		return Collections.unmodifiableList(methods);
 	}
@@ -18,7 +17,13 @@ public class UMLAbstractClass implements UMLFile{
 		return Collections.unmodifiableList(instVars);
 	}
 	
-	public List<UMLFile> getSuperClassAndInterfaces() {
+	public List<Vizable> getSuperClassAndInterfaces() {
 		return Collections.unmodifiableList(supClassInterface);
+	}
+
+	@Override
+	public String toGraphViz() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

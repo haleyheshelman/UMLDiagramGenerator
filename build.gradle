@@ -19,7 +19,10 @@ mainClassName = "edu.rosehulman.csse374.revengd.DesignParser"
 
 // TODO: Update the args value to choose what classes to run. Here is just an example. 
 run {
-    args 	"problem.ILineParser", "problem.GoogleLineParser", "problem.AmazonLineParser","problem.DataStandardizer", "problem.GrouponLineParser", "problem.MicrosoftLineParser"
+   //args 	"problem.ILineParser", "problem.GoogleLineParser", "problem.AmazonLineParser","problem.DataStandardizer", "problem.GrouponLineParser", "problem.MicrosoftLineParser"
+   //args	"java.lang.String"
+   //args	"javax.swing.JComponent"
+   //args	"edu.rosehulman.csse374.revengd.DesignParser", "ModelObjects.Extend", "ModelObjects.Implement", "ModelObjects.IRelationship", "ModelObjects.UMLClass", "ModelObjects.UMLInstanceVariable", "ModelObjects.UMLInterface", "ModelObjects.UMLMethod", "ModelObjects.UMLParameter", "Parsers.ClassParser", "Parsers.MethodParser", "ModelObjects.Vizable"
 }
 
 sourceCompatibility = 1.8
@@ -72,7 +75,7 @@ test {
 test.finalizedBy(jacocoTestReport)
 
 task codeCoverageInfo (dependsOn: jacocoTestReport) {
-    ext.srcFile = file("${reportsDir}/jacoco/test/jacocoTestReport.xml")
+    ext.srcFile = file("{reportsDir}/jacoco/test/jacocoTestReport.xml")
     doLast {
         println "Transforming source file."
 		
@@ -88,7 +91,7 @@ task codeCoverageInfo (dependsOn: jacocoTestReport) {
         		float missed = it.@missed as float
         		float covered = it.@covered as float
         		float percentage = covered / (missed + covered) * 100
-        		println "Code Coverage[$type]: $percentage%"
+        		println "Code Coverage[type]: percentage%"
         	}        	
         }
     }
@@ -98,6 +101,6 @@ jacocoTestReport.finalizedBy(codeCoverageInfo)
 jar {
     manifest {
         attributes 'Implementation-Title': 'Rose-Hulman Reverse Engineered Design Application',
-                   'Implementation-Version': '${version}'
+                   'Implementation-Version': '{version}'
     }
 }
