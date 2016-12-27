@@ -53,7 +53,7 @@ public class DesignParser {
 		s.append("}");
 		String output = s.toString();
 		output = output.replace("$", "");
-		return s.toString();
+		return output;
 		
 	}
 	

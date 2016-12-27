@@ -41,6 +41,12 @@ public class Modeler {
 		this.models = new ArrayList<ModelObject>();
 	}
 	
+	private void createClassModel(String s) throws ClassNotFoundException, IOException {
+		List<String> names = new ArrayList<String>();
+		names.add(s);
+		createClassModels(names);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void createClassModels(List<String> classes) throws IOException, ClassNotFoundException  {
 		
@@ -60,12 +66,14 @@ public class Modeler {
 			reader.accept(classNode, ClassReader.EXPAND_FRAMES);
 			
 			String superName = classNode.superName;
+			System.out.println(superName);
 			
 			// Use the following line to get just the name of the class rather than its full extension name.
 			String superNameParsed = superName.substring(superName.lastIndexOf('/') + 1);
 			if (!superNameParsed.equals("Object")) {
 				superNames.add(superName);
 				models.add((ModelObject) new Extend(classNode.name, classNode.superName));
+				if (recursion) createClassModel(superName);
 			}
 			
 			// Now add the interfaces of the class
@@ -90,8 +98,6 @@ public class Modeler {
 				models.add(new UMLClass(name, methodObjects, vars));
 			}
 		}
-		
-		if (recursion) createClassModels(superNames);
 	}
 	
 	private List<UMLInstanceVariable> createInstanceVariableModels(List<FieldNode> vars) {
