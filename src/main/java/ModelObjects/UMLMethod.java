@@ -3,7 +3,7 @@ package ModelObjects;
 import java.util.Collections;
 import java.util.List;
 
-public class UMLMethod {
+public class UMLMethod implements ModelObject {
 	
 	String sig;
 	String returnType;
@@ -20,6 +20,7 @@ public class UMLMethod {
 	public String getSigniture() {
 		return this.sig;
 	}
+	
 	
 	public String getReturnType() {
 		return this.returnType;
@@ -39,28 +40,37 @@ public class UMLMethod {
 		return s.toString();
 	}
 
-	public String toGraphViz() {
-		StringBuilder s = new StringBuilder();
-		if (this.isPublic) {
-			s.append("+ ");
-		} else {
-			s.append("- ");
-		}
-		
-		s.append(sig + "(");
-		for (UMLParameter param : this.params) {
-			s.append(param.toGraphViz());
-			s.append(", ");
-		}
-		s.delete(s.length()-2, s.length()-1);
-		s.append(") : " + this.returnType);
-		s.append("\\l");
-		
-		String output = s.toString();
-		output = output.replace("<", "");
-		output = output.replace(">", "");
-		
-		return output;
+	@Override
+	public String getName() {
+		return this.sig;
 	}
+	
+	public boolean getIsPublic() {
+		return this.isPublic;
+	}
+
+//	public String toGraphViz() {
+//		StringBuilder s = new StringBuilder();
+//		if (this.isPublic) {
+//			s.append("+ ");
+//		} else {
+//			s.append("- ");
+//		}
+//		
+//		s.append(sig + "(");
+//		for (UMLParameter param : this.params) {
+//			s.append(param.toGraphViz());
+//			s.append(", ");
+//		}
+//		s.delete(s.length()-2, s.length()-1);
+//		s.append(") : " + this.returnType);
+//		s.append("\\l");
+//		
+//		String output = s.toString();
+//		output = output.replace("<", "");
+//		output = output.replace(">", "");
+//		
+//		return output;
+//	}
 
 }

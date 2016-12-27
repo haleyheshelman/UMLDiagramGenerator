@@ -3,7 +3,7 @@ package ModelObjects;
 import java.util.Collections;
 import java.util.List;
 
-public class UMLInstanceVariable {
+public class UMLInstanceVariable implements ModelObject{
 
 	String type;
 	String name;
@@ -29,18 +29,22 @@ public class UMLInstanceVariable {
 		return s.toString();
 	}
 
-	public String toGraphViz() {
-		StringBuilder s = new StringBuilder();
-		
-		if (this.isPublic) {
-			s.append("+ ");
-		} else {
-			s.append("- ");
-		}
-		
-		s.append(this.name + " : ");
-		s.append(this.type +"\\l");
-	
-		return s.toString();
+	public boolean getIsPublic() {
+		return this.isPublic;
 	}
+
+//	public String toGraphViz() {
+//		StringBuilder s = new StringBuilder();
+//		
+//		if (this.isPublic) {
+//			s.append("+ ");
+//		} else {
+//			s.append("- ");
+//		}
+//		
+//		s.append(this.name + " : ");
+//		s.append(this.type +"\\l");
+//	
+//		return s.toString();
+//	}
 }

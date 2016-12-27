@@ -1,18 +1,21 @@
-digraph uml{rankdir=BT;DesignParser[shape = "record",label=<{ DesignParser|+ init() : void<br/>+ main(String[] param ) : void<br/>- printClass(ClassNode param ) : void<br/>- printFields(ClassNode param ) : void<br/>- printMethods(ClassNode param ) : void<br/>- printInstructions(MethodNode param ) : void<br/>}>];
-Extend[shape = "record",label=<{ Extend|- pair : String[]<br/>|+ init(String param, String param ) : void<br/>+ toGraphVi() : String<br/>}>];
-Implement[shape = "record",label=<{ Implement|- pair : String[]<br/>|+ init(String param, String param ) : void<br/>+ toGraphVi() : String<br/>}>];
-UMLClass[shape = "record",label=<{ UMLClass|- methods : List<br/>- instVars : List<br/>- name : String<br/>|+ init(String param, List param, List param ) : void<br/>+ getMethod() : List<br/>+ getInstanceVar() : List<br/>+ addMethod(UMLMethod param ) : void<br/>+ addInstanceVariable(UMLInstanceVariable param ) : void<br/>+ toStrin() : String<br/>+ toGraphVi() : String<br/>}>];
-UMLInstanceVariable[shape = "record",label=<{ UMLInstanceVariable|- type : String<br/>- name : String<br/>- isPublic : boolean<br/>|+ init(String param, String param, boolean param ) : void<br/>+ getNam() : String<br/>+ getTyp() : String<br/>+ toStrin() : String<br/>+ toGraphVi() : String<br/>}>];
-UMLMethod[shape = "record",label=<{ UMLMethod|- sig : String<br/>- returnType : String<br/>- params : List<br/>- isPublic : boolean<br/>|+ init(String param, String param, List param, boolean param ) : void<br/>+ getSignitur() : String<br/>+ getReturnTyp() : String<br/>+ getParameter() : List<br/>+ toStrin() : String<br/>+ toGraphVi() : String<br/>}>];
-UMLParameter[shape = "record",label=<{ UMLParameter|- type : String<br/>- name : String<br/>|+ init(String param, String param ) : void<br/>+ toStrin() : String<br/>+ toGraphVi() : String<br/>}>];
-ClassParser[shape = "record",label=<{ ClassParser|+ init() : void<br/>+ parseMethods(ClassNode param ) : List<br/>+ parseInstanceVariables(ClassNode param ) : List<br/>}>];
-MethodParser[shape = "record",label=<{ MethodParser|+ init() : void<br/>+ parseMethod(MethodNode param ) : UMLMethod<br/>}>];
-Vizable[shape = "record",label=<{ <i>Vizable</i>|+ toGraphVi() : String<br/>}>];
-UMLAbstractClass[shape = "record",label=<{ UMLAbstractClass|- methods : List<br/>- instVars : List<br/>- name : String<br/>|+ init(String param, List param, List param ) : void<br/>+ getMethod() : List<br/>+ getInstanceVar() : List<br/>+ toGraphVi() : String<br/>}>];
-UMLInterface[shape = "record",label=<{ UMLInterface|- methods : List<br/>- name : String<br/>|+ init(String param, List param ) : void<br/>+ getMethod() : List<br/>+ toGraphVi() : String<br/>}>];
-Extend->Vizable [arrowhead="vee",style="dashed"];
-Implement->Vizable [arrowhead="vee",style="dashed"];
-UMLClass->Vizable [arrowhead="vee",style="dashed"];
-UMLAbstractClass->Vizable [arrowhead="vee",style="dashed"];
-UMLInterface->Vizable [arrowhead="vee",style="dashed"];
+digraph uml{rankdir=BT;ILineParser[shape = "record",label=<{ <i>ILineParser</i>|+ (String param ) : String<br/>}>];
+
+GoogleLineParser[shape = "record",label=<{ GoogleLineParser||+ ini() : void<br/>+ (String param ) : String<br/>}>];
+
+AmazonLineParser[shape = "record",label=<{ AmazonLineParser||+ ini() : void<br/>+ (String param ) : String<br/>}>];
+DataStandardizer[shape = "record",label=<{ DataStandardizer|+ ini() : void<br/>-() : void<br/>+() : void<br/>+ (String param ) : void<br/>+() : String<br/>+() : String<br/>+ (String param, ILineParser param ) : void<br/>- (ILineParser param ) : void<br/>+ (String[] param ) : void<br/>}>];
+
+GrouponLineParser[shape = "record",label=<{ GrouponLineParser||+ ini() : void<br/>+ (String param ) : String<br/>}>];
+
+MicrosoftLineParser[shape = "record",label=<{ MicrosoftLineParser||+ ini() : void<br/>+ (String param ) : String<br/>}>];
+
+GoogleLineParser->ILineParser [arrowhead="vee",style="dashed"];
+
+AmazonLineParser->ILineParser [arrowhead="vee",style="dashed"];
+
+
+GrouponLineParser->ILineParser [arrowhead="vee",style="dashed"];
+
+MicrosoftLineParser->ILineParser [arrowhead="vee",style="dashed"];
+
 }

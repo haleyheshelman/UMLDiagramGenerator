@@ -1,6 +1,6 @@
 package ModelObjects;
 
-public class UMLParameter {
+public class UMLParameter implements ModelObject {
 
 	private String type;
 	private String name;
@@ -15,9 +15,18 @@ public class UMLParameter {
 		return s.toString();
 	}
 
-	public String toGraphViz() {
-		StringBuilder s = new StringBuilder();
-		s.append(type + " " + name);
-		return s.toString();
+	@Override
+	public String getName() {
+		return this.name;
 	}
+
+	public String getType() {
+		return this.type;
+	}
+
+//	public String toGraphViz() {
+//		StringBuilder s = new StringBuilder();
+//		s.append(type + " " + name);
+//		return s.toString();
+//	}
 }

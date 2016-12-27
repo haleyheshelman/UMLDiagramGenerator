@@ -1,8 +1,6 @@
 package ModelObjects;
 
-public class Extend implements Vizable {
-
-	String[] pair;
+public class Extend extends IRelationship {
 
 	public Extend(String thisClass, String thatClass) {
 		this.pair = new String[2];
@@ -11,15 +9,20 @@ public class Extend implements Vizable {
 		this.pair[1] = thatClass;
 		this.pair[1] = this.pair[1].substring(this.pair[1].lastIndexOf('/') + 1);
 	}
-	
+
 	@Override
-	public String toGraphViz() {
-		StringBuilder s = new StringBuilder();
-		s.append(this.pair[0] + "->" + this.pair[1]);
-		s.append(" [arrowhead=\"onormal\"];");
-		
-		return s.toString();
+	public String getName() {
+		return "extend";
 	}
+	
+//	@Override
+//	public String toGraphViz() {
+//		StringBuilder s = new StringBuilder();
+//		s.append(this.pair[0] + "->" + this.pair[1]);
+//		s.append(" [arrowhead=\"onormal\"];");
+//		
+//		return s.toString();
+//	}
 
 
 }

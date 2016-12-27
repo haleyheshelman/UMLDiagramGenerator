@@ -3,7 +3,7 @@ package ModelObjects;
 import java.util.Collections;
 import java.util.List;
 
-public class UMLClass implements Vizable{
+public class UMLClass implements ModelObject{
 
 	List<UMLMethod> methods;
 	List<UMLInstanceVariable> instVars;
@@ -27,10 +27,6 @@ public class UMLClass implements Vizable{
 		this.methods.add(method);
 	}
 	
-	public void addInstanceVariable(UMLInstanceVariable ia) {
-		this.instVars.add(ia);
-	}
-	
 	public String toString(){
 		StringBuilder m = new StringBuilder();
 		m.append(name + "[");
@@ -47,28 +43,32 @@ public class UMLClass implements Vizable{
 		
 	}
 	
-	public String toGraphViz() {
-		StringBuilder s = new StringBuilder();
-		s.append(this.name + "[shape = \"record\",");
-		s.append("label=<{ ");
-		s.append(this.name + "|");
-		
-		if (!this.instVars.isEmpty()) {
-			for (UMLInstanceVariable var : this.instVars) {
-				s.append(var.toGraphViz());
-			}
-			s.append("|");
-		}
-		
-		for (UMLMethod m : this.methods) {
-			s.append(m.toGraphViz());
-		}
-		
-		s.append("}>];");
-		String output = s.toString();
-//		output = output.replace("<", "");
-//		output = output.replace(">", "");
-		return output;
+	public String getName() {
+		return this.name;
 	}
+	
+//	public String toGraphViz() {
+//		StringBuilder s = new StringBuilder();
+//		s.append(this.name + "[shape = \"record\",");
+//		s.append("label=<{ ");
+//		s.append(this.name + "|");
+//		
+//		if (!this.instVars.isEmpty()) {
+//			for (UMLInstanceVariable var : this.instVars) {
+//				s.append(var.toGraphViz());
+//			}
+//			s.append("|");
+//		}
+//		
+//		for (UMLMethod m : this.methods) {
+//			s.append(m.toGraphViz());
+//		}
+//		
+//		s.append("}>];");
+//		String output = s.toString();
+////		output = output.replace("<", "");
+////		output = output.replace(">", "");
+//		return output;
+//	}
 	
 }

@@ -3,7 +3,7 @@ package ModelObjects;
 import java.util.Collections;
 import java.util.List;
 
-public class UMLInterface implements Vizable {
+public class UMLInterface implements ModelObject {
 
 	List<UMLMethod> methods;
 	String name;
@@ -18,21 +18,26 @@ public class UMLInterface implements Vizable {
 	}
 
 	@Override
-	public String toGraphViz() {
-		StringBuilder s = new StringBuilder();
-		s.append(this.name + "[shape = \"record\",");
-		s.append("label=<{ ");
-		s.append("<i>" + this.name + "</i>" + "|");
-		
-		for (UMLMethod m : this.methods) {
-			String add = m.toGraphViz();
-			s.append(m.toGraphViz());
-		}
-		
-		s.append("}>];");
-		String output = s.toString();
-//		output = output.replace("<", "");
-//		output = output.replace(">", "");
-		return output;
+	public String getName() {
+		return this.name;
 	}
+
+//	@Override
+//	public String toGraphViz() {
+//		StringBuilder s = new StringBuilder();
+//		s.append(this.name + "[shape = \"record\",");
+//		s.append("label=<{ ");
+//		s.append("<i>" + this.name + "</i>" + "|");
+//		
+//		for (UMLMethod m : this.methods) {
+//			String add = m.toGraphViz();
+//			s.append(m.toGraphViz());
+//		}
+//		
+//		s.append("}>];");
+//		String output = s.toString();
+////		output = output.replace("<", "");
+////		output = output.replace(">", "");
+//		return output;
+//	}
 }
