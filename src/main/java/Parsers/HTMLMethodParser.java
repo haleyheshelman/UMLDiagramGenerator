@@ -22,7 +22,7 @@ public class HTMLMethodParser implements IParser {
 		} else {
 			s.append("- ");
 		}
-		String toAppend = "";
+		String toAppend = m.getSigniture();
 		if (m.getSigniture().contains(">") || m.getSigniture().contains("<")) {
 			toAppend = m.getSigniture().replace("<", "");
 			toAppend = toAppend.replace(">", "");
