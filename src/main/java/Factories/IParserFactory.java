@@ -4,6 +4,8 @@ import Parsers.IParser;
 
 public interface IParserFactory {
 	
+	public IParser makeParser(String s);
+	
 	public IParser makeClassParser();
 	public IParser makeMethodParser();
 	public IParser makeInstanceVariableParser();

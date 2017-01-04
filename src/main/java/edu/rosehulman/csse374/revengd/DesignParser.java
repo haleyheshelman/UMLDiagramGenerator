@@ -16,14 +16,14 @@ import ModelObjects.UMLInterface;
 public class DesignParser {
 	
 	public static String TYPE_HTML = "HTML";
-	Map<String, IParserFactory> factories;
-	IParserFactory iFactory;
+	private Map<String, IParserFactory> factories;
+	private IParserFactory iFactory;
 	
-	public DesignParser(String type) {
+	public DesignParser() {
 		
 		factories = new HashMap<String, IParserFactory>();
 		factories.put(TYPE_HTML, new HTMLParserFactory());
-		this.iFactory = factories.get(type);
+		this.iFactory = factories.get(TYPE_HTML);
 		
 	}
 	
@@ -57,35 +57,39 @@ public class DesignParser {
 		
 	}
 	
-	public String parseClass(ModelObject o) {
+	private String parseModelObject(ModelObject o) {
+		return iFactory.makeParser(o.getClass().getName()).parse(o);
+	}
+	
+	private String parseClass(ModelObject o) {
 		return iFactory.makeClassParser().parse(o);
 	}
 	
-	public String parseMethod(ModelObject o) {
+	private String parseMethod(ModelObject o) {
 		return iFactory.makeMethodParser().parse(o);
 	}
 	
-	public String parseInstanceVariable(ModelObject o) {
+	private String parseInstanceVariable(ModelObject o) {
 		return iFactory.makeInstanceVariableParser().parse(o);
 	}
 	
-	public String parseInterface(ModelObject o) {
+	private String parseInterface(ModelObject o) {
 		return iFactory.makeInterfaceParser().parse(o);
 	}
 	
-	public String parseAbstractClass(ModelObject o) {
+	private String parseAbstractClass(ModelObject o) {
 		return iFactory.makeAbstractClassParser().parse(o);
 	}
 	
-	public String parseExtend(ModelObject o) {
+	private String parseExtend(ModelObject o) {
 		return iFactory.makeExtendParser().parse(o);
 	}
 	
-	public String parseImplement(ModelObject o) {
+	private String parseImplement(ModelObject o) {
 		return iFactory.makeImplementParser().parse(o);
 	}
 	
-	public String parseParameter(ModelObject o) {
+	private String parseParameter(ModelObject o) {
 		return iFactory.makeParameterParser().parse(o);
 	}
 	

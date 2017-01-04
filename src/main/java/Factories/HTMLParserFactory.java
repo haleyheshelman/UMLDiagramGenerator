@@ -52,4 +52,10 @@ public class HTMLParserFactory implements IParserFactory {
 		return new HTMLInterfaceParser(this.makeMethodParser());
 	}
 
+	@Override
+	public IParser makeParser(String s) {
+		// TODO: Implement SOON
+		return null;
+	}
+
 }

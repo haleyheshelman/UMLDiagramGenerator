@@ -30,7 +30,8 @@ public class Driver {
 		String fileName = "docs/target.dot";
 		
 		Runner gRunner = new GraphVizRunner(fileName);
-		DesignParser parser = new DesignParser(DesignParser.TYPE_HTML);
+		DesignParser parser = new DesignParser();
+		parser.setFactory(DesignParser.TYPE_HTML);
 		if (gRunner.writeToFile(parser.parseObjects(m.getObjects())) == -1) return;
 		gRunner.launchApp();
 	}

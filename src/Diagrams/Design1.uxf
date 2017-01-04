@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>413</x>
-      <y>21</y>
+      <x>392</x>
+      <y>0</y>
       <w>70</w>
       <h>21</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>399</x>
-      <y>511</y>
+      <x>413</x>
+      <y>602</y>
       <w>126</w>
       <h>63</h>
     </coordinates>
@@ -32,8 +32,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>511</y>
+      <x>154</x>
+      <y>602</y>
       <w>203</w>
       <h>84</h>
     </coordinates>
@@ -50,19 +50,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>385</x>
-      <y>35</y>
-      <w>77</w>
-      <h>70</h>
+      <x>399</x>
+      <y>14</y>
+      <w>42</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;40.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>119</x>
-      <y>413</y>
+      <x>133</x>
+      <y>504</y>
       <w>168</w>
       <h>84</h>
     </coordinates>
@@ -79,8 +79,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>616</y>
+      <x>371</x>
+      <y>700</y>
       <w>168</w>
       <h>63</h>
     </coordinates>
@@ -96,8 +96,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>378</x>
-      <y>315</y>
+      <x>392</x>
+      <y>406</y>
       <w>133</w>
       <h>49</h>
     </coordinates>
@@ -112,8 +112,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>483</x>
-      <y>371</y>
+      <x>469</x>
+      <y>462</y>
       <w>133</w>
       <h>49</h>
     </coordinates>
@@ -128,8 +128,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>266</x>
-      <y>182</y>
+      <x>280</x>
+      <y>273</y>
       <w>105</w>
       <h>42</h>
     </coordinates>
@@ -142,8 +142,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
-      <y>217</y>
+      <x>308</x>
+      <y>308</y>
       <w>35</w>
       <h>308</h>
     </coordinates>
@@ -153,8 +153,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
-      <y>217</y>
+      <x>329</x>
+      <y>308</y>
       <w>119</w>
       <h>308</h>
     </coordinates>
@@ -164,8 +164,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>217</y>
+      <x>238</x>
+      <y>308</y>
       <w>105</w>
       <h>210</h>
     </coordinates>
@@ -175,19 +175,19 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
-      <y>217</y>
-      <w>56</w>
-      <h>413</h>
+      <x>329</x>
+      <y>308</y>
+      <w>77</w>
+      <h>406</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;570.0</additional_attributes>
+    <additional_attributes>10.0;10.0;90.0;560.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>350</y>
+      <x>154</x>
+      <y>441</y>
       <w>105</w>
       <h>21</h>
     </coordinates>
@@ -198,8 +198,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>126</x>
-      <y>301</y>
+      <x>140</x>
+      <y>392</y>
       <w>77</w>
       <h>28</h>
     </coordinates>
@@ -210,8 +210,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>182</x>
-      <y>217</y>
+      <x>196</x>
+      <y>308</y>
       <w>133</w>
       <h>147</h>
     </coordinates>
@@ -221,8 +221,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>161</x>
-      <y>210</y>
+      <x>175</x>
+      <y>301</y>
       <w>119</w>
       <h>105</h>
     </coordinates>
@@ -232,21 +232,23 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>847</x>
-      <y>133</y>
-      <w>133</w>
-      <h>98</h>
+      <x>791</x>
+      <y>182</y>
+      <w>203</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;interface&gt;
-/ParserFactory/
+/IParserFactory/
 --
-makeClass()
-makeAbstractClass()
-makeInterface()
-makeMethod()
-makeParameter()
-makeInstVar()
-
++ makeParser() : IParser
++ makeClassParser() : IParser
++ makeMethodParser() : IParser
++ makeInterfaceParser() : IParser
++ makeAbstractClassParser() : IParser
++ makeInstanceVariableParser() : IParser
++ makeParameterParser() : IParser
++ makeExtendParser() : IParser
++ makeImplementParser() : IParser
 
 </panel_attributes>
     <additional_attributes/>
@@ -254,44 +256,24 @@ makeInstVar()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>714</x>
-      <y>273</y>
-      <w>133</w>
-      <h>91</h>
-    </coordinates>
-    <panel_attributes>/JSONParserFactory/
---
-makeClassParser()
-makeAbstractClassParser()
-makeInterfaceParser()
-makeMethodParser()
-makeParameterParser()
-makeInstVarParser()
-
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>112</x>
-      <y>105</y>
-      <w>140</w>
+      <x>56</x>
+      <y>140</y>
+      <w>182</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>GraphVizRunner
 --
-GraphVizRunner(String s)
-*handles app launching*
+- intputFile : String
+--
++ GraphVizRunner(String inputFile)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>665</x>
-      <y>476</y>
+      <x>679</x>
+      <y>567</y>
       <w>91</w>
       <h>56</h>
     </coordinates>
@@ -306,8 +288,8 @@ parseMethod()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>840</x>
-      <y>392</y>
+      <x>854</x>
+      <y>483</y>
       <w>70</w>
       <h>28</h>
     </coordinates>
@@ -318,8 +300,8 @@ parseMethod()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>840</x>
-      <y>434</y>
+      <x>854</x>
+      <y>525</y>
       <w>77</w>
       <h>28</h>
     </coordinates>
@@ -330,8 +312,8 @@ parseMethod()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>833</x>
-      <y>476</y>
+      <x>847</x>
+      <y>567</y>
       <w>91</w>
       <h>28</h>
     </coordinates>
@@ -343,8 +325,8 @@ parseMethod()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>91</y>
+      <x>350</x>
+      <y>112</y>
       <w>119</w>
       <h>56</h>
     </coordinates>
@@ -358,30 +340,30 @@ getModels();
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>266</x>
-      <y>35</y>
-      <w>189</w>
-      <h>21</h>
+      <x>196</x>
+      <y>14</y>
+      <w>217</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;250.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;290.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
-      <y>140</y>
+      <x>329</x>
+      <y>161</y>
       <w>77</w>
-      <h>56</h>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>343</x>
-      <y>175</y>
+      <x>357</x>
+      <y>266</y>
       <w>336</w>
       <h>329</h>
     </coordinates>
@@ -391,41 +373,24 @@ getModels();
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>763</x>
-      <y>224</y>
-      <w>147</w>
-      <h>63</h>
+      <x>826</x>
+      <y>308</y>
+      <w>63</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>190.0;10.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>903</x>
-      <y>224</y>
-      <w>42</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>854</x>
-      <y>273</y>
+      <x>777</x>
+      <y>343</y>
       <w>133</w>
-      <h>91</h>
+      <h>21</h>
     </coordinates>
     <panel_attributes>/HTMLParserFactory/
---
-makeClassParser()
-makeAbstractClassParser()
-makeInterfaceParser()
-makeMethodParser()
-makeParameterParser()
-makeInstVarParser()
+
 
 
 </panel_attributes>
@@ -434,8 +399,8 @@ makeInstVarParser()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>826</x>
-      <y>567</y>
+      <x>840</x>
+      <y>658</y>
       <w>126</w>
       <h>28</h>
     </coordinates>
@@ -447,8 +412,8 @@ makeInstVarParser()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>826</x>
-      <y>700</y>
+      <x>840</x>
+      <y>791</y>
       <w>126</w>
       <h>28</h>
     </coordinates>
@@ -460,8 +425,8 @@ makeInstVarParser()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>826</x>
-      <y>616</y>
+      <x>840</x>
+      <y>707</y>
       <w>126</w>
       <h>28</h>
     </coordinates>
@@ -473,8 +438,8 @@ makeInstVarParser()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>826</x>
-      <y>658</y>
+      <x>840</x>
+      <y>749</y>
       <w>126</w>
       <h>28</h>
     </coordinates>
@@ -486,8 +451,8 @@ makeInstVarParser()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>833</x>
-      <y>525</y>
+      <x>847</x>
+      <y>616</y>
       <w>126</w>
       <h>28</h>
     </coordinates>
@@ -499,8 +464,8 @@ makeInstVarParser()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>749</x>
-      <y>399</y>
+      <x>763</x>
+      <y>490</y>
       <w>105</w>
       <h>112</h>
     </coordinates>
@@ -510,8 +475,8 @@ makeInstVarParser()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>777</x>
-      <y>441</y>
+      <x>791</x>
+      <y>532</y>
       <w>77</w>
       <h>21</h>
     </coordinates>
@@ -521,8 +486,8 @@ makeInstVarParser()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>777</x>
-      <y>476</y>
+      <x>791</x>
+      <y>567</y>
       <w>70</w>
       <h>21</h>
     </coordinates>
@@ -532,8 +497,8 @@ makeInstVarParser()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>777</x>
-      <y>490</y>
+      <x>791</x>
+      <y>581</y>
       <w>70</w>
       <h>63</h>
     </coordinates>
@@ -543,8 +508,8 @@ makeInstVarParser()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>777</x>
-      <y>532</y>
+      <x>791</x>
+      <y>623</y>
       <w>63</w>
       <h>56</h>
     </coordinates>
@@ -554,8 +519,8 @@ makeInstVarParser()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>777</x>
-      <y>567</y>
+      <x>791</x>
+      <y>658</y>
       <w>63</w>
       <h>77</h>
     </coordinates>
@@ -565,8 +530,8 @@ makeInstVarParser()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>777</x>
-      <y>623</y>
+      <x>791</x>
+      <y>714</y>
       <w>63</w>
       <h>63</h>
     </coordinates>
@@ -576,8 +541,8 @@ makeInstVarParser()
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>777</x>
-      <y>665</y>
+      <x>791</x>
+      <y>756</y>
       <w>63</w>
       <h>63</h>
     </coordinates>
@@ -587,29 +552,28 @@ makeInstVarParser()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>588</x>
-      <y>35</y>
-      <w>217</w>
-      <h>196</h>
+      <x>497</x>
+      <y>49</y>
+      <w>259</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>DesignParser
 --
-ParserFactory factory
-Map&lt;ParserFacotry&gt; factories
-Parser classParser;
-Parser methodParser;
-Parser parameterParser
-Parser interfaceParser
-Parser InstanceVariableParser
-Parser ImplementParser
-Parser AbstractClassParser
-Parser ExtendParser
++ TYPE_HTML : String
+- factories : Map&lt;String,IParserFactory&gt;
+- iFactory : IParserFactory
 --
-parseClass(ModelObject)
-parseMethod(ModelObject
-parseExtend(ModelObject)
-parseImplement(ModelObject)
-parseExtend(ModelObject)
++ DesignParser()
++ parseObjects(List&lt;ModelObject&gt; objects) : String
+- parseClass(ModelObject o) : String
+- parseMethod(ModelObject o) : String
+- parseInstanceVariable(ModelObject o) : String
+- parseInterface(ModelObject o) : String
+- parseParameter(ModelObject o) : String
+- parseImplement(ModelObject o) : String
+- parseExtend(ModelObject o) : String
+- parseAbstractClass(ModelObject o) : String
+- parseModelObject(ModelObject o) : String
 
 </panel_attributes>
     <additional_attributes/>
@@ -617,30 +581,30 @@ parseExtend(ModelObject)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
-      <y>49</y>
-      <w>217</w>
-      <h>126</h>
+      <x>749</x>
+      <y>63</y>
+      <w>280</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>260.0;160.0;290.0;160.0;290.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>350.0;210.0;380.0;210.0;380.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>476</x>
-      <y>21</y>
-      <w>126</w>
-      <h>42</h>
+      <x>455</x>
+      <y>0</y>
+      <w>56</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>160.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>60.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>371</x>
-      <y>259</y>
+      <x>385</x>
+      <y>350</y>
       <w>203</w>
       <h>35</h>
     </coordinates>
@@ -654,8 +618,8 @@ Tuple&lt;String, String&gt; pair
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>364</x>
-      <y>217</y>
+      <x>378</x>
+      <y>308</y>
       <w>119</w>
       <h>56</h>
     </coordinates>
@@ -665,19 +629,19 @@ Tuple&lt;String, String&gt; pair
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>553</x>
-      <y>287</y>
-      <w>49</w>
+      <x>567</x>
+      <y>378</y>
+      <w>21</w>
       <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;50.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>427</x>
-      <y>287</y>
+      <x>441</x>
+      <y>378</y>
       <w>49</w>
       <h>42</h>
     </coordinates>
@@ -687,16 +651,27 @@ Tuple&lt;String, String&gt; pair
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>182</x>
-      <y>35</y>
-      <w>91</w>
+      <x>63</x>
+      <y>42</y>
+      <w>140</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>&lt;interface&gt;
 /Runner/
 --
-+ launchApp();
-+ writeToFile();</panel_attributes>
++ launchApp() : void
++ writeToFile(String s) : int</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>119</x>
+      <y>91</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
 </diagram>

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class GraphVizRunner implements Runner {
 
-	String inputFile;
+	private String inputFile;
 	
 	public GraphVizRunner(String inputFile) {
 		this.inputFile = inputFile;
