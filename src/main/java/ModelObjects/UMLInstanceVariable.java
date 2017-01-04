@@ -5,9 +5,9 @@ import java.util.List;
 
 public class UMLInstanceVariable implements ModelObject{
 
-	String type;
-	String name;
-	boolean isPublic;
+	private String type;
+	private String name;
+	private boolean isPublic;
 	
 	public UMLInstanceVariable(String type, String name, boolean isPublic) {
 		this.type = type;
