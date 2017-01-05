@@ -5,9 +5,9 @@ import java.util.List;
 
 public class UMLClass implements ModelObject{
 
-	private List<UMLMethod> methods;
-	private List<UMLInstanceVariable> instVars;
-	private String name;
+	List<UMLMethod> methods;
+	List<UMLInstanceVariable> instVars;
+	String name;
 	
 	public UMLClass(String name, List<UMLMethod> methods, List<UMLInstanceVariable> instVars) {
 		this.methods = methods;

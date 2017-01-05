@@ -5,9 +5,9 @@ import java.util.List;
 
 public class UMLAbstractClass implements ModelObject{
 
-	private List<UMLMethod> methods;
-	private List<UMLInstanceVariable> instVars;
-	private String name;
+	List<UMLMethod> methods;
+	List<UMLInstanceVariable> instVars;
+	String name;
 	
 	public UMLAbstractClass(String name, List<UMLMethod> methods, List<UMLInstanceVariable> instVars) {
 		this.methods = methods;

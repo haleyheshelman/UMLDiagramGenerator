@@ -5,8 +5,8 @@ import java.util.List;
 
 public class UMLInterface implements ModelObject {
 
-	private List<UMLMethod> methods;
-	private String name;
+	List<UMLMethod> methods;
+	String name;
 	
 	public UMLInterface(String name, List<UMLMethod> methods) {
 		this.name = name;
