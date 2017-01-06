@@ -4,18 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>644</x>
       <y>56</y>
-=======
-      <x>392</x>
-      <y>0</y>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>392</x>
-      <y>0</y>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
       <w>70</w>
       <h>21</h>
     </coordinates>
@@ -26,233 +16,136 @@
     <id>UMLClass</id>
     <coordinates>
       <x>413</x>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <y>616</y>
       <w>147</w>
       <h>84</h>
-=======
-      <y>602</y>
-      <w>126</w>
-      <h>63</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <y>602</y>
-      <w>126</w>
-      <h>63</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>UMLInstanceVariable
 --
-- String type
-- String name
+- type : String
+- name : String
+- isPublic : boolean
 --
-+ toString()
++ getType() : String
++ getIsPublic() : boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>126</x>
       <y>749</y>
       <w>224</w>
       <h>91</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>154</x>
-      <y>602</y>
-      <w>203</w>
-      <h>84</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>UMLClass
 --
-- List&lt;UMLMethods&gt; methods
-- List&lt;UMLInstanceVariables&gt; instVars
-- String type
+- methods : List&lt;UMLMethods&gt;
+- instVars : List&lt;InstanceVariable&gt;
+- name : String
 --
-+ toString()
++ getMethods() : List&lt;UMLMethod&gt;
++ getInstanceVars() : List&lt;UMLInstanceVariable&gt;
++ addMethod(UMLMethod) : void
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>672</x>
       <y>70</y>
       <w>21</w>
-=======
-      <x>399</x>
-      <y>14</y>
-      <w>42</w>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>399</x>
-      <y>14</y>
-      <w>42</w>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
       <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;140.0;40.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>105</x>
       <y>609</y>
       <w>189</w>
       <h>119</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>133</x>
-      <y>504</y>
-      <w>168</w>
-      <h>84</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>UMLMethod
 --
-- List&lt;UMLParameters&gt; instVars
-- String returnType
-- String name
+- sig : String
+- returnType : String
+- params : List&lt;UMLParameter&gt;
+- isPublic : boolean
 --
-+ toString()
++ getSignature() : String
++ getReturnType() : String
++ getParameters() : List&lt;UMLParameter&gt;
++ getIsPublic() : boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>364</x>
       <y>714</y>
-=======
-      <x>371</x>
-      <y>700</y>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>371</x>
-      <y>700</y>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
       <w>168</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>UMLParameter
 --
-- String type
-- String name
+- type : String
+- name : String
 --
-+ toString()
++ getType() : String
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>567</x>
       <y>476</y>
       <w>56</w>
       <h>21</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>392</x>
-      <y>406</y>
-      <w>133</w>
-      <h>49</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>Extend
---
-- Tuple&lt;String&gt; pair
---
-+ toString()
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>728</x>
       <y>476</y>
       <w>70</w>
       <h>21</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>469</x>
-      <y>462</y>
-      <w>133</w>
-      <h>49</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>Implement
---
-- Tuple&lt;String&gt; pair
---
-+ toString()
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>392</x>
       <y>322</y>
       <w>105</w>
       <h>56</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>280</x>
-      <y>273</y>
-      <w>105</w>
-      <h>42</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>&lt;interface&gt;
 /ModelObject/
 --
-+ toString()</panel_attributes>
++ toString() : String
++ getName() : String</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>301</x>
       <y>371</y>
       <w>154</w>
@@ -260,26 +153,10 @@
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>200.0;10.0;10.0;540.0</additional_attributes>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>308</x>
-      <y>308</y>
-      <w>35</w>
-      <h>308</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>30.0;10.0;10.0;420.0</additional_attributes>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>427</x>
       <y>371</y>
       <w>35</w>
@@ -287,30 +164,10 @@
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;350.0</additional_attributes>
-=======
-      <x>329</x>
-      <y>308</y>
-      <w>119</w>
-      <h>308</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;420.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>329</x>
-      <y>308</y>
-      <w>119</w>
-      <h>308</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;420.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>210</x>
       <y>371</y>
       <w>245</w>
@@ -318,26 +175,10 @@
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>330.0;10.0;10.0;340.0</additional_attributes>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>238</x>
-      <y>308</y>
-      <w>105</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;280.0</additional_attributes>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>378</x>
       <y>371</y>
       <w>84</w>
@@ -345,76 +186,49 @@
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;490.0</additional_attributes>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>329</x>
-      <y>308</y>
-      <w>77</w>
-      <h>406</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;560.0</additional_attributes>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>0</x>
       <y>497</y>
       <w>231</w>
       <h>84</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>154</x>
-      <y>441</y>
-      <w>105</w>
-      <h>21</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>UMLAbstractClass
+--
+- methods : List&lt;UMLMethod&gt;
+- instVars : List&lt;UMLInstanceVariable&gt;
+- name : String
+--
++ getMethods() : List&lt;UMLMethod&gt;
++ getInstanceVars() : List&lt;UMLInstanceVariable&gt;
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>91</x>
       <y>392</y>
       <w>161</w>
       <h>63</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>140</x>
-      <y>392</y>
-      <w>77</w>
-      <h>28</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>UMLInterface
+--
+- methods : List&lt;UMLMethod&gt;
+- name : String
+--
++ getMethods() : List&lt;UMLMethod&gt;
+
+
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>182</x>
       <y>371</y>
       <w>259</w>
@@ -422,65 +236,25 @@
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>350.0;10.0;10.0;180.0</additional_attributes>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>196</x>
-      <y>308</y>
-      <w>133</w>
-      <h>147</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>170.0;10.0;10.0;190.0</additional_attributes>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>126</x>
       <y>350</y>
       <w>280</w>
       <h>56</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>175</x>
-      <y>301</y>
-      <w>119</w>
-      <h>105</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>380.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>875</x>
       <y>217</y>
       <w>203</w>
       <h>49</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>791</x>
-      <y>182</y>
-      <w>203</w>
-      <h>133</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>&lt;interface&gt;
 /IParserFactory/
@@ -493,18 +267,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>203</x>
       <y>168</y>
-=======
-      <x>56</x>
-      <y>140</y>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>56</x>
-      <y>140</y>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
       <w>182</w>
       <h>56</h>
     </coordinates>
@@ -519,126 +283,53 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>868</x>
       <y>413</y>
       <w>140</w>
       <h>49</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>679</x>
-      <y>567</y>
-      <w>91</w>
-      <h>56</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>&lt;interface&gt;
 /Parser/
 --
-parseClass()
-parseMethod()
++ parse(ModelObject) : String
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>392</x>
       <y>168</y>
       <w>350</w>
       <h>119</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>854</x>
-      <y>483</y>
-      <w>70</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/ClassParser/</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>854</x>
-      <y>525</y>
-      <w>77</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/MethodParser/</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>847</x>
-      <y>567</y>
-      <w>91</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/ParameterParser/
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>350</x>
-      <y>112</y>
-      <w>119</w>
-      <h>56</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>Modeler
 --
-addModel(String path);
-getModels();
-</panel_attributes>
+- models : List&lt;ModelObject&gt;
+- recursion : boolean
+--
+- createClassModel(String) : void
++ createClassModels(List&lt;String&gt;) : void
+- createInstanceVariableModels(List&lt;FieldNode&gt;) : List&lt;UMLInstanceVariable&gt;
+- createMethodModels(List&lt;MethodNode&gt;) : List&lt;UMLMethod&gt;
++ setRecursion(boolean) : void
++ getObjects() : List&lt;ModelObject&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>343</x>
       <y>70</y>
       <w>322</w>
       <h>28</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>196</x>
-      <y>14</y>
-      <w>217</w>
-      <h>49</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;290.0;10.0</additional_attributes>
+    <additional_attributes>10.0;20.0;440.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>441</x>
       <y>280</y>
       <w>161</w>
@@ -646,30 +337,10 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;210.0;10.0</additional_attributes>
-=======
-      <x>329</x>
-      <y>161</y>
-      <w>77</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;160.0;90.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>329</x>
-      <y>161</y>
-      <w>77</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;160.0;90.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>490</x>
       <y>343</y>
       <w>420</w>
@@ -677,45 +348,14 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;580.0;20.0;580.0;100.0</additional_attributes>
-=======
-      <x>357</x>
-      <y>266</y>
-      <w>336</w>
-      <h>329</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;390.0;120.0;400.0;450.0;460.0;450.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>357</x>
-      <y>266</y>
-      <w>336</w>
-      <h>329</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;390.0;120.0;400.0;450.0;460.0;450.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>952</x>
       <y>259</y>
       <w>21</w>
       <h>56</h>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>826</x>
-      <y>308</y>
-      <w>63</w>
-      <h>49</h>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -723,18 +363,8 @@ getModels();
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>903</x>
       <y>301</y>
-=======
-      <x>777</x>
-      <y>343</y>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>777</x>
-      <y>343</y>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
       <w>133</w>
       <h>21</h>
     </coordinates>
@@ -748,8 +378,6 @@ getModels();
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>777</x>
       <y>91</y>
       <w>259</w>
@@ -765,32 +393,12 @@ getModels();
 + parseObjects(List&lt;ModelObject&gt; objects) : String
 - parseModelObject(ModelObject o) : String
 
-=======
-      <x>840</x>
-      <y>658</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/InstanceVariableParser/
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>840</x>
-      <y>658</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/InstanceVariableParser/
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>1029</x>
       <y>105</y>
       <w>147</w>
@@ -798,33 +406,10 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>70.0;230.0;190.0;230.0;190.0;10.0;10.0;10.0</additional_attributes>
-=======
-      <x>840</x>
-      <y>791</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-=======
-      <x>840</x>
-      <y>791</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-    <panel_attributes>&lt;abstract&gt;
-/ExtendParser/
-</panel_attributes>
-    <additional_attributes/>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>707</x>
       <y>56</y>
       <w>84</w>
@@ -832,33 +417,10 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>100.0;70.0;10.0;10.0</additional_attributes>
-=======
-      <x>840</x>
-      <y>707</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-=======
-      <x>840</x>
-      <y>707</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-    <panel_attributes>&lt;abstract&gt;
-/ImplementParser/
-</panel_attributes>
-    <additional_attributes/>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>560</x>
       <y>385</y>
       <w>203</w>
@@ -873,32 +435,12 @@ getModels();
 + getSecond() : String
 
 
-=======
-      <x>840</x>
-      <y>749</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/AbstractClassParser/
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>840</x>
-      <y>749</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/AbstractClassParser/
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
-<<<<<<< HEAD
+    <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>490</x>
       <y>357</y>
       <w>182</w>
@@ -906,22 +448,10 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;240.0;40.0</additional_attributes>
-=======
-      <x>847</x>
-      <y>616</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/InterfaceParser/
-</panel_attributes>
-    <additional_attributes/>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>742</x>
       <y>448</y>
       <w>28</w>
@@ -929,33 +459,10 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;20.0;40.0</additional_attributes>
-=======
-      <x>763</x>
-      <y>490</y>
-      <w>105</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;140.0;50.0;140.0;50.0;10.0;130.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-    <coordinates>
-      <x>847</x>
-      <y>616</y>
-      <w>126</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/InterfaceParser/
-</panel_attributes>
-    <additional_attributes/>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>588</x>
       <y>448</y>
       <w>35</w>
@@ -963,48 +470,25 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;40.0</additional_attributes>
-=======
-      <x>791</x>
-      <y>532</y>
-      <w>77</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>763</x>
-      <y>490</y>
-      <w>105</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;140.0;50.0;140.0;50.0;10.0;130.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>210</x>
       <y>77</y>
       <w>140</w>
       <h>56</h>
-=======
-      <x>791</x>
-      <y>567</y>
-      <w>70</w>
-      <h>21</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+    <panel_attributes>&lt;interface&gt;
+/Runner/
+--
++ launchApp() : void
++ writeToFile(String s) : int</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>266</x>
       <y>126</y>
       <w>21</w>
@@ -1012,58 +496,25 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
-=======
-      <x>791</x>
-      <y>581</y>
-      <w>70</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;80.0;70.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>791</x>
-      <y>532</y>
-      <w>77</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>1162</x>
       <y>441</y>
       <w>126</w>
       <h>49</h>
-=======
-      <x>791</x>
-      <y>623</y>
-      <w>63</w>
-      <h>56</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0;70.0;60.0</additional_attributes>
-=======
-      <x>791</x>
-      <y>567</y>
-      <w>70</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
+    <panel_attributes>HTMLAbstractClassParser
+--
+-  instVarParser : IParser
+-  methodParser : IParser
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>1001</x>
       <y>441</y>
       <w>175</w>
@@ -1071,237 +522,102 @@ getModels();
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
-=======
-      <x>791</x>
-      <y>658</y>
-      <w>63</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0;70.0;90.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
-      <x>791</x>
-      <y>581</y>
-      <w>70</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;80.0;70.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>861</x>
       <y>546</y>
       <w>126</w>
       <h>49</h>
-=======
-      <x>791</x>
-      <y>714</y>
-      <w>63</w>
-      <h>63</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;70.0;70.0</additional_attributes>
-=======
-      <x>791</x>
-      <y>623</y>
-      <w>63</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0;70.0;60.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
+    <panel_attributes>HTMLClassParser
+--
+-  instVarParser : IParser
+-  methodParser : IParser
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>1155</x>
       <y>539</y>
       <w>126</w>
       <h>21</h>
-=======
-      <x>791</x>
-      <y>756</y>
-      <w>63</w>
-      <h>63</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;70.0;70.0</additional_attributes>
-=======
-      <x>791</x>
-      <y>658</y>
-      <w>63</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0;70.0;90.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
+    <panel_attributes>HTMLExtendParser
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <x>1162</x>
       <y>504</y>
       <w>126</w>
       <h>21</h>
-=======
-      <x>497</x>
-      <y>49</y>
-      <w>259</w>
-      <h>182</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
-    <panel_attributes>DesignParser
---
-+ TYPE_HTML : String
-- factories : Map&lt;String,IParserFactory&gt;
-- iFactory : IParserFactory
---
-+ DesignParser()
-+ parseObjects(List&lt;ModelObject&gt; objects) : String
-- parseClass(ModelObject o) : String
-- parseMethod(ModelObject o) : String
-- parseInstanceVariable(ModelObject o) : String
-- parseInterface(ModelObject o) : String
-- parseParameter(ModelObject o) : String
-- parseImplement(ModelObject o) : String
-- parseExtend(ModelObject o) : String
-- parseAbstractClass(ModelObject o) : String
-- parseModelObject(ModelObject o) : String
-
+    <panel_attributes>HTMLImplementParser
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>931</x>
       <y>602</y>
       <w>140</w>
       <h>21</h>
-=======
-      <x>749</x>
-      <y>63</y>
-      <w>280</w>
-      <h>161</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>350.0;210.0;380.0;210.0;380.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>HTMLInstanceVariableParser
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>1022</x>
       <y>630</y>
       <w>126</w>
       <h>35</h>
-=======
-      <x>455</x>
-      <y>0</y>
-      <w>56</w>
-      <h>77</h>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>60.0;90.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-<<<<<<< HEAD
-      <x>1148</x>
-      <y>609</y>
-      <w>126</w>
-=======
-      <x>385</x>
-      <y>350</y>
-      <w>203</w>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>/IRelationship/
+    <panel_attributes>HTMLInterfaceParser
 --
-Tuple&lt;String, String&gt; pair
+- methodParser : IParser
 
 </panel_attributes>
     <additional_attributes/>
-=======
-      <x>791</x>
-      <y>714</y>
-      <w>63</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;70.0;70.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>791</x>
-      <y>756</y>
-      <w>63</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;70.0;70.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-  </element>
-  <element>
-<<<<<<< HEAD
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
+      <x>1148</x>
+      <y>609</y>
+      <w>126</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>HTMLMethodParser
+--
+- paramParser : IParser
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
       <x>1155</x>
       <y>574</y>
       <w>126</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>HTMLParameterParser
-=======
-      <x>497</x>
-      <y>49</y>
-      <w>259</w>
-      <h>182</h>
-    </coordinates>
-    <panel_attributes>DesignParser
---
-+ TYPE_HTML : String
-- factories : Map&lt;String,IParserFactory&gt;
-- iFactory : IParserFactory
---
-+ DesignParser()
-+ parseObjects(List&lt;ModelObject&gt; objects) : String
-- parseClass(ModelObject o) : String
-- parseMethod(ModelObject o) : String
-- parseInstanceVariable(ModelObject o) : String
-- parseInterface(ModelObject o) : String
-- parseParameter(ModelObject o) : String
-- parseImplement(ModelObject o) : String
-- parseExtend(ModelObject o) : String
-- parseAbstractClass(ModelObject o) : String
-- parseModelObject(ModelObject o) : String
-
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
-<<<<<<< HEAD
     <coordinates>
       <x>980</x>
       <y>455</y>
@@ -1332,22 +648,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;310.0;170.0</additional_attributes>
-=======
-    <id>Relation</id>
-    <coordinates>
-      <x>378</x>
-      <y>308</y>
-      <w>119</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;60.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>938</x>
       <y>455</y>
       <w>238</w>
@@ -1355,20 +659,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;320.0;220.0</additional_attributes>
-=======
-      <x>567</x>
-      <y>378</y>
-      <w>21</w>
-      <h>98</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>938</x>
       <y>455</y>
       <w>189</w>
@@ -1376,20 +670,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;250.0;250.0</additional_attributes>
-=======
-      <x>441</x>
-      <y>378</y>
-      <w>49</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;40.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>910</x>
       <y>455</y>
       <w>63</w>
@@ -1397,24 +681,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;70.0;130.0</additional_attributes>
-=======
-      <x>63</x>
-      <y>42</y>
-      <w>140</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>&lt;interface&gt;
-/Runner/
---
-+ launchApp() : void
-+ writeToFile(String s) : int</panel_attributes>
-    <additional_attributes/>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>924</x>
       <y>455</y>
       <w>140</w>
@@ -1422,21 +692,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;180.0;210.0</additional_attributes>
-=======
-    <coordinates>
-      <x>749</x>
-      <y>63</y>
-      <w>280</w>
-      <h>161</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>350.0;210.0;380.0;210.0;380.0;10.0;10.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>588</x>
       <y>504</y>
       <w>189</w>
@@ -1471,42 +730,21 @@ Tuple&lt;String, String&gt; pair
 
 </panel_attributes>
     <additional_attributes/>
-=======
-      <x>455</x>
-      <y>0</y>
-      <w>56</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>60.0;90.0;10.0;10.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>721</x>
       <y>574</y>
       <w>70</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>OneToMany
-=======
-      <x>385</x>
-      <y>350</y>
-      <w>203</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>/IRelationship/
---
-Tuple&lt;String, String&gt; pair
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
 
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-<<<<<<< HEAD
     <id>UMLClass</id>
     <coordinates>
       <x>644</x>
@@ -1552,22 +790,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>40.0;10.0;10.0;50.0</additional_attributes>
-=======
-    <id>Relation</id>
-    <coordinates>
-      <x>378</x>
-      <y>308</y>
-      <w>119</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;60.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>826</x>
       <y>434</y>
       <w>147</w>
@@ -1575,20 +801,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>60.0;10.0;10.0;10.0;10.0;460.0;190.0;460.0</additional_attributes>
-=======
-      <x>567</x>
-      <y>378</y>
-      <w>21</w>
-      <h>98</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-<<<<<<< HEAD
       <x>959</x>
       <y>679</y>
       <w>119</w>
@@ -1618,20 +834,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>HTMLOneToManyParser</panel_attributes>
     <additional_attributes/>
-=======
-      <x>441</x>
-      <y>378</y>
-      <w>49</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;40.0</additional_attributes>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>882</x>
       <y>679</y>
       <w>91</w>
@@ -1639,24 +845,10 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0;110.0;10.0</additional_attributes>
-=======
-      <x>63</x>
-      <y>42</y>
-      <w>140</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>&lt;interface&gt;
-/Runner/
---
-+ launchApp() : void
-+ writeToFile(String s) : int</panel_attributes>
-    <additional_attributes/>
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-<<<<<<< HEAD
       <x>910</x>
       <y>721</y>
       <w>63</w>
@@ -1664,19 +856,5 @@ Tuple&lt;String, String&gt; pair
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0;70.0;10.0</additional_attributes>
-=======
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-      <x>119</x>
-      <y>91</y>
-      <w>21</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
-<<<<<<< HEAD
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
-=======
->>>>>>> 381d846399b1e450ffadf5aedd682c07d14cde28
   </element>
 </diagram>
