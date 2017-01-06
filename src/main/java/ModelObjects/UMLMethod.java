@@ -5,10 +5,10 @@ import java.util.List;
 
 public class UMLMethod implements ModelObject {
 	
-	private String sig;
-	private String returnType;
-	private List<UMLParameter> params;
-	private boolean isPublic;
+	String sig;
+	String returnType;
+	List<UMLParameter> params;
+	boolean isPublic;
 	
 	public UMLMethod(String sig, String returnType, List<UMLParameter> params, boolean isPublic) {
 		this.sig = sig;
@@ -17,7 +17,7 @@ public class UMLMethod implements ModelObject {
 		this.isPublic = isPublic;
 	}
 	
-	public String getSignature() {
+	public String getSigniture() {
 		return this.sig;
 	}
 	
