@@ -1,8 +1,7 @@
 # Reverse-Engineered Design (RevEngD)
 
-[![build status](https://ada.csse.rose-hulman.edu/CSSE374-Public/RevEngD/badges/master/build.svg)](https://ada.csse.rose-hulman.edu/CSSE374-Public/RevEngD/commits/master)
-
-[![coverage report](https://ada.csse.rose-hulman.edu/CSSE374-Public/RevEngD/badges/master/coverage.svg)](https://ada.csse.rose-hulman.edu/CSSE374-Public/RevEngD/commits/master)
+[![build status](https://ada.csse.rose-hulman.edu/heshelhj/374-ThoroughbredsOfSin/badges/master/build.svg)](https://ada.csse.rose-hulman.edu/heshelhj/374-ThoroughbredsOfSin/commits/master)
+[![coverage report](https://ada.csse.rose-hulman.edu/heshelhj/374-ThoroughbredsOfSin/badges/master/coverage.svg)](https://ada.csse.rose-hulman.edu/heshelhj/374-ThoroughbredsOfSin/commits/master)
 
 This application reverse engineers the design of a supplied codebase.
 
