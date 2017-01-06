@@ -63,10 +63,10 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\RevEngD-1.0.0-SNAPSHOT.jar;%APP_HOME%\lib\asm-all-5.0.4.jar;%APP_HOME%\lib\slf4j-api-1.7.21.jar
+set CLASSPATH=%APP_HOME%\lib\RevEngD-1.0.0-SNAPSHOT.jar;%APP_HOME%\lib\bin;%APP_HOME%\lib\asm-all-5.0.4.jar;%APP_HOME%\lib\slf4j-api-1.7.21.jar
 
 @rem Execute RevEngD
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %REV_ENG_D_OPTS%  -classpath "%CLASSPATH%" edu.rosehulman.csse374.revengd.DesignParser %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %REV_ENG_D_OPTS%  -classpath "%CLASSPATH%" edu.rosehulman.csse374.revengd.Driver %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell

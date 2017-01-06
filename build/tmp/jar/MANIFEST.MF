@@ -1,5 +1,4 @@
 Manifest-Version: 1.0
-Implementation-Title: Rose-Hulman Reverse Engineered Design Applicatio
- n
-Implementation-Version: ${version}
+Implementation-Title: Rose-Hulman Design Parser
+Implementation-Version: 1.0.0-SNAPSHOT
 
