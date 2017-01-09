@@ -4,12 +4,12 @@ import ModelObjects.ModelObject;
 import ModelObjects.UMLInterface;
 import ModelObjects.UMLMethod;
 
-public class HTMLInterfaceParser implements IParser{
+public class HTMLInterfaceParser extends AbstractHTMLParser {
 
-	private IParser methodParser;
 	
-	public HTMLInterfaceParser(IParser methodParser) {
-		this.methodParser = methodParser;
+	public HTMLInterfaceParser() {
+		super();
+
 	}
 	
 	@Override
@@ -22,7 +22,7 @@ public class HTMLInterfaceParser implements IParser{
 		s.append("<i>" + i.getName() + "</i>" + "|");
 		
 		for (UMLMethod m : i.getMethods()) {
-			String add = methodParser.parse(m);
+			String add = this.factory.makeParser(m.getClass()).parse(m);
 			s.append(add);
 		}
 		

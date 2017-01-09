@@ -33,23 +33,27 @@ public class DesignParser {
 		s.append("digraph uml{rankdir=BT;");
 		
 		for (ModelObject o : objects) {
-			if (o instanceof UMLClass) {
-				s.append(parseClass(o));
-			} else if (o instanceof UMLAbstractClass) {
-				s.append(parseAbstractClass(o));
-			} else if (o instanceof UMLInterface) {
-				s.append(parseInterface(o));
-			}
-			s.append("\n");
+			s.append(parseModelObject(o));
 		}
-		for (ModelObject o : objects) {
-			if (o instanceof Extend) {
-				s.append(parseExtend(o));
-			} else if (o instanceof Implement) {
-				s.append(parseImplement(o));
-			}
-			s.append("\n");
-		}
+		
+//		for (ModelObject o : objects) {
+//			if (o instanceof UMLClass) {
+//				s.append(parseClass(o));
+//			} else if (o instanceof UMLAbstractClass) {
+//				s.append(parseAbstractClass(o));
+//			} else if (o instanceof UMLInterface) {
+//				s.append(parseInterface(o));
+//			}
+//			s.append("\n");
+//		}
+//		for (ModelObject o : objects) {
+//			if (o instanceof Extend) {
+//				s.append(parseExtend(o));
+//			} else if (o instanceof Implement) {
+//				s.append(parseImplement(o));
+//			}
+//			s.append("\n");
+//		}
 		s.append("}");
 		String output = s.toString();
 		output = output.replace("$", "");
@@ -58,40 +62,40 @@ public class DesignParser {
 	}
 	
 	private String parseModelObject(ModelObject o) {
-		return iFactory.makeParser(o.getClass().getName()).parse(o);
+		return iFactory.makeParser(o.getClass()).parse(o);
 	}
 	
-	private String parseClass(ModelObject o) {
-		return iFactory.makeClassParser().parse(o);
-	}
-	
-	private String parseMethod(ModelObject o) {
-		return iFactory.makeMethodParser().parse(o);
-	}
-	
-	private String parseInstanceVariable(ModelObject o) {
-		return iFactory.makeInstanceVariableParser().parse(o);
-	}
-	
-	private String parseInterface(ModelObject o) {
-		return iFactory.makeInterfaceParser().parse(o);
-	}
-	
-	private String parseAbstractClass(ModelObject o) {
-		return iFactory.makeAbstractClassParser().parse(o);
-	}
-	
-	private String parseExtend(ModelObject o) {
-		return iFactory.makeExtendParser().parse(o);
-	}
-	
-	private String parseImplement(ModelObject o) {
-		return iFactory.makeImplementParser().parse(o);
-	}
-	
-	private String parseParameter(ModelObject o) {
-		return iFactory.makeParameterParser().parse(o);
-	}
+//	private String parseClass(ModelObject o) {
+//		return iFactory.makeClassParser().parse(o);
+//	}
+//	
+//	private String parseMethod(ModelObject o) {
+//		return iFactory.makeMethodParser().parse(o);
+//	}
+//	
+//	private String parseInstanceVariable(ModelObject o) {
+//		return iFactory.makeInstanceVariableParser().parse(o);
+//	}
+//	
+//	private String parseInterface(ModelObject o) {
+//		return iFactory.makeInterfaceParser().parse(o);
+//	}
+//	
+//	private String parseAbstractClass(ModelObject o) {
+//		return iFactory.makeAbstractClassParser().parse(o);
+//	}
+//	
+//	private String parseExtend(ModelObject o) {
+//		return iFactory.makeExtendParser().parse(o);
+//	}
+//	
+//	private String parseImplement(ModelObject o) {
+//		return iFactory.makeImplementParser().parse(o);
+//	}
+//	
+//	private String parseParameter(ModelObject o) {
+//		return iFactory.makeParameterParser().parse(o);
+//	}
 	
 	public void addFactory(String key, IParserFactory factory) {
 		this.factories.put(key, factory);

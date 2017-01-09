@@ -1,9 +1,14 @@
 package Parsers;
 
+import Factories.HTMLParserFactory;
 import ModelObjects.Extend;
 import ModelObjects.ModelObject;
 
-public class HTMLExtendParser implements IParser {
+public class HTMLExtendParser extends AbstractHTMLParser {
+	
+	public HTMLExtendParser() {
+		super();
+	}
 
 	@Override
 	public String parse(ModelObject o) {

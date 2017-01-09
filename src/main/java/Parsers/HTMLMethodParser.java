@@ -4,12 +4,11 @@ import ModelObjects.ModelObject;
 import ModelObjects.UMLMethod;
 import ModelObjects.UMLParameter;
 
-public class HTMLMethodParser implements IParser {
-	
-	private IParser paramParser;
-	
-	public HTMLMethodParser(IParser paramParser) {
-		this.paramParser = paramParser;
+public class HTMLMethodParser extends AbstractHTMLParser{
+		
+	public HTMLMethodParser() {
+		super();
+
 	}
 
 	@Override
@@ -30,7 +29,7 @@ public class HTMLMethodParser implements IParser {
 		
 		s.append(toAppend + "(");
 		for (UMLParameter param : m.getParameters()) {
-			s.append(paramParser.parse(param));
+			s.append(this.factory.makeParser(param.getClass()).parse(param));
 			s.append(", ");
 		}
 		s.delete(s.length()-2, s.length()-1);

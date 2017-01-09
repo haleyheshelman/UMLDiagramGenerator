@@ -1,18 +1,16 @@
 package Parsers;
 
+import Factories.HTMLParserFactory;
+import Factories.IParserFactory;
 import ModelObjects.ModelObject;
 import ModelObjects.UMLClass;
 import ModelObjects.UMLInstanceVariable;
 import ModelObjects.UMLMethod;
 
-public class HTMLClassParser implements IParser {
+public class HTMLClassParser extends AbstractHTMLParser {
 	
-	private IParser methodParser;
-	private IParser instVarParser;
-	
-	public HTMLClassParser(IParser methodParser, IParser instVarParser) {
-		this.methodParser = methodParser;
-		this.instVarParser = instVarParser;
+	public HTMLClassParser() {
+		super();
 	}
 
 	@Override
@@ -24,13 +22,13 @@ public class HTMLClassParser implements IParser {
 		
 		if (((UMLClass) o).getInstanceVars().isEmpty()) {
 			for (UMLInstanceVariable var : ((UMLClass) o).getInstanceVars()) {
-				s.append(instVarParser.parse(var));
+				s.append(this.factory.makeParser(var.getClass()).parse(var));
 			}
 			s.append("|");
 		}
 		
 		for (UMLMethod m : ((UMLClass) o).getMethods()) {
-			s.append(methodParser.parse(m));
+			s.append(this.factory.makeParser(m.getClass()).parse(m));
 		}
 		
 		s.append("}>];");

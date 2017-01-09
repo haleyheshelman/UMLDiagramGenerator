@@ -3,7 +3,12 @@ package Parsers;
 import ModelObjects.ModelObject;
 import ModelObjects.UMLParameter;
 
-public class HTMLParameterParser implements IParser {
+public class HTMLParameterParser extends AbstractHTMLParser {
+	
+	public HTMLParameterParser() {
+		super();
+
+	}
 
 	@Override
 	public String parse(ModelObject o) {
