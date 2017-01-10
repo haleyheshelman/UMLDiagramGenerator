@@ -30,7 +30,7 @@ public class DesignParser {
 	public String parseObjects(List<ModelObject> objects) {
 
 		StringBuilder s = new StringBuilder();
-		s.append("digraph uml{rankdir=BT;");
+		s.append("digraph uml{rankdir=BT; concentrate=true;");
 		
 		for (ModelObject o : objects) {
 			s.append(parseModelObject(o));
