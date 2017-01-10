@@ -9,14 +9,16 @@ import ModelObjects.UMLParameter;
 
 public class ParameterTest {
 
+	UMLParameter p;
+	
 	@Before
 	public void setUp() throws Exception {
+		p = new UMLParameter("type", "name");
 	}
 
 	@Test
 	public void testParameterToString() {
 		
-		UMLParameter p = new UMLParameter("type", "name");
 		String expected = "type name";
 		String actual = p.toString();
 		
@@ -27,7 +29,6 @@ public class ParameterTest {
 	@Test
 	public void testParameterGetName() {
 		
-		UMLParameter p = new UMLParameter("type", "name");
 		String expected = "name";
 		String actual = p.getName();
 		
@@ -38,7 +39,6 @@ public class ParameterTest {
 	@Test
 	public void testParameterGetType() {
 		
-		UMLParameter p = new UMLParameter("type", "name");
 		String expected = "type";
 		String actual = p.getType();
 		
