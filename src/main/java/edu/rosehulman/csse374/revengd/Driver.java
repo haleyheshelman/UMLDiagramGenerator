@@ -12,6 +12,11 @@ public class Driver {
 	public static void main(String[] args) throws IOException,
 	ClassNotFoundException {
 		
+		if (args.length == 0) {
+			System.out.println("Nothing to parse");
+			System.exit(1);
+		}
+		
 		Modeler m = new Modeler();
 		
 		List<String> names = new ArrayList<String>();

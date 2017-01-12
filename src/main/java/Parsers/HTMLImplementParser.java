@@ -17,7 +17,7 @@ public class HTMLImplementParser extends AbstractHTMLParser {
 		StringBuilder s = new StringBuilder();
 		
 		s.append(i.getFirst() + "->" + i.getSecond());
-		s.append(" [arrowhead=\"vee\",style=\"dashed\"];");
+		s.append(" [arrowhead=\"onormal\",style=\"dashed\"];");
 		
 		return s.toString();
 		

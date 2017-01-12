@@ -13,9 +13,16 @@ import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.LocalVariableNode;
 import org.objectweb.asm.tree.MethodNode;
 
+import ModelObjects.Association;
+import ModelObjects.Dependency;
 import ModelObjects.Extend;
+import ModelObjects.IRelationship;
 import ModelObjects.Implement;
 import ModelObjects.ModelObject;
+import ModelObjects.OneToManyAssociation;
+import ModelObjects.OneToManyDependency;
+import ModelObjects.OneToOneAssociation;
+import ModelObjects.OneToOneDependency;
 import ModelObjects.UMLAbstractClass;
 import ModelObjects.UMLClass;
 import ModelObjects.UMLInstanceVariable;
@@ -79,7 +86,7 @@ public class Modeler {
 			// Now add the interfaces of the class
 			for (String interfaceName : (List<String>) classNode.interfaces) {
 				models.add((ModelObject) new Implement(classNode.name, interfaceName));
-			}
+			}			
 			
 			// Now actually model the class we were given.
 			String name = classNode.name;
@@ -93,13 +100,114 @@ public class Modeler {
 			} else if (Modifier.isAbstract(modifier)) {
 				List<UMLInstanceVariable> vars = createInstanceVariableModels(classNode.fields);
 				models.add(new UMLAbstractClass(name, methodObjects, vars));
+				
+				// Create Associations
+				getAssociations(name, vars);
+				
 			} else {
 				List<UMLInstanceVariable> vars = createInstanceVariableModels(classNode.fields);
 				models.add(new UMLClass(name, methodObjects, vars));
+				
+				// Create Associations
+				getAssociations(name, vars);
+			}
+			getDependencies(name, methodObjects);
+
+		}
+	}
+	
+	private void getAssociations(String className, List<UMLInstanceVariable> vars) {
+		for (UMLInstanceVariable var : vars) {
+			
+			Association association;
+			if (var.getType().contains("[]")) {
+				association = new OneToManyAssociation(className, var.getType());
+			} else {
+				association = new OneToOneAssociation(className, var.getType());
+
+			}
+			if (!containsAssociation(association)) {
+				models.add((ModelObject) association);
 			}
 		}
 	}
 	
+	private void getDependencies(String className, List<UMLMethod> methods) {
+		for (UMLMethod m : methods) {
+			
+			Dependency dependency;
+			if (m.getReturnType().contains("[]")) {
+				dependency = new OneToManyDependency(className, m.getReturnType());
+			} else {
+				dependency = new OneToOneDependency(className, m.getReturnType());
+
+			}
+			if (!containsDependency(dependency)) {
+				if (!containsLikeAssociation(dependency)) {
+					models.add((ModelObject) dependency);
+				}
+			}
+			
+			for (UMLParameter p : m.getParameters()) {
+				if (p.getType().contains("[]")) {
+					dependency = new OneToManyDependency(className, p.getType());
+				} else {
+					dependency = new OneToOneDependency(className, p.getType());
+				}
+				if (!containsDependency(dependency)) {
+					if (!containsLikeAssociation(dependency)) {
+						models.add((ModelObject) dependency);
+					}
+				}
+			}
+		}
+	}
+	
+	private boolean containsLikeAssociation(Dependency dependency) {
+		
+		for (ModelObject o : this.models) {
+			
+			if ((o instanceof OneToOneAssociation) && (dependency instanceof OneToOneDependency)) {
+				return ((dependency.getFirst().equals(((IRelationship) o).getFirst()))) && ((dependency.getSecond().equals(((IRelationship) o).getSecond())));
+			} else if ((o instanceof OneToManyAssociation) && (dependency instanceof OneToManyDependency)) {
+				return ((dependency.getFirst().equals(((IRelationship) o).getFirst()))) && ((dependency.getSecond().equals(((IRelationship) o).getSecond())));
+			}
+		}
+		
+		return false;
+	}
+
+	private boolean containsDependency(Dependency dependency) {
+		for (ModelObject m : this.models) {
+			if (m instanceof OneToOneDependency) {
+				boolean checkOne = ((OneToOneDependency) m).getFirst().equals(dependency.getFirst());
+				boolean checkTwo = ((OneToOneDependency) m).getSecond().equals(dependency.getSecond());
+				return (checkOne && checkTwo);
+			} else if (m instanceof OneToManyDependency) {
+				boolean checkOne = ((OneToManyDependency) m).getFirst().equals(dependency.getFirst());
+				boolean checkTwo = ((OneToManyDependency) m).getSecond().equals(dependency.getSecond());
+				return (checkOne && checkTwo);
+			}
+		}
+		return false;
+	}
+
+	private boolean containsAssociation(Association association) {
+		
+		for (ModelObject m : this.models) {
+			if (m instanceof OneToOneAssociation) {
+				boolean checkOne = ((OneToOneAssociation) m).getFirst().equals(association.getFirst());
+				boolean checkTwo = ((OneToOneAssociation) m).getSecond().equals(association.getSecond());
+				return (checkOne && checkTwo);
+			} else if (m instanceof OneToManyAssociation) {
+				boolean checkOne = ((OneToManyAssociation) m).getFirst().equals(association.getFirst());
+				boolean checkTwo = ((OneToManyAssociation) m).getSecond().equals(association.getSecond());
+				return (checkOne && checkTwo);
+			}
+		}
+		return false;
+	}
+
 	private List<UMLInstanceVariable> createInstanceVariableModels(List<FieldNode> vars) {
 		
 		/**
@@ -143,10 +251,6 @@ public class Modeler {
 			
 			List<UMLParameter> params = new ArrayList<UMLParameter>();
 			
-//			Type[] types = Type.getArgumentTypes(m.desc);
-//			List<String> names = new ArrayList<String>(types.length);
-//			List<LocalVariableNode> variables = m.localVariables;
-			
 			// Later get the names of the params rather than just using param.
 			for (Type argType : Type.getArgumentTypes(m.desc)) {
 				String s = argType.getClassName();
@@ -176,146 +280,5 @@ public class Modeler {
 		return this.models;
 	}
 	
-//			s.append(newClass.toGraphViz());
-//			s.append("\n");
-////			printClass(classNode);
-////
-////			printFields(classNode);
-////
-////			printMethods(classNode);
-//
-//			// TODO: Use GOOD DESIGN to parse the classes of interest and store
-//			// them.
-//		}
-//		for (ModelObject r : rels) {
-//			s.append(r.toGraphViz());
-//			s.append("\n");
-//		}
-//		s.append("}");
-//		String graphInput = s.toString();
-//		graphInput = graphInput.replace("$", "");
-//		graphInput = graphInput.replace("\\l", "<br/>");
-//		
-//		String fileName = "docs/target.dot";
-//		File targetFile = new File(fileName);
-//		OutputStream outputStream = new FileOutputStream(targetFile);
-//		outputStream.write(graphInput.getBytes());
-//		outputStream.close();
-//		
-//		String OS = System.getProperty("os.name");
-//		String command = "";
-//		if (OS.contains("Windows")){
-//			command = "explorer";
-//			command = "C:/Program Files (x86)/Graphviz2.38/bin/gvedit.exe";
-//		} else if (OS.contains("Mac")) {
-//			command = "/Applications/GraphViz.app/Contents/MacOS/GraphViz";
-//		} else {
-//			System.out.println("Error: Unknown operating system. Unable to open GraphViz");
-//		}
-//		
-//		try{
-//			ProcessBuilder processBuilder = new ProcessBuilder(command, fileName);
-//		
-//			// Start and add the process to the processes list
-//			Process process = processBuilder.start();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
-//	// FIXME: is it GOOD DESIGN to have a class where everything is static?
-//	private static void printClass(ClassNode classNode) {
-//		System.out.println("Class's JVM internal name: " + classNode.name);
-//		System.out.println("User-friendly name: "
-//				+ Type.getObjectType(classNode.name).getClassName());
-//		System.out.println("public? "
-//				+ ((classNode.access & Opcodes.ACC_PUBLIC) > 0));
-//		System.out.println("Extends: " + classNode.superName);
-//		System.out.println("Implements: " + classNode.interfaces);
-//
-//	}
-//
-//	private static void printFields(ClassNode classNode) {
-//		// Print all fields (note the cast; ASM doesn't store generic
-//		// data with its Lists)
-//		@SuppressWarnings("unchecked")
-//		List<FieldNode> fields = (List<FieldNode>) classNode.fields;
-//		for (FieldNode field : fields) {
-//			System.out.println("	Field: " + field.name);
-//			System.out.println("	Internal JVM type: " + field.desc);
-//			System.out.println("	User-friendly type: "
-//					+ Type.getType(field.desc));
-//			// Query the access modifiers with the ACC_* constants.
-//
-//			System.out.println("	public? "
-//					+ ((field.access & Opcodes.ACC_PUBLIC) > 0));
-//			// How do you tell if something has default access? (ie no
-//			// access modifiers?)
-//
-//			System.out.println();
-//		}
-//	}
-//
-//	private static void printMethods(ClassNode classNode) {
-//		@SuppressWarnings("unchecked")
-//		List<MethodNode> methods = (List<MethodNode>) classNode.methods;
-//		for (MethodNode method : methods) {
-//			System.out.println("	Method: " + method.name);
-//			System.out
-//					.println("	Internal JVM method signature: " + method.desc);
-//
-//			System.out.println("	Return type: "
-//					+ Type.getReturnType(method.desc).getClassName());
-//
-//			System.out.println("	Args: ");
-//			for (Type argType : Type.getArgumentTypes(method.desc)) {
-//				System.out.println("		" + argType.getClassName());
-//				// FIXME: what is the argument's VARIABLE NAME?
-//			}
-//
-//			// Query the access modifiers with the ACC_* constants.
-//			System.out.println("	public? "
-//					+ ((method.access & Opcodes.ACC_PUBLIC) > 0));
-//			System.out.println("	static? "
-//					+ ((method.access & Opcodes.ACC_STATIC) > 0));
-//			// How do you tell if something has default access? (ie no
-//			// access modifiers?)
-//
-//			System.out.println();
-//
-//			// Print the method's instructions
-//			printInstructions(method);
-//		}
-//	}
-//
-//	private static void printInstructions(MethodNode methodNode) {
-//		InsnList instructions = methodNode.instructions;
-//		for (int i = 0; i < instructions.size(); i++) {
-//
-//			// We don't know immediately what kind of instruction we have.
-//			AbstractInsnNode insn = instructions.get(i);
-//
-//			// Now we have to cast the instruction to its correct type based on
-//			// the opCode.
-//			// FIXME: this code has POOR DESIGN.
-//			if (insn instanceof MethodInsnNode) {
-//				// A method call of some sort; what other useful fields does
-//				// this object have?
-//				MethodInsnNode methodCall = (MethodInsnNode) insn;
-//				System.out.println("		Call method: " + methodCall.owner + " "
-//						+ methodCall.name);
-//			} else if (insn instanceof VarInsnNode) {
-//				// Some some kind of variable *LOAD or *STORE operation.
-//				VarInsnNode varInsn = (VarInsnNode) insn;
-//				int opCode = varInsn.getOpcode();
-//				// See VarInsnNode.setOpcode for the list of possible values of
-//				// opCode. These are from a variable-related subset of Java
-//				// opcodes.
-//			}
-//			// There are others...
-//			// This list of direct known subclasses may be useful:
-//			// http://asm.ow2.org/asm50/javadoc/user/org/objectweb/asm/tree/AbstractInsnNode.html
-//		}
-//	}
 }
 
