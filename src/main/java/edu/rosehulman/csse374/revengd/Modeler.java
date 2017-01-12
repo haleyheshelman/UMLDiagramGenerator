@@ -43,9 +43,20 @@ public class Modeler {
 	 */
 	private List<ModelObject> models;
 	private boolean recursion = false;
+	private List<String> primitives;
 	
 	public Modeler() {
 		this.models = new ArrayList<ModelObject>();
+		this.primitives = new ArrayList<String>();
+		this.primitives.add("byte");
+		this.primitives.add("short");
+		this.primitives.add("int");
+		this.primitives.add("long");
+		this.primitives.add("float");
+		this.primitives.add("double");
+		this.primitives.add("boolean");
+		this.primitives.add("char");
+		this.primitives.add("void");
 	}
 	
 	private void createClassModel(String s) throws ClassNotFoundException, IOException {
@@ -120,6 +131,10 @@ public class Modeler {
 		for (UMLInstanceVariable var : vars) {
 			
 			Association association;
+			
+			if (var.getType().contains(className)) continue;
+			if (primitives.contains(var.getType())) continue;
+			
 			if (var.getType().contains("[]")) {
 				association = new OneToManyAssociation(className, var.getType());
 			} else {
@@ -144,11 +159,18 @@ public class Modeler {
 			}
 			if (!containsDependency(dependency)) {
 				if (!containsLikeAssociation(dependency)) {
-					models.add((ModelObject) dependency);
+					if (!m.getReturnType().contains(className)) {
+						if (!primitives.contains(m.getReturnType())) {							
+							models.add((ModelObject) dependency);
+						}
+					}
 				}
 			}
 			
 			for (UMLParameter p : m.getParameters()) {
+				if (p.getType().contains(className)) continue;
+				if (primitives.contains(p.getType())) continue;
+				
 				if (p.getType().contains("[]")) {
 					dependency = new OneToManyDependency(className, p.getType());
 				} else {
