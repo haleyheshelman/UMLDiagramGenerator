@@ -24,9 +24,4 @@ public class UMLParameter implements ModelObject {
 		return this.type;
 	}
 
-//	public String toGraphViz() {
-//		StringBuilder s = new StringBuilder();
-//		s.append(type + " " + name);
-//		return s.toString();
-//	}
 }

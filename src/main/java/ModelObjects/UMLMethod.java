@@ -17,11 +17,10 @@ public class UMLMethod implements ModelObject {
 		this.isPublic = isPublic;
 	}
 	
-	public String getSigniture() {
+	public String getSignature() {
 		return this.sig;
 	}
-	
-	
+		
 	public String getReturnType() {
 		return this.returnType;
 	}
@@ -48,29 +47,5 @@ public class UMLMethod implements ModelObject {
 	public boolean getIsPublic() {
 		return this.isPublic;
 	}
-
-//	public String toGraphViz() {
-//		StringBuilder s = new StringBuilder();
-//		if (this.isPublic) {
-//			s.append("+ ");
-//		} else {
-//			s.append("- ");
-//		}
-//		
-//		s.append(sig + "(");
-//		for (UMLParameter param : this.params) {
-//			s.append(param.toGraphViz());
-//			s.append(", ");
-//		}
-//		s.delete(s.length()-2, s.length()-1);
-//		s.append(") : " + this.returnType);
-//		s.append("\\l");
-//		
-//		String output = s.toString();
-//		output = output.replace("<", "");
-//		output = output.replace(">", "");
-//		
-//		return output;
-//	}
 
 }

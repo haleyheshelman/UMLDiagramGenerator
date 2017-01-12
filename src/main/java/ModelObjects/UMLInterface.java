@@ -22,22 +22,4 @@ public class UMLInterface implements ModelObject {
 		return this.name;
 	}
 
-//	@Override
-//	public String toGraphViz() {
-//		StringBuilder s = new StringBuilder();
-//		s.append(this.name + "[shape = \"record\",");
-//		s.append("label=<{ ");
-//		s.append("<i>" + this.name + "</i>" + "|");
-//		
-//		for (UMLMethod m : this.methods) {
-//			String add = m.toGraphViz();
-//			s.append(m.toGraphViz());
-//		}
-//		
-//		s.append("}>];");
-//		String output = s.toString();
-////		output = output.replace("<", "");
-////		output = output.replace(">", "");
-//		return output;
-//	}
 }

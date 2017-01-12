@@ -10,10 +10,12 @@ import ModelObjects.UMLParameter;
 public class ParameterTest {
 
 	UMLParameter p;
+	UMLParameter p2;
 	
 	@Before
 	public void setUp() throws Exception {
 		p = new UMLParameter("type", "name");
+		p2 = new UMLParameter(null, null);
 	}
 
 	@Test
@@ -21,9 +23,11 @@ public class ParameterTest {
 		
 		String expected = "type name";
 		String actual = p.toString();
-		
 		assertEquals(expected, actual);
 		
+		expected = "null null";
+		actual = p2.toString();
+		assertEquals(expected, actual);
 	}
 	
 	@Test
@@ -31,9 +35,11 @@ public class ParameterTest {
 		
 		String expected = "name";
 		String actual = p.getName();
-		
 		assertEquals(expected, actual);
 		
+		expected = null;
+		actual = p2.getName();
+		assertEquals(expected, actual);
 	}
 	
 	@Test
@@ -41,7 +47,10 @@ public class ParameterTest {
 		
 		String expected = "type";
 		String actual = p.getType();
+		assertEquals(expected, actual);
 		
+		expected = null;
+		actual = p2.getType();
 		assertEquals(expected, actual);
 		
 	}

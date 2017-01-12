@@ -33,18 +33,4 @@ public class UMLInstanceVariable implements ModelObject{
 		return this.isPublic;
 	}
 
-//	public String toGraphViz() {
-//		StringBuilder s = new StringBuilder();
-//		
-//		if (this.isPublic) {
-//			s.append("+ ");
-//		} else {
-//			s.append("- ");
-//		}
-//		
-//		s.append(this.name + " : ");
-//		s.append(this.type +"\\l");
-//	
-//		return s.toString();
-//	}
 }

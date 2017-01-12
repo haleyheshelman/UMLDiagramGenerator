@@ -21,9 +21,9 @@ public class HTMLMethodParser extends AbstractHTMLParser{
 		} else {
 			s.append("- ");
 		}
-		String toAppend = m.getSigniture();
-		if (m.getSigniture().contains(">") || m.getSigniture().contains("<")) {
-			toAppend = m.getSigniture().replace("<", "");
+		String toAppend = m.getSignature();
+		if (m.getSignature().contains(">") || m.getSignature().contains("<")) {
+			toAppend = m.getSignature().replace("<", "");
 			toAppend = toAppend.replace(">", "");
 		}
 		
