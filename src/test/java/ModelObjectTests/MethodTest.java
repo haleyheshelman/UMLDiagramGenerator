@@ -75,11 +75,11 @@ public class MethodTest {
 	@Test
 	public void testToString() {
 		
-		String expected = "returnType sig()\n";
+		String expected = "returnType sig()";
 		String actual = m1.toString();
 		assertEquals(expected, actual);
 		
-		expected = "null null(type name)\n";
+		expected = "null null(type name)";
 		actual = m2.toString();
 		assertEquals(expected, actual);
 	}
