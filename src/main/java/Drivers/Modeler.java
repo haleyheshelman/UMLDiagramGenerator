@@ -285,10 +285,7 @@ public class Modeler {
 			output.add(new UMLMethod(sig, returnType, params, p));
 			
 			// In code inspection
-			if (m.instructions.size() != 0) {
-				System.out.println(m.instructions.get(0));
-
-			}
+		
 		}
 		
 		return output;
