@@ -1,11 +1,13 @@
 package Drivers;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -84,7 +86,6 @@ public class Modeler {
 			reader.accept(classNode, ClassReader.EXPAND_FRAMES);
 			
 			String superName = classNode.superName;
-			System.out.println(superName);
 			
 			// Use the following line to get just the name of the class rather than its full extension name.
 			String superNameParsed = superName.substring(superName.lastIndexOf('/') + 1);
@@ -106,6 +107,7 @@ public class Modeler {
 			
 			// Get Method Objects and Instance Variables in the case of classes and abstract classes
 			List<UMLMethod> methodObjects = createMethodModels(classNode.methods);
+			
 			if (Modifier.isInterface(modifier)) {
 				models.add(new UMLInterface(name, methodObjects));
 			} else if (Modifier.isAbstract(modifier)) {
@@ -152,6 +154,7 @@ public class Modeler {
 			
 			Dependency dependency;
 			if (m.getReturnType().contains("[]")) {
+				
 				dependency = new OneToManyDependency(className, m.getReturnType());
 			} else {
 				dependency = new OneToOneDependency(className, m.getReturnType());
@@ -285,6 +288,13 @@ public class Modeler {
 			output.add(new UMLMethod(sig, returnType, params, p));
 			
 			// In code inspection
+			
+//			System.out.println("Method name: " + m.name);
+//			for (AbstractInsnNode i : m.) {
+//				System.out.println(i.toString());
+//			}
+//			System.out.println(m.instructions);
+//			System.out.println(m.parameters);
 		
 		}
 		

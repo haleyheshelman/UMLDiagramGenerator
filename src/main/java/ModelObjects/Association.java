@@ -6,7 +6,7 @@ public abstract class Association extends IRelationship {
 		super(first, second);
 	}
 
-	public boolean isOpposite(Dependency d) {
+	public boolean isOpposite(Association d) {
 
 		return ((this.pair[0] == d.pair[1]) && (d.pair[0] == this.pair[1]));
 

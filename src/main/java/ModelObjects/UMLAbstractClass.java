@@ -28,28 +28,4 @@ public class UMLAbstractClass implements ModelObject{
 		return this.name;
 	}
 
-//	@Override
-//	public String toGraphViz() {
-//		StringBuilder s = new StringBuilder();
-//		s.append(this.name + "[shape = \"record\",");
-//		s.append("label=<{ ");
-//		s.append("<i>" + this.name  + "</i>" + "|");
-//		
-//		if (!this.instVars.isEmpty()) {
-//			for (UMLInstanceVariable var : this.instVars) {
-//				s.append(var.toGraphViz());
-//			}
-//			s.append("|");
-//		}
-//		
-//		for (UMLMethod m : this.methods) {
-//			s.append(m.toGraphViz());
-//		}
-//		
-//		s.append("}>];");
-//		String output = s.toString();
-////		output = output.replace("<", "");
-////		output = output.replace(">", "");
-//		return output;
-//	}
 }

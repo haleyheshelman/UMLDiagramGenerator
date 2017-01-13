@@ -35,7 +35,7 @@ public class UMLMethod implements ModelObject {
 		for(int i = 0; i<params.size();i++){
 			s.append(params.get(i).toString());
 		}
-		s.append(")\n");
+		s.append(")");
 		return s.toString();
 	}
 

@@ -47,28 +47,4 @@ public class UMLClass implements ModelObject{
 		return this.name;
 	}
 	
-//	public String toGraphViz() {
-//		StringBuilder s = new StringBuilder();
-//		s.append(this.name + "[shape = \"record\",");
-//		s.append("label=<{ ");
-//		s.append(this.name + "|");
-//		
-//		if (!this.instVars.isEmpty()) {
-//			for (UMLInstanceVariable var : this.instVars) {
-//				s.append(var.toGraphViz());
-//			}
-//			s.append("|");
-//		}
-//		
-//		for (UMLMethod m : this.methods) {
-//			s.append(m.toGraphViz());
-//		}
-//		
-//		s.append("}>];");
-//		String output = s.toString();
-////		output = output.replace("<", "");
-////		output = output.replace(">", "");
-//		return output;
-//	}
-	
 }
