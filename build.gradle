@@ -22,9 +22,8 @@ run {
    //args 	"problem.ILineParser", "problem.GoogleLineParser", "problem.AmazonLineParser","problem.DataStandardizer", "problem.GrouponLineParser", "problem.MicrosoftLineParser"
    //args	"java.lang.String"
    //args	"javax.swing.JComponent"
-   //args	"Drivers", "Factories", "ModelObjects", "Parsers", "Runners", "p"
-   //args	"Testers", "p"
-   args	"af", "fm", "pizza", "p"
+   args	"Drivers", "Factories", "ModelObjects", "Parsers", "Runners", "p"
+   //args	"af", "fm", "pizza", "p"
    //args	"problem", "p"
 }
 
@@ -49,9 +48,9 @@ dependencies {
     // Declare the dependency for your favourite test framework you want to use in your tests.
     testCompile 'junit:junit:4.+'
     
-    runtime files('/Users/IceTheories/Documents/workspaceNeon/Lab1-1/bin')
-    runtime files('/Users/IceTheories/Documents/workspaceNeon/Lab3-1/bin')
-    runtime files('/Users/IceTheories/Documents/workspaceNeon/Lab1-2/bin')
+    //runtime files('/Users/IceTheories/Documents/workspaceNeon/Lab1-1/bin')
+    //runtime files('/Users/IceTheories/Documents/workspaceNeon/Lab3-1/bin')
+    //runtime files('/Users/IceTheories/Documents/workspaceNeon/Lab1-2/bin')
 
     
     
