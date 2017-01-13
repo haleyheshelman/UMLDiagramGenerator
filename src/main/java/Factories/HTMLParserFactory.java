@@ -59,9 +59,6 @@ public class HTMLParserFactory implements IParserFactory {
 			p = new HTMLOneToOneDependencyParser();
 		} else if (c.equals(OneToManyDependency.class)) {
 			p = new HTMLOneToManyDependencyParser();
-		} else {
-			System.out.println("This is not a supported object to parse");
-			System.exit(1);
 		}
 		
 		return p;
