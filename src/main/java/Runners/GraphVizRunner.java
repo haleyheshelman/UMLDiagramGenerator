@@ -21,8 +21,6 @@ public class GraphVizRunner implements Runner {
 			command = "C:/Program Files (x86)/Graphviz2.38/bin/gvedit.exe";
 		} else if (OS.contains("Mac")) {
 			command = "/Applications/GraphViz.app/Contents/MacOS/GraphViz";
-		} else {
-			System.out.println("Error: Unknown operating system. Unable to open GraphViz");
 		}
 		try{
 			ProcessBuilder processBuilder = new ProcessBuilder(command, this.inputFile);
