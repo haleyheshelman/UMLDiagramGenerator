@@ -1,0 +1,34 @@
+package ParserTests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import ModelObjects.ModelObject;
+import ModelObjects.OneToManyDependency;
+import ModelObjects.OneToOneAssociation;
+import Parsers.HTMLOneToManyDependencyParser;
+import Parsers.HTMLOneToOneAssociationParser;
+import Parsers.IParser;
+
+public class HTMLOneToManyDependencyParserTest {
+
+	IParser p;
+	ModelObject o;
+	@Before
+	public void setUp() throws Exception {
+		p = new HTMLOneToManyDependencyParser();
+		o = new OneToManyDependency("type", "name");
+	}
+
+	@Test
+	public void testParse() {
+		
+		String expected = "type->name [arrowhead=\"vee\",style=\"dashed\",label=\"0..n\"];";
+		String actual = p.parse(o);
+		assertEquals(expected, actual);
+	}
+
+
+}

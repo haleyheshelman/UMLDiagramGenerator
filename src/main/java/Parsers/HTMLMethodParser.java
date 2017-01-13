@@ -32,7 +32,7 @@ public class HTMLMethodParser extends AbstractHTMLParser{
 			s.append(this.factory.makeParser(param.getClass()).parse(param));
 			s.append(", ");
 		}
-		s.delete(s.length()-2, s.length()-1);
+//		s.delete(s.length()-2, s.length()-1);
 		s.append(") : " + m.getReturnType());
 		s.append("<br/>");
 		

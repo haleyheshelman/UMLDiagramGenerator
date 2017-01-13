@@ -20,7 +20,7 @@ public class HTMLClassParser extends AbstractHTMLParser {
 		s.append("label=<{ ");
 		s.append(o.getName() + "|");
 		
-		if (((UMLClass) o).getInstanceVars().isEmpty()) {
+		if ((!((UMLClass) o).getInstanceVars().isEmpty())) {
 			for (UMLInstanceVariable var : ((UMLClass) o).getInstanceVars()) {
 				s.append(this.factory.makeParser(var.getClass()).parse(var));
 			}

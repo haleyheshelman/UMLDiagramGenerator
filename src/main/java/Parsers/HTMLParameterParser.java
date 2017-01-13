@@ -7,7 +7,6 @@ public class HTMLParameterParser extends AbstractHTMLParser {
 	
 	public HTMLParameterParser() {
 		super();
-
 	}
 
 	@Override

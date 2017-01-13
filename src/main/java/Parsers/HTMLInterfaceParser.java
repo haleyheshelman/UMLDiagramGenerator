@@ -18,7 +18,7 @@ public class HTMLInterfaceParser extends AbstractHTMLParser {
 		
 		StringBuilder s = new StringBuilder();
 		s.append(i.getName() + "[shape = \"record\",");
-		s.append("label=<{ ");
+		s.append("label=<{");
 		s.append("<i>" + i.getName() + "</i>" + "|");
 		
 		for (UMLMethod m : i.getMethods()) {
