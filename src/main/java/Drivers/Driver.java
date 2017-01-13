@@ -1,4 +1,4 @@
-package edu.rosehulman.csse374.revengd;
+package Drivers;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class Driver {
 			for (int i = 0; i < args.length - 1; i ++) {
 				File directory = null;
 				ClassLoader cld = Thread.currentThread().getContextClassLoader();
-				String path = '/' + args[i];
+				String path = args[i];
 				URL resource = cld.getResource(path);
 				directory = new File(resource.getFile());
 				if (directory.exists()) {

@@ -1,4 +1,4 @@
-package edu.rosehulman.csse374.revengd;
+package Drivers;
 
 import java.io.IOException;
 import java.lang.reflect.Modifier;
@@ -8,9 +8,9 @@ import java.util.List;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
+import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
-import org.objectweb.asm.tree.LocalVariableNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import ModelObjects.Association;
@@ -283,6 +283,12 @@ public class Modeler {
 			boolean p = (m.access & Opcodes.ACC_PUBLIC) > 0;
 			
 			output.add(new UMLMethod(sig, returnType, params, p));
+			
+			// In code inspection
+			if (m.instructions.size() != 0) {
+				System.out.println(m.instructions.get(0));
+
+			}
 		}
 		
 		return output;

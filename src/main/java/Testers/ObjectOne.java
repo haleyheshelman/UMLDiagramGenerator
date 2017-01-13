@@ -5,7 +5,7 @@ public class ObjectOne {
 	ObjectTwo o2;
 	
 	public void stuff() {
-		System.out.println("object1");
+		this.o2 = new ObjectTwo();
 	}
 	
 }

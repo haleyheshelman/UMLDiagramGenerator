@@ -1,4 +1,4 @@
-package edu.rosehulman.csse374.revengd;
+package Drivers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,12 +6,7 @@ import java.util.Map;
 
 import Factories.HTMLParserFactory;
 import Factories.IParserFactory;
-import ModelObjects.Extend;
-import ModelObjects.Implement;
 import ModelObjects.ModelObject;
-import ModelObjects.UMLAbstractClass;
-import ModelObjects.UMLClass;
-import ModelObjects.UMLInterface;
 
 public class DesignParser {
 	
