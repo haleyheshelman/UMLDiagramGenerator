@@ -2,6 +2,8 @@ package ParserTests;
 
 import static org.junit.Assert.*;
 
+import java.rmi.NoSuchObjectException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +25,7 @@ public class HTMLExtendParserTest {
 	}
 
 	@Test
-	public void testParse() {
+	public void testParse() throws NoSuchObjectException {
 		
 		String expected = "this->that [arrowhead=\"onormal\"];";
 		String actual = p.parse(o);

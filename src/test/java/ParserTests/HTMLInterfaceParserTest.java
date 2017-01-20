@@ -2,6 +2,7 @@ package ParserTests;
 
 import static org.junit.Assert.*;
 
+import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -31,7 +32,7 @@ public class HTMLInterfaceParserTest {
 	}
 
 	@Test
-	public void testParse() {
+	public void testParse() throws NoSuchObjectException {
 		
 		String expected = "name[shape = \"record\",label=<{<i>name</i>|+ init(type name, ) : returnType<br/>}>];";
 		String actual = p.parse(o);

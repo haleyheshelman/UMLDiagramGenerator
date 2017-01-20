@@ -2,6 +2,8 @@ package ParserTests;
 
 import static org.junit.Assert.*;
 
+import java.rmi.NoSuchObjectException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +23,7 @@ public class HTMLParameterParserTest {
 	}
 
 	@Test
-	public void testParse() {
+	public void testParse() throws NoSuchObjectException {
 		
 		String expected = "type name";
 		String actual = p.parse(o);

@@ -2,6 +2,7 @@ package ParserTests;
 
 import static org.junit.Assert.*;
 
+import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -26,7 +27,7 @@ public class HTMLInstanceVariableParserTest {
 	}
 
 	@Test
-	public void testParse() {
+	public void testParse() throws NoSuchObjectException {
 		
 		String expected = "+ name : type<br/>";
 		String actual = p.parse(o);

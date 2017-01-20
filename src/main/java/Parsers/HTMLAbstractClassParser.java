@@ -1,19 +1,22 @@
 package Parsers;
 
+import java.rmi.NoSuchObjectException;
+
 import Factories.HTMLParserFactory;
+import Factories.IParserFactory;
 import ModelObjects.ModelObject;
 import ModelObjects.UMLAbstractClass;
 import ModelObjects.UMLInstanceVariable;
 import ModelObjects.UMLMethod;
 
 public class HTMLAbstractClassParser extends AbstractHTMLParser {
-
+	
 	public HTMLAbstractClassParser() {
 		super();
 	}
 	
 	@Override
-	public String parse(ModelObject o) {
+	public String parse(ModelObject o) throws NoSuchObjectException {
 		UMLAbstractClass c = (UMLAbstractClass) o;
 		
 		StringBuilder s = new StringBuilder();
@@ -23,13 +26,13 @@ public class HTMLAbstractClassParser extends AbstractHTMLParser {
 		
 		if (!c.getInstanceVars().isEmpty()) {
 			for (UMLInstanceVariable var : c.getInstanceVars()) {
-				s.append(this.factory.makeParser(var.getClass()).parse(var));
+				s.append(HTMLParserFactory.getInstance().makeParser(var.getClass()).parse(var));
 			}
 			s.append("|");
 		}
 		
 		for (UMLMethod m : c.getMethods()) {
-			s.append(this.factory.makeParser(m.getClass()).parse(m));
+			s.append(HTMLParserFactory.getInstance().makeParser(m.getClass()).parse(m));
 		}
 		
 		s.append("}>];");

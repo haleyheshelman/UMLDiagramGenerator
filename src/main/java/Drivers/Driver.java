@@ -12,8 +12,7 @@ import Runners.Runner;
 
 public class Driver {
 
-	public static void main(String[] args) throws IOException,
-	ClassNotFoundException {
+	public static void main(String[] args) throws Exception {
 		
 		if (args.length == 0) {
 			System.out.println("Nothing to parse");

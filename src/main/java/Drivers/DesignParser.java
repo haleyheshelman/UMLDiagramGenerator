@@ -1,5 +1,6 @@
 package Drivers;
 
+import java.rmi.NoSuchObjectException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class DesignParser {
 		
 	}
 	
-	public String parseObjects(List<ModelObject> objects) {
+	public String parseObjects(List<ModelObject> objects) throws Exception {
 
 		StringBuilder s = new StringBuilder();
 		s.append("digraph uml{rankdir=BT; concentrate=true;node[shape = box];");
@@ -37,7 +38,7 @@ public class DesignParser {
 		
 	}
 	
-	private String parseModelObject(ModelObject o) {
+	private String parseModelObject(ModelObject o) throws Exception {
 		return iFactory.makeParser(o.getClass()).parse(o);
 	}
 	

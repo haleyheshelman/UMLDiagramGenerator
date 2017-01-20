@@ -2,6 +2,8 @@ package ParserTests;
 
 import static org.junit.Assert.*;
 
+import java.rmi.NoSuchObjectException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +25,7 @@ public class HTMLOneToManyAssociationParserTest {
 	}
 
 	@Test
-	public void testParse() {
+	public void testParse() throws NoSuchObjectException {
 		
 		String expected = "type->name [arrowhead=\"vee\",label=\"0..n\"];";
 		String actual = p.parse(o);
