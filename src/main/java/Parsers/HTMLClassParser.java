@@ -1,5 +1,7 @@
 package Parsers;
 
+import java.rmi.NoSuchObjectException;
+
 import Factories.HTMLParserFactory;
 import Factories.IParserFactory;
 import ModelObjects.ModelObject;
@@ -8,13 +10,13 @@ import ModelObjects.UMLInstanceVariable;
 import ModelObjects.UMLMethod;
 
 public class HTMLClassParser extends AbstractHTMLParser {
-	
+		
 	public HTMLClassParser() {
 		super();
 	}
 
 	@Override
-	public String parse(ModelObject o) {
+	public String parse(ModelObject o) throws NoSuchObjectException {
 		StringBuilder s = new StringBuilder();
 		s.append(o.getName() + "[shape = \"record\",");
 		s.append("label=<{ ");
@@ -22,13 +24,13 @@ public class HTMLClassParser extends AbstractHTMLParser {
 		
 		if ((!((UMLClass) o).getInstanceVars().isEmpty())) {
 			for (UMLInstanceVariable var : ((UMLClass) o).getInstanceVars()) {
-				s.append(this.factory.makeParser(var.getClass()).parse(var));
+				s.append(HTMLParserFactory.getInstance().makeParser(var.getClass()).parse(var));
 			}
 			s.append("|");
 		}
 		
 		for (UMLMethod m : ((UMLClass) o).getMethods()) {
-			s.append(this.factory.makeParser(m.getClass()).parse(m));
+			s.append(HTMLParserFactory.getInstance().makeParser(m.getClass()).parse(m));
 		}
 		
 		s.append("}>];");

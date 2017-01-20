@@ -1,5 +1,8 @@
 package Factories;
 
+import java.rmi.NoSuchObjectException;
+import java.util.HashMap;
+
 import ModelObjects.Extend;
 import ModelObjects.Implement;
 import ModelObjects.ModelObject;
@@ -27,41 +30,43 @@ import Parsers.HTMLOneToOneDependencyParser;
 import Parsers.HTMLParameterParser;
 import Parsers.IParser;
 
+public class HTMLParserFactory extends AbstractParserFactory {
 
-
-public class HTMLParserFactory implements IParserFactory {
-
+	private static IParserFactory instance;
+	
+	public HTMLParserFactory() {
+		this.map = new HashMap<Class<? extends ModelObject>, IParser>();
+		this.map.put(UMLClass.class, new HTMLClassParser());
+		this.map.put(UMLAbstractClass.class, new HTMLAbstractClassParser());
+		this.map.put(UMLInterface.class, new HTMLInterfaceParser());
+		this.map.put(UMLMethod.class, new HTMLMethodParser());
+		this.map.put(UMLInstanceVariable.class, new HTMLInstanceVariableParser());
+		this.map.put(UMLParameter.class, new HTMLParameterParser());
+		this.map.put(Extend.class, new HTMLExtendParser());
+		this.map.put(Implement.class, new HTMLImplementParser());
+		this.map.put(OneToOneAssociation.class, new HTMLOneToOneAssociationParser());
+		this.map.put(OneToManyAssociation.class, new HTMLOneToManyAssociationParser());
+		this.map.put(OneToOneDependency.class, new HTMLOneToOneDependencyParser());
+		this.map.put(OneToManyDependency.class, new HTMLOneToManyDependencyParser());
+	}
+	
 	@Override
-	public IParser makeParser(Class<? extends ModelObject> c) {
-		IParser p = null;
+	public IParser makeParser(Class<? extends ModelObject> c) throws NoSuchObjectException {
 		
-		if (c.equals(UMLClass.class)) {
-			p = new HTMLClassParser();
-		} else if (c.equals(UMLAbstractClass.class)) {
-			p = new HTMLAbstractClassParser();
-		} else if (c.equals(UMLInterface.class)) {
-			p = new HTMLInterfaceParser();
-		} else if (c.equals(UMLMethod.class)) {
-			p = new HTMLMethodParser();
-		} else if (c.equals(UMLInstanceVariable.class)) {
-			p = new HTMLInstanceVariableParser();
-		} else if (c.equals(UMLParameter.class)) {
-			p = new HTMLParameterParser();
-		} else if (c.equals(Extend.class)) {
-			p = new HTMLExtendParser();
-		} else if (c.equals(Implement.class)) {
-			p = new HTMLImplementParser();
-		} else if (c.equals(OneToOneAssociation.class)) {
-			p = new HTMLOneToOneAssociationParser();
-		} else if (c.equals(OneToManyAssociation.class)){
-			p = new HTMLOneToManyAssociationParser();
-		} else if (c.equals(OneToOneDependency.class)) {
-			p = new HTMLOneToOneDependencyParser();
-		} else if (c.equals(OneToManyDependency.class)) {
-			p = new HTMLOneToManyDependencyParser();
+		IParser p = null;
+		p = this.map.get(c);
+		
+		if (p == null) {
+			throw new NoSuchObjectException("No parser found for this object");
 		}
 		
-		return p;
+		return this.map.get(c);
 	}
 
+	public static IParserFactory getInstance() {
+		if (instance == null) {
+			instance = new HTMLParserFactory();
+		}
+		return instance;
+	}
 }

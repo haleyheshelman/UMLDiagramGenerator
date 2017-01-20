@@ -32,7 +32,7 @@ public class DesignParserTest {
 	}
 	
 	@Test
-	public void testParseObjects() {
+	public void testParseObjects() throws Exception {
 		
 		ArrayList<ModelObject> objects = new ArrayList<ModelObject>();
 		objects.add(new UMLClass("name", new ArrayList<UMLMethod>(), new ArrayList<UMLInstanceVariable>()));

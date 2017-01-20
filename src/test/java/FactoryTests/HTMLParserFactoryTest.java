@@ -2,6 +2,8 @@ package FactoryTests;
 
 import static org.junit.Assert.*;
 
+import java.rmi.NoSuchObjectException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +44,7 @@ public class HTMLParserFactoryTest {
 	}
 
 	@Test
-	public void testMakeParser() {
+	public void testMakeParser() throws NoSuchObjectException {
 		
 		assertTrue(f.makeParser(UMLClass.class) instanceof HTMLClassParser);
 		assertTrue(f.makeParser(UMLAbstractClass.class) instanceof HTMLAbstractClassParser);
