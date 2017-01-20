@@ -201,23 +201,6 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>882</x>
-      <y>390</y>
-      <w>192</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>&lt;abstract&gt;
-/AbstractHTMLParser/
---
-- underlyingParserFactory : IParserFactory
---
-+ parse(ModelObject) : String
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>354</x>
       <y>168</y>
       <w>300</w>
@@ -375,13 +358,13 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1044</x>
-      <y>438</y>
-      <w>72</w>
-      <h>60</h>
+      <x>828</x>
+      <y>330</y>
+      <w>288</w>
+      <h>168</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0;100.0;80.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;370.0;80.0;370.0;260.0;460.0;260.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -518,17 +501,6 @@
 + parse(ModelObject) : String
 </panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>834</x>
-      <y>330</y>
-      <w>150</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0;230.0;50.0;230.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -822,7 +794,7 @@
       <w>42</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;80.0;10.0;10.0;50.0;10.0</additional_attributes>
   </element>
   <element>
@@ -833,7 +805,7 @@
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
   </element>
   <element>
@@ -844,7 +816,7 @@
       <w>42</w>
       <h>234</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;370.0;10.0;370.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -855,7 +827,7 @@
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -866,7 +838,7 @@
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -877,7 +849,7 @@
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -888,7 +860,7 @@
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -899,7 +871,7 @@
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -910,7 +882,7 @@
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -967,12 +939,12 @@ underlyingParser : AbstractHTMLParser
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>864</x>
+      <x>852</x>
       <y>564</y>
-      <w>60</w>
+      <w>72</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>Singleton</panel_attributes>
+    <panel_attributes>HTMLSingleton</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -1102,7 +1074,7 @@ they are ready to make a UML.</panel_attributes>
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -1113,7 +1085,7 @@ they are ready to make a UML.</panel_attributes>
       <w>42</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
+    <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
