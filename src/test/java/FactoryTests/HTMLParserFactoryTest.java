@@ -58,7 +58,6 @@ public class HTMLParserFactoryTest {
 		assertTrue(f.makeParser(OneToManyAssociation.class) instanceof HTMLOneToManyAssociationParser);
 		assertTrue(f.makeParser(OneToOneDependency.class) instanceof HTMLOneToOneDependencyParser);
 		assertTrue(f.makeParser(OneToManyDependency.class) instanceof HTMLOneToManyDependencyParser);
-		assertEquals(f.makeParser(IRelationship.class), null);
 
 	}
 
