@@ -9,7 +9,7 @@ import ModelObjects.UMLClass;
 import ModelObjects.UMLInstanceVariable;
 import ModelObjects.UMLMethod;
 
-public class HTMLClassParser extends AbstractHTMLParser {
+public class HTMLClassParser implements IParser {
 		
 	public HTMLClassParser() {
 		super();

@@ -3,7 +3,7 @@ package Parsers;
 import ModelObjects.ModelObject;
 import ModelObjects.OneToOneAssociation;
 
-public class HTMLOneToOneAssociationParser extends AbstractHTMLParser {
+public class HTMLOneToOneAssociationParser implements IParser {
 
 	@Override
 	public String parse(ModelObject o) {

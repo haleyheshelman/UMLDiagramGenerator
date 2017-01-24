@@ -4,7 +4,7 @@ import ModelObjects.ModelObject;
 import ModelObjects.OneToManyDependency;
 import ModelObjects.OneToOneDependency;
 
-public class HTMLOneToManyDependencyParser implements IParser {
+public class HTMLOneToManyDependencyParser implements IParser{
 
 	@Override
 	public String parse(ModelObject o) {

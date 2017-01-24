@@ -4,7 +4,7 @@ import Factories.HTMLParserFactory;
 import ModelObjects.Extend;
 import ModelObjects.ModelObject;
 
-public class HTMLExtendParser extends AbstractHTMLParser {
+public class HTMLExtendParser implements IParser {
 	
 	public HTMLExtendParser() {
 		super();

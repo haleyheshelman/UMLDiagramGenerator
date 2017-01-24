@@ -4,7 +4,7 @@ import ModelObjects.ModelObject;
 import ModelObjects.OneToManyAssociation;
 import ModelObjects.OneToOneAssociation;
 
-public class HTMLOneToManyAssociationParser extends AbstractHTMLParser {
+public class HTMLOneToManyAssociationParser implements IParser {
 
 	@Override
 	public String parse(ModelObject o) {

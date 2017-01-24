@@ -8,7 +8,7 @@ import ModelObjects.ModelObject;
 import ModelObjects.UMLMethod;
 import ModelObjects.UMLParameter;
 
-public class HTMLMethodParser extends AbstractHTMLParser{
+public class HTMLMethodParser implements IParser{
 			
 	public HTMLMethodParser() {
 		super();

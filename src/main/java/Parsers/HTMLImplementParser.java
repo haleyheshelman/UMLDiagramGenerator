@@ -3,7 +3,7 @@ package Parsers;
 import ModelObjects.Implement;
 import ModelObjects.ModelObject;
 
-public class HTMLImplementParser extends AbstractHTMLParser {
+public class HTMLImplementParser implements IParser {
 
 	public HTMLImplementParser() {
 		super();

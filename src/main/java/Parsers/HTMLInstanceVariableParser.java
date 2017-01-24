@@ -3,7 +3,7 @@ package Parsers;
 import ModelObjects.ModelObject;
 import ModelObjects.UMLInstanceVariable;
 
-public class HTMLInstanceVariableParser extends AbstractHTMLParser {
+public class HTMLInstanceVariableParser implements IParser {
 	
 	public HTMLInstanceVariableParser() {
 		super();
