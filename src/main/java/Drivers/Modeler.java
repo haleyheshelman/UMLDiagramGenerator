@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Label;
@@ -31,6 +32,7 @@ import ModelObjects.UMLInstanceVariable;
 import ModelObjects.UMLInterface;
 import ModelObjects.UMLMethod;
 import ModelObjects.UMLParameter;
+import PatternDetectors.PatternDetector;
 
 public class Modeler {
 	/**
@@ -46,10 +48,12 @@ public class Modeler {
 	private List<ModelObject> models;
 	private boolean recursion = false;
 	private List<String> primitives;
+	private List<PatternDetector> pds;
 	
 	public Modeler() {
 		this.models = new ArrayList<ModelObject>();
 		this.primitives = new ArrayList<String>();
+		this.pds = new ArrayList<PatternDetector>();
 		this.primitives.add("byte");
 		this.primitives.add("short");
 		this.primitives.add("int");
@@ -127,6 +131,9 @@ public class Modeler {
 			getDependencies(name, methodObjects);
 
 		}
+		
+		this.models = detectPatterns(this.models);
+		
 	}
 	
 	private void getAssociations(String className, List<UMLInstanceVariable> vars) {
@@ -313,6 +320,18 @@ public class Modeler {
 	
 	public List<ModelObject> getObjects() {
 		return this.models;
+	}
+	
+	public void addPatternDetector(PatternDetector pd) {
+		this.pds.add(pd);
+	}
+	
+	private List<ModelObject> detectPatterns(List<ModelObject> m) {
+		List<ModelObject> toAdd = new ArrayList<ModelObject>();
+		for (PatternDetector p : this.pds) {
+			toAdd.addAll(p.check(m));
+		}
+		return toAdd;
 	}
 	
 }

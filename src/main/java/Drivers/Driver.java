@@ -6,7 +6,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import PatternDetectors.SingletonDetector;
+import PatternDetectors.ViolateCompositionOverInheritanceDetector;
 import Runners.GraphVizRunner;
 import Runners.Runner;
 
@@ -20,6 +21,8 @@ public class Driver {
 		}
 		
 		Modeler m = new Modeler();
+		m.addPatternDetector(new SingletonDetector());
+		m.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
 		
 		List<String> names = new ArrayList<String>();
 		if (args[args.length - 1].equals("r")) {
