@@ -132,7 +132,8 @@ public class Modeler {
 
 		}
 		
-		this.models = detectPatterns(this.models);
+		//TODO: Uncomment this line when you are ready to add detectors
+		//this.models = detectPatterns(this.models);
 		
 	}
 	
