@@ -43,7 +43,7 @@ public class ModelerTest {
 		m.createClassModels(classes);
 		
 		List<ModelObject> models = m.getObjects();
-		assertEquals(8, models.size());
+		assertEquals(4, models.size());
 
 		
 	}
