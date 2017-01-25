@@ -11,8 +11,7 @@ TODOS:
 
 Add model decorator to Model objects. Add the corresponding decorators for singleton and violatescompoverinher.
 Add abstract parser decorator and corresponding decorators for singleton and violatescompoverinher.
-Add checking code to both patterdetectors
-Add parameter names
-Add in line dependency checking
-Add settings file
+Add parameter names (EXPECT TO NOT GET IT)
+Add in line dependency checking (basically last thing)
+Add settings file (Chase working)
 Change to add bidirectional detector

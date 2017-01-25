@@ -134,7 +134,9 @@ public class Modeler {
 		}
 		
 		//TODO: Uncomment this line when you are ready to add detectors
-		//this.models = detectPatterns(this.models);
+		detectPatterns(this.models);
+		
+		System.out.println(this.models.size());
 		
 	}
 	
@@ -264,8 +266,10 @@ public class Modeler {
 			}
 			
 			boolean p = (f.access & Opcodes.ACC_PUBLIC) > 0;
+			boolean stat = (f.access & Opcodes.ACC_STATIC) > 0;
 			
-			varModels.add(new UMLInstanceVariable(s, f.name, p));
+			
+			varModels.add(new UMLInstanceVariable(s, f.name, p,stat));
 		}
 		return varModels;
 		
@@ -282,12 +286,10 @@ public class Modeler {
 		
 		List<UMLMethod> output = new ArrayList<UMLMethod>();
 		
-		// TODO: Fix to get generic types!
 		for (MethodNode m : methods) {
 			String returnType =Type.getReturnType(m.desc).getClassName();
 			returnType = returnType.substring(returnType.lastIndexOf('.') + 1);
 			String sig = m.name;
-			System.out.println(m.signature);
 			
 			List<UMLParameter> params = new ArrayList<UMLParameter>();
 			if (m.signature != null) {
@@ -310,8 +312,9 @@ public class Modeler {
 			}			
 			
 			boolean p = (m.access & Opcodes.ACC_PUBLIC) > 0;
+			boolean stat = (m.access & Opcodes.ACC_STATIC) > 0;
 			
-			output.add(new UMLMethod(sig, returnType, params, p));
+			output.add(new UMLMethod(sig, returnType, params, p, stat));
 			
 			// In code inspection
 			
@@ -345,12 +348,10 @@ public class Modeler {
 		this.pds.add(pd);
 	}
 	
-	private List<ModelObject> detectPatterns(List<ModelObject> m) {
-		List<ModelObject> toAdd = new ArrayList<ModelObject>();
+	private void detectPatterns(List<ModelObject> m) {
 		for (PatternDetector p : this.pds) {
-			toAdd.addAll(p.check(m));
+			this.models = p.check(m);
 		}
-		return toAdd;
 	}
 	
 	private List<String> parseParamGeneric(String f) {

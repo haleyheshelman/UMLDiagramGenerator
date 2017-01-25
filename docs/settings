@@ -1,0 +1,5 @@
+r=false
+p=false
+whitelist=
+blacklist=java
+synthetic=false

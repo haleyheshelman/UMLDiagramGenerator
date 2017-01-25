@@ -8,11 +8,13 @@ public class UMLInstanceVariable implements ModelObject{
 	String type;
 	String name;
 	boolean isPublic;
+	boolean isStatic;
 	
-	public UMLInstanceVariable(String type, String name, boolean isPublic) {
+	public UMLInstanceVariable(String type, String name, boolean isPublic, boolean isStatic) {
 		this.type = type;
 		this.name = name;
 		this.isPublic = isPublic;
+		this.isStatic = isStatic;
 	}
 	
 	public String getName() {
@@ -31,6 +33,10 @@ public class UMLInstanceVariable implements ModelObject{
 
 	public boolean getIsPublic() {
 		return this.isPublic;
+	}
+
+	public boolean getIsStatic() {
+		return this.isStatic;
 	}
 
 }

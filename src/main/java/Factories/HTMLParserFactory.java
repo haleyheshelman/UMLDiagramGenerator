@@ -10,6 +10,7 @@ import ModelObjects.OneToManyAssociation;
 import ModelObjects.OneToManyDependency;
 import ModelObjects.OneToOneAssociation;
 import ModelObjects.OneToOneDependency;
+import ModelObjects.Singleton;
 import ModelObjects.UMLAbstractClass;
 import ModelObjects.UMLClass;
 import ModelObjects.UMLInstanceVariable;
@@ -28,6 +29,7 @@ import Parsers.HTMLOneToManyDependencyParser;
 import Parsers.HTMLOneToOneAssociationParser;
 import Parsers.HTMLOneToOneDependencyParser;
 import Parsers.HTMLParameterParser;
+import Parsers.HTMLSingletonParser;
 import Parsers.IParser;
 
 public class HTMLParserFactory extends AbstractParserFactory {
@@ -48,6 +50,7 @@ public class HTMLParserFactory extends AbstractParserFactory {
 		this.map.put(OneToManyAssociation.class, new HTMLOneToManyAssociationParser());
 		this.map.put(OneToOneDependency.class, new HTMLOneToOneDependencyParser());
 		this.map.put(OneToManyDependency.class, new HTMLOneToManyDependencyParser());
+		this.map.put(Singleton.class, new HTMLSingletonParser(new HTMLClassParser()));
 	}
 	
 	@Override

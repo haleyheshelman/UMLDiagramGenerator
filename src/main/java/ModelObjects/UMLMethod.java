@@ -9,12 +9,14 @@ public class UMLMethod implements ModelObject {
 	String returnType;
 	List<UMLParameter> params;
 	boolean isPublic;
+	boolean isStatic;
 	
-	public UMLMethod(String sig, String returnType, List<UMLParameter> params, boolean isPublic) {
+	public UMLMethod(String sig, String returnType, List<UMLParameter> params, boolean isPublic, boolean isStatic) {
 		this.sig = sig;
 		this.returnType = returnType;
 		this.params = params;
 		this.isPublic = isPublic;
+		this.isStatic = isStatic;
 	}
 	
 	public String getSignature() {
@@ -46,6 +48,10 @@ public class UMLMethod implements ModelObject {
 	
 	public boolean getIsPublic() {
 		return this.isPublic;
+	}
+
+	public boolean getIsStatic() {
+		return this.isStatic;
 	}
 
 }
