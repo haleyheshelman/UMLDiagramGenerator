@@ -45,6 +45,7 @@ public class Modeler {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
+	// TODO: Add stuff for generic type getting.
 	private List<ModelObject> models;
 	private boolean recursion = false;
 	private List<String> primitives;
@@ -257,6 +258,11 @@ public class Modeler {
 			String s = t.getClassName();
 			s = s.substring(s.lastIndexOf('.') + 1);
 			
+			if (f.signature != null && f.signature.contains("<")) {
+				String add = parseGeneric(f.signature);
+				s = add;
+			}
+			
 			boolean p = (f.access & Opcodes.ACC_PUBLIC) > 0;
 			
 			varModels.add(new UMLInstanceVariable(s, f.name, p));
@@ -276,20 +282,32 @@ public class Modeler {
 		
 		List<UMLMethod> output = new ArrayList<UMLMethod>();
 		
+		// TODO: Fix to get generic types!
 		for (MethodNode m : methods) {
-			
 			String returnType =Type.getReturnType(m.desc).getClassName();
 			returnType = returnType.substring(returnType.lastIndexOf('.') + 1);
 			String sig = m.name;
+			System.out.println(m.signature);
 			
 			List<UMLParameter> params = new ArrayList<UMLParameter>();
-			
-			// Later get the names of the params rather than just using param.
-			for (Type argType : Type.getArgumentTypes(m.desc)) {
-				String s = argType.getClassName();
-				s = s.substring(s.lastIndexOf('.') + 1);
-				params.add(new UMLParameter(s, "param"));
-			}
+			if (m.signature != null) {
+				String getReturnTypeFrom = m.signature.substring(m.signature.indexOf(")") + 1);
+				returnType = parseGeneric(getReturnTypeFrom);
+				
+				String getParamsTypes = m.signature.substring(m.signature.indexOf("("), m.signature.indexOf(")") + 1);
+				List<String> argTypes = parseParamGeneric(getParamsTypes);
+				
+				for (String t : argTypes) {
+					params.add(new UMLParameter(t, "param"));
+				}
+			} else {
+				for (Type argType : Type.getArgumentTypes(m.desc)) {
+					String s = argType.getClassName();
+					s = s.substring(s.lastIndexOf('.') + 1);
+					
+					params.add(new UMLParameter(s, "param"));
+				}
+			}			
 			
 			boolean p = (m.access & Opcodes.ACC_PUBLIC) > 0;
 			
@@ -333,6 +351,67 @@ public class Modeler {
 			toAdd.addAll(p.check(m));
 		}
 		return toAdd;
+	}
+	
+	private List<String> parseParamGeneric(String f) {
+		int openCount = 0;
+		String current = "";
+		ArrayList<String> recurse = new ArrayList<String>();
+		for (int i = 0; i < f.length(); i ++) {
+			current = current + f.charAt(i);
+			if (f.charAt(i) == '<') {
+				openCount = openCount + 1;
+			}
+			if (f.charAt(i) == '>') {
+				openCount = openCount - 1;
+			} 
+			
+			if (f.charAt(i) == ';') {
+				if (openCount == 0) {
+					recurse.add(current);
+					current = "";
+				}
+			}
+		}
+		ArrayList<String> output = new ArrayList<String>();
+		for (String s : recurse) {
+			output.add(parseGeneric(s));
+		}
+		return output;
+	}
+	
+	private String parseGeneric(String f) {
+		
+		if (!f.contains("<")) {
+			String toReturn = f.substring(Math.max(f.lastIndexOf("/"), 0) + 1, f.indexOf(";"));
+			return toReturn;
+		}
+		
+		String startName = f.substring(0, f.indexOf('<'));
+		startName = startName.substring(startName.lastIndexOf('/') + 1);
+		
+		String searcher = f.substring(f.indexOf("<") + 1, f.lastIndexOf(">"));
+		int openCount = 0;
+		for (int i = 0; i < searcher.length(); i ++) {
+			if (searcher.charAt(i) == '<') {
+				openCount = openCount + 1;
+			}
+			if (searcher.charAt(i) == '>') {
+				openCount = openCount - 1;
+			} 
+			if (searcher.charAt(i) == ';') {
+				if (openCount == 0) {
+					String partOne = searcher.substring(0, i + 1);
+					String partTwo = searcher.substring(i + 1);
+					
+					if (partTwo.isEmpty()) {
+						return startName + ":" + parseGeneric(partOne);
+					}
+					return startName + ":" + parseGeneric(partOne) + " " + parseGeneric(partTwo);
+				}
+			}	
+		}
+		return "";		
 	}
 	
 }
