@@ -13,7 +13,6 @@ Add model decorator to Model objects. Add the corresponding decorators for singl
 Add abstract parser decorator and corresponding decorators for singleton and violatescompoverinher.
 Add checking code to both patterdetectors
 Add parameter names
-Add checking for generic types
 Add in line dependency checking
 Add settings file
 Change to add bidirectional detector
