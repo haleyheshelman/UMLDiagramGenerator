@@ -147,12 +147,8 @@ public class Modeler {
 
 		}
 		
-<<<<<<< HEAD
-		detectPatterns();		
-=======
-		this.models = detectPatterns(this.models);
+		detectPatterns();
 		
->>>>>>> parent of 0cb73d5... Fixed testing
 	}
 	
 	private void getAssociations(String className, List<UMLInstanceVariable> vars) {
