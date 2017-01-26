@@ -287,7 +287,9 @@ public class Modeler {
 			String returnType =Type.getReturnType(m.desc).getClassName();
 			returnType = returnType.substring(returnType.lastIndexOf('.') + 1);
 			String sig = m.name;
+			System.out.println(m.name);
 			System.out.println(m.signature);
+			System.out.println(returnType);
 			
 			List<UMLParameter> params = new ArrayList<UMLParameter>();
 			if (m.signature != null) {
