@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ModelObjects.OneToOneAssociation;
 import ModelObjects.OneToOneDependency;
 
 public class OneToOneDependencyTest {

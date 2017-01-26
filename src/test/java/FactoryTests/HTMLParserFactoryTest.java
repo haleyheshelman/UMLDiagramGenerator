@@ -10,8 +10,8 @@ import org.junit.Test;
 import Factories.HTMLParserFactory;
 import Factories.IParserFactory;
 import ModelObjects.Extend;
-import ModelObjects.IRelationship;
 import ModelObjects.Implement;
+import ModelObjects.ModelObject;
 import ModelObjects.OneToManyAssociation;
 import ModelObjects.OneToManyDependency;
 import ModelObjects.OneToOneAssociation;
@@ -46,19 +46,31 @@ public class HTMLParserFactoryTest {
 	@Test
 	public void testMakeParser() throws NoSuchObjectException {
 		
-		assertTrue(f.makeParser(UMLClass.class) instanceof HTMLClassParser);
-		assertTrue(f.makeParser(UMLAbstractClass.class) instanceof HTMLAbstractClassParser);
-		assertTrue(f.makeParser(UMLInterface.class) instanceof HTMLInterfaceParser);
-		assertTrue(f.makeParser(UMLMethod.class) instanceof HTMLMethodParser);
-		assertTrue(f.makeParser(UMLInstanceVariable.class) instanceof HTMLInstanceVariableParser);
-		assertTrue(f.makeParser(UMLParameter.class) instanceof HTMLParameterParser);
-		assertTrue(f.makeParser(Extend.class) instanceof HTMLExtendParser);
-		assertTrue(f.makeParser(Implement.class) instanceof HTMLImplementParser);
-		assertTrue(f.makeParser(OneToOneAssociation.class) instanceof HTMLOneToOneAssociationParser);
-		assertTrue(f.makeParser(OneToManyAssociation.class) instanceof HTMLOneToManyAssociationParser);
-		assertTrue(f.makeParser(OneToOneDependency.class) instanceof HTMLOneToOneDependencyParser);
-		assertTrue(f.makeParser(OneToManyDependency.class) instanceof HTMLOneToManyDependencyParser);
-
+		ModelObject dummy = new UMLClass(null, null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLClassParser);
+		dummy = new UMLAbstractClass(null, null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLAbstractClassParser);
+		dummy = new UMLInterface(null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLInterfaceParser);
+		dummy = new UMLMethod(null, null, null, false, false);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLMethodParser);
+		dummy = new UMLInstanceVariable(null, null, false, false);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLInstanceVariableParser);
+		dummy = new UMLParameter(null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLParameterParser);
+		dummy = new Extend(null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLExtendParser);
+		dummy = new Implement(null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLImplementParser);
+		dummy = new OneToOneAssociation(null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLOneToOneAssociationParser);
+		dummy = new OneToManyAssociation(null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLOneToManyAssociationParser);
+		dummy = new OneToOneDependency(null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLOneToOneDependencyParser);
+		dummy = new OneToManyDependency(null, null);
+		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLOneToManyDependencyParser);
+		
 	}
 
 }

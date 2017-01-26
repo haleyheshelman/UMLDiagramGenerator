@@ -30,13 +30,14 @@ public class ClassTest {
 	@Test
 	public void testAddGetMethods() {
 		
-		class1.addMethod(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true));
+		class1.addMethod(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true, false));
 		
 		assertEquals(class1.getMethods().size(), 1);
 		assertEquals(class1.getMethods().get(0).getName(), "sig");
 		assertEquals(class1.getMethods().get(0).getSignature(), "sig");
 		assertEquals(class1.getMethods().get(0).getReturnType(), "returnType");
 		assertTrue(class1.getMethods().get(0).getIsPublic());
+		assertFalse(class1.getMethods().get(0).getIsStatic());
 		assertEquals(class1.getMethods().get(0).getParameters().size(), 0);
 
 	}
@@ -45,12 +46,13 @@ public class ClassTest {
 	public void testGetInstanceVars() {
 		
 		ArrayList<UMLInstanceVariable> instVars = new ArrayList<UMLInstanceVariable>();
-		instVars.add(new UMLInstanceVariable("type", "name", true));
+		instVars.add(new UMLInstanceVariable("type", "name", true, false));
 		class1 = new UMLClass("name", new ArrayList<UMLMethod>(), instVars);
 		
 		assertEquals(class1.getInstanceVars().size(), 1);
 		assertEquals(class1.getInstanceVars().get(0).getName(), "name");
 		assertEquals(class1.getInstanceVars().get(0).getType(), "type");
+		assertFalse(class1.getInstanceVars().get(0).getIsStatic());
 		assertTrue(class1.getInstanceVars().get(0).getIsPublic());
 		
 	}
@@ -59,10 +61,10 @@ public class ClassTest {
 	public void testGetToString() {
 		
 		ArrayList<UMLInstanceVariable> instVars = new ArrayList<UMLInstanceVariable>();
-		instVars.add(new UMLInstanceVariable("type", "name", true));
+		instVars.add(new UMLInstanceVariable("type", "name", true, false));
 		
 		class1 = new UMLClass("name", new ArrayList<UMLMethod>(), instVars);
-		class1.addMethod(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true));
+		class1.addMethod(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true, false));
 
 		String expected = "name[returnType sig() ]\n[true type name, ]\n";
 		String actual = class1.toString();

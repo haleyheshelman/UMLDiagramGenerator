@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ModelObjects.OneToManyAssociation;
-import ModelObjects.OneToOneAssociation;
 
 public class OneToManyAssociationTest {
 
