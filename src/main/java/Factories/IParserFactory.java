@@ -7,5 +7,5 @@ import Parsers.IParser;
 
 public interface IParserFactory {
 
-	public IParser makeParser(Class<? extends ModelObject> class1) throws NoSuchObjectException;
+	public IParser makeParser(String s) throws NoSuchObjectException;
 }

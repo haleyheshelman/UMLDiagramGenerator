@@ -2,8 +2,8 @@ package ModelObjects;
 
 public class OneToManyAssociation extends Association {
 	
-	public OneToManyAssociation(String first, String second){
-		super(first, second);
+	public OneToManyAssociation(String className, String string){
+		super(className, string);
 	}
 
 	@Override
@@ -11,4 +11,8 @@ public class OneToManyAssociation extends Association {
 		return "One to many association";
 	}
 
+	@Override
+	public String getSelector() {
+		return "otma";
+	}
 }

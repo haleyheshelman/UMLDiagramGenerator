@@ -39,4 +39,9 @@ public class UMLInstanceVariable implements ModelObject{
 		return this.isStatic;
 	}
 
+	@Override
+	public String getSelector() {
+		return "instvar";
+	}
+
 }

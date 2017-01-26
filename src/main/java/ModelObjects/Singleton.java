@@ -10,9 +10,10 @@ public class Singleton extends PatternDecorator {
 	public String getName() {
 		return "Singleton";
 	}
-	
-	public ModelObject getUnderlying() {
-		return this.underlying;
+
+	@Override
+	public String getSelector() {
+		return "single" + this.underlying.getSelector();
 	}
 
 }

@@ -1,6 +1,7 @@
 package Factories;
 
 import java.rmi.NoSuchObjectException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import ModelObjects.Extend;
@@ -17,6 +18,7 @@ import ModelObjects.UMLInstanceVariable;
 import ModelObjects.UMLInterface;
 import ModelObjects.UMLMethod;
 import ModelObjects.UMLParameter;
+import ModelObjects.ViolateCompositionOverInheritance;
 import Parsers.HTMLAbstractClassParser;
 import Parsers.HTMLClassParser;
 import Parsers.HTMLExtendParser;
@@ -30,43 +32,68 @@ import Parsers.HTMLOneToOneAssociationParser;
 import Parsers.HTMLOneToOneDependencyParser;
 import Parsers.HTMLParameterParser;
 import Parsers.HTMLSingletonParser;
+import Parsers.HTMLViolateCompositionOverInheritanceClassParser;
+import Parsers.HTMLViolateCompositionOverInheritanceRelationshipParser;
 import Parsers.IParser;
 
 public class HTMLParserFactory extends AbstractParserFactory {
 
-	private static IParserFactory instance;
+	private static HTMLParserFactory instance;
 	
 	public HTMLParserFactory() {
-		this.map = new HashMap<Class<? extends ModelObject>, IParser>();
-		this.map.put(UMLClass.class, new HTMLClassParser());
-		this.map.put(UMLAbstractClass.class, new HTMLAbstractClassParser());
-		this.map.put(UMLInterface.class, new HTMLInterfaceParser());
-		this.map.put(UMLMethod.class, new HTMLMethodParser());
-		this.map.put(UMLInstanceVariable.class, new HTMLInstanceVariableParser());
-		this.map.put(UMLParameter.class, new HTMLParameterParser());
-		this.map.put(Extend.class, new HTMLExtendParser());
-		this.map.put(Implement.class, new HTMLImplementParser());
-		this.map.put(OneToOneAssociation.class, new HTMLOneToOneAssociationParser());
-		this.map.put(OneToManyAssociation.class, new HTMLOneToManyAssociationParser());
-		this.map.put(OneToOneDependency.class, new HTMLOneToOneDependencyParser());
-		this.map.put(OneToManyDependency.class, new HTMLOneToManyDependencyParser());
-		this.map.put(Singleton.class, new HTMLSingletonParser(new HTMLClassParser()));
+		
+//		ArrayList<IParser> parsers = new ArrayList<IParser>();
+//		parsers.add(new HTMLClassParser());
+//		parsers.add(new HTMLAbstractClassParser());
+//		parsers.add(new HTMLInterfaceParser());
+//		parsers.add(new HTMLMethodParser());
+//		parsers.add(new HTMLInstanceVariableParser());
+//		parsers.add(new HTMLParameterParser());
+//		parsers.add(new HTMLExtendParser());
+//		parsers.add(new HTMLImplementParser());
+//		parsers.add(new HTMLOneToOneAssociationParser());
+//		parsers.add(new HTMLOneToManyAssociationParser());
+//		parsers.add(new HTMLOneToOneDependencyParser());
+//		parsers.add(new HTMLOneToManyDependencyParser());
+//		parsers.add(new HTMLSingletonParser(new HTMLClassParser()));
+//		parsers.add(new HTMLViolateCompositionOverInheritanceParser(new HTMLClassParser()));
+//		parsers.add(new HTMLViolateCompositionOverInheritanceParser(new HTMLAbstractClassParser()));
+//		parsers.add(new HTMLViolateCompositionOverInheritanceParser(new HTMLInterfaceParser()));
+
+		this.map = new HashMap<String, IParser>();
+		this.map.put("class", new HTMLClassParser());
+		this.map.put("abstractclass", new HTMLAbstractClassParser());
+		this.map.put("interface", new HTMLInterfaceParser());
+		this.map.put("method", new HTMLMethodParser());
+		this.map.put("instvar", new HTMLInstanceVariableParser());
+		this.map.put("param", new HTMLParameterParser());
+		this.map.put("extend", new HTMLExtendParser());
+		this.map.put("implement", new HTMLImplementParser());
+		this.map.put("otoa", new HTMLOneToOneAssociationParser());
+		this.map.put("otma", new HTMLOneToManyAssociationParser());
+		this.map.put("otod", new HTMLOneToOneDependencyParser());
+		this.map.put("otmd", new HTMLOneToManyDependencyParser());
+		this.map.put("singleclass", new HTMLSingletonParser(new HTMLClassParser()));
+		this.map.put("compoverinherclass", new HTMLViolateCompositionOverInheritanceClassParser(new HTMLClassParser()));
+		this.map.put("compoverinherabstractclass", new HTMLViolateCompositionOverInheritanceClassParser(new HTMLAbstractClassParser()));
+		this.map.put("compoverinherinterface", new HTMLViolateCompositionOverInheritanceClassParser(new HTMLInterfaceParser()));
+		this.map.put("compoverinherextend", new HTMLViolateCompositionOverInheritanceRelationshipParser(new HTMLExtendParser()));
 	}
 	
 	@Override
-	public IParser makeParser(Class<? extends ModelObject> c) throws NoSuchObjectException {
+	public IParser makeParser(String c) throws NoSuchObjectException {
 		
 		IParser p = null;
 		p = this.map.get(c);
 		
 		if (p == null) {
-			throw new NoSuchObjectException("No parser found for this object");
+			throw new NoSuchObjectException("No parser found for this object: " + c);
 		}
 		
 		return this.map.get(c);
 	}
 
-	public static IParserFactory getInstance() {
+	public static HTMLParserFactory getInstance() {
 		if (instance == null) {
 			instance = new HTMLParserFactory();
 		}

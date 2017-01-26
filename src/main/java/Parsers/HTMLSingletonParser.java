@@ -4,7 +4,7 @@ import java.rmi.NoSuchObjectException;
 
 import ModelObjects.ModelObject;
 
-public class HTMLSingletonParser extends ParserDecorator {
+public class HTMLSingletonParser extends ClassParserDecorator {
 
 	public HTMLSingletonParser(IParser p) {
 		this.underlying = p;
@@ -22,7 +22,7 @@ public class HTMLSingletonParser extends ParserDecorator {
 
 	@Override
 	public String addHeader() {
-		return "singleton";
+		return "singleton<br/ >";
 	}
 	
 	

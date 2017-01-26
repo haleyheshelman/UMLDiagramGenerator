@@ -5,11 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ObjectOne {
+public class ObjectOne extends ObjectTwo {
 	
-	public static ObjectOne objects;
-	
-	public ObjectTwo get() {
-		return new ObjectTwo();
-	}
 }

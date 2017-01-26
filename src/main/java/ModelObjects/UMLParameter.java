@@ -24,4 +24,9 @@ public class UMLParameter implements ModelObject {
 		return this.type;
 	}
 
+	@Override
+	public String getSelector() {
+		return "param";
+	}
+
 }

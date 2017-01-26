@@ -28,4 +28,9 @@ public class UMLAbstractClass implements ModelObject{
 		return this.name;
 	}
 
+	@Override
+	public String getSelector() {
+		return "abstractclass";
+	}
+
 }

@@ -2,8 +2,8 @@ package ModelObjects;
 
 public abstract class Association extends IRelationship {
 
-	public Association(String first, String second) {
-		super(first, second);
+	public Association(String className, String string) {
+		super(className, string);
 	}
 
 	public boolean isOpposite(Association d) {

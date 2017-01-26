@@ -8,13 +8,13 @@ import Parsers.IParser;
 
 public abstract class AbstractParserFactory implements IParserFactory {
 	
-	protected Map<Class<? extends ModelObject>, IParser> map;
+	protected Map<String, IParser> map;
 
 	@Override
-	public abstract IParser makeParser(Class<? extends ModelObject> class1) throws NoSuchObjectException;
+	public abstract IParser makeParser(String s) throws NoSuchObjectException;
 	
-	public void addParser(Class<? extends ModelObject> clazz, IParser parser) {
-		this.map.put(clazz, parser);
+	public void addParser(String s, IParser parser) {
+		this.map.put(s, parser);
 	}
 
 }

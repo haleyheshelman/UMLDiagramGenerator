@@ -24,13 +24,13 @@ public class HTMLClassParser implements IParser {
 
 		if ((!((UMLClass) o).getInstanceVars().isEmpty())) {
 			for (UMLInstanceVariable var : ((UMLClass) o).getInstanceVars()) {
-				s.append(HTMLParserFactory.getInstance().makeParser(var.getClass()).parse(var));
+				s.append(HTMLParserFactory.getInstance().makeParser(var.getSelector()).parse(var));
 			}
 			s.append("|");
 		}
 
 		for (UMLMethod m : ((UMLClass) o).getMethods()) {
-			s.append(HTMLParserFactory.getInstance().makeParser(m.getClass()).parse(m));
+			s.append(HTMLParserFactory.getInstance().makeParser(m.getSelector()).parse(m));
 		}
 
 		s.append("}>];");

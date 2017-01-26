@@ -2,8 +2,8 @@ package ModelObjects;
 
 public abstract class Dependency extends IRelationship {
 
-	public Dependency(String first, String second) {
-		super(first, second);
+	public Dependency(String className, String string) {
+		super(className, string);
 	}
 
 	public boolean isOpposite(Dependency d) {

@@ -32,7 +32,7 @@ public class HTMLMethodParser implements IParser{
 		
 		s.append(toAppend + "(");
 		for (UMLParameter param : m.getParameters()) {
-			s.append(HTMLParserFactory.getInstance().makeParser(param.getClass()).parse(param));
+			s.append(HTMLParserFactory.getInstance().makeParser(param.getSelector()).parse(param));
 			s.append(", ");
 		}
 //		s.delete(s.length()-2, s.length()-1);

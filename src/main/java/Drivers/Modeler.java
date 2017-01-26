@@ -133,11 +133,7 @@ public class Modeler {
 
 		}
 		
-		//TODO: Uncomment this line when you are ready to add detectors
-		detectPatterns(this.models);
-		
-		System.out.println(this.models.size());
-		
+		detectPatterns();		
 	}
 	
 	private void getAssociations(String className, List<UMLInstanceVariable> vars) {
@@ -348,9 +344,9 @@ public class Modeler {
 		this.pds.add(pd);
 	}
 	
-	private void detectPatterns(List<ModelObject> m) {
+	private void detectPatterns() {
 		for (PatternDetector p : this.pds) {
-			this.models = p.check(m);
+			this.models = p.check(this.models);
 		}
 	}
 	
@@ -384,6 +380,10 @@ public class Modeler {
 	private String parseGeneric(String f) {
 		
 		if (!f.contains("<")) {
+			System.out.println(f);
+			if (!f.contains("/")) {
+				return f;
+			}
 			String toReturn = f.substring(Math.max(f.lastIndexOf("/"), 0) + 1, f.indexOf(";"));
 			return toReturn;
 		}

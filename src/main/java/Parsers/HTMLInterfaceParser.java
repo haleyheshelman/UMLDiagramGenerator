@@ -24,7 +24,7 @@ public class HTMLInterfaceParser implements IParser {
 		s.append("<i>" + i.getName() + "</i>" + "|");
 		
 		for (UMLMethod m : i.getMethods()) {
-			String add = HTMLParserFactory.getInstance().makeParser(m.getClass()).parse(m);
+			String add = HTMLParserFactory.getInstance().makeParser(m.getSelector()).parse(m);
 			s.append(add);
 		}
 		

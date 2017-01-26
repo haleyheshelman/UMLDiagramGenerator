@@ -26,13 +26,13 @@ public class HTMLAbstractClassParser implements IParser {
 		
 		if (!c.getInstanceVars().isEmpty()) {
 			for (UMLInstanceVariable var : c.getInstanceVars()) {
-				s.append(HTMLParserFactory.getInstance().makeParser(var.getClass()).parse(var));
+				s.append(HTMLParserFactory.getInstance().makeParser(var.getSelector()).parse(var));
 			}
 			s.append("|");
 		}
 		
 		for (UMLMethod m : c.getMethods()) {
-			s.append(HTMLParserFactory.getInstance().makeParser(m.getClass()).parse(m));
+			s.append(HTMLParserFactory.getInstance().makeParser(m.getSelector()).parse(m));
 		}
 		
 		s.append("}>];");

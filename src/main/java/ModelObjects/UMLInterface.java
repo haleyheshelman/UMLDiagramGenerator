@@ -22,4 +22,9 @@ public class UMLInterface implements ModelObject {
 		return this.name;
 	}
 
+	@Override
+	public String getSelector() {
+		return "interface";
+	}
+
 }

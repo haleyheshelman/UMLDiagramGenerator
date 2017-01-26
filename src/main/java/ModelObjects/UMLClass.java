@@ -46,5 +46,10 @@ public class UMLClass implements ModelObject{
 	public String getName() {
 		return this.name;
 	}
+
+	@Override
+	public String getSelector() {
+		return "class";
+	}
 	
 }

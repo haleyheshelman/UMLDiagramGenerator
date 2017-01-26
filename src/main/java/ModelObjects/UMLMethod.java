@@ -54,4 +54,9 @@ public class UMLMethod implements ModelObject {
 		return this.isStatic;
 	}
 
+	@Override
+	public String getSelector() {
+		return "method";
+	}
+
 }

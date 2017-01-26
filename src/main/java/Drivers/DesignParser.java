@@ -39,7 +39,7 @@ public class DesignParser {
 	}
 	
 	private String parseModelObject(ModelObject o) throws Exception {
-		return iFactory.makeParser(o.getClass()).parse(o);
+		return iFactory.makeParser(o.getSelector()).parse(o);
 	}
 	
 	public void addFactory(String key, IParserFactory factory) {
