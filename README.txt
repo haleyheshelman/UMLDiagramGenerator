@@ -14,3 +14,4 @@ Add parameter names (EXPECT TO NOT GET IT)
 Add in line dependency checking (basically last thing)
 Add settings file (Chase working)
 Change to add bidirectional detector
+Change logic for one to many relationships

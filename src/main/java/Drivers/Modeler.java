@@ -73,7 +73,7 @@ public class Modeler {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void createClassModels(List<String> classes) throws IOException, ClassNotFoundException  {
+	public void createClassModels(List<String> classes)  {
 		
 		/**
 		 * This creates a list of model objects for the given list of class names. This will recurse through super classes 
@@ -85,7 +85,13 @@ public class Modeler {
 		
 		List<String> superNames = new ArrayList<String>();
 		for (String className : classes) {
-			ClassReader reader = new ClassReader(className);
+			ClassReader reader = null;
+			try {
+				reader = new ClassReader(className);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			ClassNode classNode = new ClassNode();
 			reader.accept(classNode, ClassReader.EXPAND_FRAMES);
@@ -97,7 +103,15 @@ public class Modeler {
 			if (!superNameParsed.equals("Object")) {
 				superNames.add(superName);
 				models.add((ModelObject) new Extend(classNode.name, classNode.superName));
-				if (recursion) createClassModel(superName);
+				if (recursion) {
+					try {
+						createClassModel(superName);
+					} catch (ClassNotFoundException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println("here");
+				}
 			}
 			
 			// Now add the interfaces of the class
@@ -345,6 +359,11 @@ public class Modeler {
 	}
 	
 	private void detectPatterns() {
+		
+		if (this.pds.isEmpty()) {
+			return;
+		}
+		
 		for (PatternDetector p : this.pds) {
 			this.models = p.check(this.models);
 		}
@@ -380,7 +399,6 @@ public class Modeler {
 	private String parseGeneric(String f) {
 		
 		if (!f.contains("<")) {
-			System.out.println(f);
 			if (!f.contains("/")) {
 				return f;
 			}

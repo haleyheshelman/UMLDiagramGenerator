@@ -41,24 +41,6 @@ public class HTMLParserFactory extends AbstractParserFactory {
 	private static HTMLParserFactory instance;
 	
 	public HTMLParserFactory() {
-		
-//		ArrayList<IParser> parsers = new ArrayList<IParser>();
-//		parsers.add(new HTMLClassParser());
-//		parsers.add(new HTMLAbstractClassParser());
-//		parsers.add(new HTMLInterfaceParser());
-//		parsers.add(new HTMLMethodParser());
-//		parsers.add(new HTMLInstanceVariableParser());
-//		parsers.add(new HTMLParameterParser());
-//		parsers.add(new HTMLExtendParser());
-//		parsers.add(new HTMLImplementParser());
-//		parsers.add(new HTMLOneToOneAssociationParser());
-//		parsers.add(new HTMLOneToManyAssociationParser());
-//		parsers.add(new HTMLOneToOneDependencyParser());
-//		parsers.add(new HTMLOneToManyDependencyParser());
-//		parsers.add(new HTMLSingletonParser(new HTMLClassParser()));
-//		parsers.add(new HTMLViolateCompositionOverInheritanceParser(new HTMLClassParser()));
-//		parsers.add(new HTMLViolateCompositionOverInheritanceParser(new HTMLAbstractClassParser()));
-//		parsers.add(new HTMLViolateCompositionOverInheritanceParser(new HTMLInterfaceParser()));
 
 		this.map = new HashMap<String, IParser>();
 		this.map.put("class", new HTMLClassParser());

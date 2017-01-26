@@ -27,7 +27,7 @@ public class ViolateCompositionOverInheritanceDetector implements PatternDetecto
 				
 				List<ModelObject> news = getWrappedObjects(o, models);
 				
-				newModels.addAll(news);
+//				newModels.addAll(news);
 				newModels.add(new ViolateCompositionOverInheritance(o));
 			} else {
 				
