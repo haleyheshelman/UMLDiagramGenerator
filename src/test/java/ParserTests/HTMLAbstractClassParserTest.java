@@ -27,11 +27,11 @@ public class HTMLAbstractClassParserTest {
 		p = new HTMLAbstractClassParser();
 		ArrayList<UMLParameter> params = new ArrayList<UMLParameter>();
 		params.add(new UMLParameter("type", "name"));
-		UMLMethod method = new UMLMethod("<init>", "returnType", params, true, false);
+		UMLMethod method = new UMLMethod("<init>", "returnType", params, true);
 		ArrayList<UMLMethod> methods = new ArrayList<UMLMethod>();
 		methods.add(method);
 		ArrayList<UMLInstanceVariable> instVars = new ArrayList<UMLInstanceVariable>();
-		instVars.add(new UMLInstanceVariable("type", "name", true, false));
+		instVars.add(new UMLInstanceVariable("type", "name", true));
 		o = new UMLAbstractClass("name", methods, instVars);
 		
 	}
