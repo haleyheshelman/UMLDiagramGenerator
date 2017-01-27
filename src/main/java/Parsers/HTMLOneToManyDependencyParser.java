@@ -12,7 +12,7 @@ public class HTMLOneToManyDependencyParser implements IParser{
 
 		StringBuilder s = new StringBuilder();
 		s.append(e.getFirst() + "->" + e.getSecond());
-		s.append(" [arrowhead=\"vee\",style=\"dashed\",label=\"0..n\"];");
+		s.append(" [arrowhead=\"vee\",style=\"dashed\",label=\"1..n\"];");
 
 		return s.toString();
 	}

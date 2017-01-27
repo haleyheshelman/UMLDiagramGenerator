@@ -12,7 +12,7 @@ public class HTMLOneToManyAssociationParser implements IParser {
 
 		StringBuilder s = new StringBuilder();
 		s.append(e.getFirst() + "->" + e.getSecond());
-		s.append(" [arrowhead=\"vee\",label=\"0..n\"];");
+		s.append(" [arrowhead=\"vee\",label=\"1..n\"];");
 
 		return s.toString();
 	}
