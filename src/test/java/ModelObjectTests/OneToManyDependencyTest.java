@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ModelObjects.OneToManyDependency;
-import ModelObjects.OneToOneDependency;
 
 public class OneToManyDependencyTest {
 
