@@ -124,4 +124,20 @@ public class TheGreatFacadeOfChandan {
 		this.encoding = encoding;
 	}
 
+	public Modeler getModeler() {
+		return this.modeler;
+	}
+
+	public  List<String> getNames() {
+		return this.names;
+	}
+
+	public String getOutputFile() {
+		return this.outputFile;
+	}
+
+	public String getEncoding() {
+		return this.encoding;
+	}
+
 }

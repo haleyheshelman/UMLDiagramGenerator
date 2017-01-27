@@ -662,4 +662,20 @@ public class Modeler {
 		return "";
 	}
 
+	public  boolean getRecursion() {
+		return this.recursion;
+	}
+
+	public  String[] getBlacklist() {
+		return this.blacklist;
+	}
+
+	public boolean getSynthetic() { 
+		return this.synthetic;
+	}
+
+	public List<PatternDetector> getPatternDetectors() {
+		return this.pds;
+	}
+
 }
