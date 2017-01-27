@@ -8,6 +8,7 @@ public class HTMLViolateCompositionOverInheritanceClassParser extends ClassParse
 
 	@Override
 	public String addConfig() {
+		System.out.println("\n\nAdding color to object one or two\n\n");
 		return "color=orange,";
 	}
 

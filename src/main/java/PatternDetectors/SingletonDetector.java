@@ -29,7 +29,6 @@ public class SingletonDetector implements PatternDetector {
 				String type = v.getType();
 				
 				if (!type.equals(m.getName())) {
-					newModels.add(m);
 					continue;
 				}
 				
@@ -42,10 +41,16 @@ public class SingletonDetector implements PatternDetector {
 						methodChecks.add(m);
 						continue;
 					}
+				} else {
+					continue;
 				}
+			}
+			if (!methodChecks.contains(m)) {
+				newModels.add(m);
 			}
 		}
 		
+		List<ModelObject> made = new ArrayList<ModelObject>();
 		for (ModelObject o : methodChecks) {
 			List<UMLMethod> methods = ((UMLClass) o).getMethods();
 			for (UMLMethod method : methods) {
@@ -54,17 +59,20 @@ public class SingletonDetector implements PatternDetector {
 				String returnType = method.getReturnType();
 				
 				if (!returnType.equals(o.getName())) {
-					newModels.add(o);
 					continue;
 				}
 				
 				if (isStatic && isPublic) {
 					ModelObject singleton = new Singleton(o);
 					newModels.add(singleton);
+					made.add(o);
+					continue;
+				} else {
 					continue;
 				}
 				
 			}
+			if (!made.contains(o)) newModels.add(o);
 		}		
 		return newModels;
 	}

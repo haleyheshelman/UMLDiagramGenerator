@@ -5,6 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ObjectOne extends ObjectTwo {
-	
+public class ObjectOne {
+	public ObjectTwo o2;
 }

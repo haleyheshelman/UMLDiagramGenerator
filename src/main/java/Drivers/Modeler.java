@@ -111,7 +111,6 @@ public class Modeler {
 					} catch (ClassNotFoundException | IOException e) {
 						e.printStackTrace();
 					}
-					System.out.println("here");
 				}
 			}
 
@@ -201,7 +200,6 @@ public class Modeler {
 				List<UMLInstanceVariable> vars = c.getInstanceVars();
 				for (UMLInstanceVariable v : vars) {
 					String type = v.getType();
-					System.out.println(type);
 
 					if (type.contains(":")) {
 						List<String> types = getTypes(type);
@@ -226,7 +224,6 @@ public class Modeler {
 				List<UMLInstanceVariable> vars = c.getInstanceVars();
 				for (UMLInstanceVariable v : vars) {
 					String type = v.getType();
-					System.out.println(type);
 
 					if (type.contains(":")) {
 						List<String> types = getTypes(type);
@@ -304,7 +301,6 @@ public class Modeler {
 					for (UMLParameter p : params) {
 						String type = p.getType();
 						if (type.contains("[]")) {
-							System.out.println(type);
 							String parsedType = type.substring(0, type.indexOf("["));
 							Dependency d = new OneToManyDependency(o.getName(), parsedType);
 							if (checkIfParsed(parsedType) && !checkAssociations(o.getName(), parsedType)) {

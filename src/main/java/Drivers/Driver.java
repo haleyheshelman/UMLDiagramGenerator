@@ -23,8 +23,8 @@ public class Driver {
 		}
 		
 		Modeler m = new Modeler();
-//		m.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
-//		m.addPatternDetector(new SingletonDetector());
+		m.addPatternDetector(new SingletonDetector());
+		m.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
 		
 		List<String> names = new ArrayList<String>();
 		if (args[args.length - 1].equals("r")) {

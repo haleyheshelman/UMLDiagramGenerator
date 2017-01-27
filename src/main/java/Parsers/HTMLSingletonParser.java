@@ -22,7 +22,7 @@ public class HTMLSingletonParser extends ClassParserDecorator {
 
 	@Override
 	public String addHeader() {
-		return "singleton<br/ >";
+		return "singleton<br />";
 	}
 	
 	

@@ -30,7 +30,7 @@ public class DesignParser {
 		
 		for (ModelObject o : objects) {
 			s.append(parseModelObject(o));
-//			System.out.println(parseModelObject(o));
+			System.out.println(parseModelObject(o));
 		}
 		s.append("}");
 		String output = s.toString();
