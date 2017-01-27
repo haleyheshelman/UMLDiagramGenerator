@@ -23,7 +23,7 @@ public class HTMLInstanceVariableParserTest {
 	@Before
 	public void setUp() throws Exception {
 		p = new HTMLInstanceVariableParser();
-		o = new UMLInstanceVariable("type", "name", true);
+		o = new UMLInstanceVariable("type", "name", true, false);
 	}
 
 	@Test
@@ -33,7 +33,7 @@ public class HTMLInstanceVariableParserTest {
 		String actual = p.parse(o);
 		assertEquals(expected, actual);
 		
-		o = new UMLInstanceVariable("type", "name", false);
+		o = new UMLInstanceVariable("type", "name", false, false);
 		expected = "- name : type<br/>";
 		actual = p.parse(o);
 		assertEquals(expected, actual);
