@@ -1,0 +1,5 @@
+r=false
+p=false
+whitelist=Testers.EagerBoiler,Testers.LazyBoiler,java.lang.Runtime,java.awt.Desktop,java.util.Calendar
+blacklist=java,asm
+synthetic=false

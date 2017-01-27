@@ -6,5 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ObjectOne {
-	public ObjectTwo o2;
+	public void blah() {
+		return;
+	}
 }

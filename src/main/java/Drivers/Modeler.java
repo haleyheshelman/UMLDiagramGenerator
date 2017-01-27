@@ -151,13 +151,9 @@ public class Modeler {
 	}
 
 	private boolean checkBlackList(String name) {
-		System.out.println(name);
 		
 		if (blacklist.length == 0) {
 			return false;
-		}
-		if (name == null) {
-			return true;
 		}
 		for (String s : this.blacklist) {
 			if (name.startsWith(s)) {

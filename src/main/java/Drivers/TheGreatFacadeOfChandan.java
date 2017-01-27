@@ -82,8 +82,11 @@ public class TheGreatFacadeOfChandan {
 		blacklist = blacklist.substring(blacklist.indexOf("="));
 		if (blacklist.equals("=")) {
 			blackList = new String[0];
+		} else {
+			blacklist = blacklist.substring(1);
+			blackList = blacklist.split(",");
 		}
-		blackList = blacklist.split(",");
+		
 		
 		//Get Synthetic
 		String synth = scan.nextLine();
