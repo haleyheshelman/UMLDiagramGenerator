@@ -26,11 +26,11 @@ public class HTMLSingletonParserTest {
 		p = new HTMLSingletonParser(new HTMLClassParser());
 		ArrayList<UMLParameter> params = new ArrayList<UMLParameter>();
 		params.add(new UMLParameter("type", "name"));
-		UMLMethod method = new UMLMethod("<init>", "returnType", params, true);
+		UMLMethod method = new UMLMethod("<init>", "returnType", params, true, false);
 		ArrayList<UMLMethod> methods = new ArrayList<UMLMethod>();
 		methods.add(method);
 		ArrayList<UMLInstanceVariable> instVars = new ArrayList<UMLInstanceVariable>();
-		instVars.add(new UMLInstanceVariable("type", "name", true));
+		instVars.add(new UMLInstanceVariable("type", "name", true, false));
 		o = new UMLClass("name", methods, instVars);
 		
 	}

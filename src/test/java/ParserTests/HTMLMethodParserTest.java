@@ -25,7 +25,7 @@ public class HTMLMethodParserTest {
 		p = new HTMLMethodParser();
 		ArrayList<UMLParameter> params = new ArrayList<UMLParameter>();
 		params.add(new UMLParameter("type", "name"));
-		o = new UMLMethod("<init>", "returnType", params, true);
+		o = new UMLMethod("<init>", "returnType", params, true, false);
 		
 	}
 
@@ -38,7 +38,7 @@ public class HTMLMethodParserTest {
 		
 		ArrayList<UMLParameter> params = new ArrayList<UMLParameter>();
 		params.add(new UMLParameter("type", "name"));
-		o = new UMLMethod("<init>", "returnType", params, false);
+		o = new UMLMethod("<init>", "returnType", params, false, false);
 		
 		expected = "- init(type name, ) : returnType<br/>";
 		actual = p.parse(o);

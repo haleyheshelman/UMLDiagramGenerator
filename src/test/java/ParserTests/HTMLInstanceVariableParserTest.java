@@ -3,17 +3,12 @@ package ParserTests;
 import static org.junit.Assert.*;
 
 import java.rmi.NoSuchObjectException;
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import ModelObjects.ModelObject;
 import ModelObjects.UMLInstanceVariable;
-import ModelObjects.UMLMethod;
-import ModelObjects.UMLParameter;
 import Parsers.HTMLInstanceVariableParser;
-import Parsers.HTMLMethodParser;
 import Parsers.IParser;
 
 public class HTMLInstanceVariableParserTest {
@@ -23,7 +18,7 @@ public class HTMLInstanceVariableParserTest {
 	@Before
 	public void setUp() throws Exception {
 		p = new HTMLInstanceVariableParser();
-		o = new UMLInstanceVariable("type", "name", true);
+		o = new UMLInstanceVariable("type", "name", true, false);
 	}
 
 	@Test
@@ -33,7 +28,7 @@ public class HTMLInstanceVariableParserTest {
 		String actual = p.parse(o);
 		assertEquals(expected, actual);
 		
-		o = new UMLInstanceVariable("type", "name", false);
+		o = new UMLInstanceVariable("type", "name", false, false);
 		expected = "- name : type<br/>";
 		actual = p.parse(o);
 		assertEquals(expected, actual);
