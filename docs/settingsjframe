@@ -1,0 +1,5 @@
+r=true
+p=false
+whitelist=javax.swing.JFrame,java.awt.Frame
+blacklist=java,asm
+synthetic=false

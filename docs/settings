@@ -1,5 +1,5 @@
 r=false
-p=false
-whitelist=
+p=true
+whitelist=Drivers,Factories,ModelObjects,Parsers,Runners,PatternDetectors,Testers
 blacklist=java
 synthetic=false

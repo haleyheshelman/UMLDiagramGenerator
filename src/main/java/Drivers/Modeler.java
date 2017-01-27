@@ -50,6 +50,8 @@ public class Modeler {
 	private boolean recursion = false;
 	private List<String> primitives;
 	private List<PatternDetector> pds;
+	private boolean synthetic = false;
+	private String[] blacklist;
 
 	public Modeler() {
 		this.models = new ArrayList<ModelObject>();
@@ -98,18 +100,19 @@ public class Modeler {
 			reader.accept(classNode, ClassReader.EXPAND_FRAMES);
 
 			String superName = classNode.superName;
-
+			String parsedName = superName.substring(superName.lastIndexOf("/") + 1);
 			// Use the following line to get just the name of the class rather
 			// than its full extension name.
-			String superNameParsed = superName.substring(superName.lastIndexOf('/') + 1);
-			if (!superNameParsed.equals("Object")) {
-				superNames.add(superName);
-				models.add((ModelObject) new Extend(classNode.name, classNode.superName));
-				if (recursion) {
-					try {
-						createClassModel(superName);
-					} catch (ClassNotFoundException | IOException e) {
-						e.printStackTrace();
+			if (!checkBlackList(superName)) {
+				if (!parsedName.equals("Object")) {					
+					superNames.add(superName);
+					models.add((ModelObject) new Extend(classNode.name, classNode.superName));
+					if (recursion) {
+						try {
+							createClassModel(superName);
+						} catch (ClassNotFoundException | IOException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}
@@ -147,6 +150,23 @@ public class Modeler {
 
 	}
 
+	private boolean checkBlackList(String name) {
+		System.out.println(name);
+		
+		if (blacklist.length == 0) {
+			return false;
+		}
+		if (name == null) {
+			return true;
+		}
+		for (String s : this.blacklist) {
+			if (name.startsWith(s)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	private boolean checkIfParsed(String s) {
 		for (ModelObject o : this.models) {
 			if (o.getName().equals(s)) {
@@ -556,6 +576,14 @@ public class Modeler {
 		this.recursion = r;
 	}
 
+	public void setSynthetic(boolean s) {
+		this.synthetic = s;
+	}
+
+	public void setBlacklist(String[] black) {
+		this.blacklist = black;
+	}
+	
 	public List<ModelObject> getObjects() {
 		return this.models;
 	}
