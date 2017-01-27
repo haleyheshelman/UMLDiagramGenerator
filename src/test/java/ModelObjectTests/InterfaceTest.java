@@ -21,7 +21,7 @@ public class InterfaceTest {
 	public void setUp() throws Exception {
 		
 		ArrayList<UMLMethod> m = new ArrayList<UMLMethod>();
-		m.add(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true));
+		m.add(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true, false));
 		
 		i1 = new UMLInterface("name", m);
 		i2 = new UMLInterface(null, new ArrayList<UMLMethod>());

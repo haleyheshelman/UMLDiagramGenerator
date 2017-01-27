@@ -13,7 +13,7 @@ public class InstanceVariableTest {
 
 	@Before
 	public void setUp() throws Exception {
-		instVar1 = new UMLInstanceVariable("type", "name", true);
+		instVar1 = new UMLInstanceVariable("type", "name", true, false);
 	}
 
 	@Test

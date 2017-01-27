@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ModelObjects.ModelObject;
+import ModelObjects.Singleton;
 import ModelObjects.UMLClass;
 import ModelObjects.UMLInstanceVariable;
 import ModelObjects.UMLMethod;
@@ -31,7 +32,7 @@ public class HTMLSingletonParserTest {
 		methods.add(method);
 		ArrayList<UMLInstanceVariable> instVars = new ArrayList<UMLInstanceVariable>();
 		instVars.add(new UMLInstanceVariable("type", "name", true, false));
-		o = new UMLClass("name", methods, instVars);
+		o = new Singleton(new UMLClass("name", methods, instVars));
 		
 	}
 

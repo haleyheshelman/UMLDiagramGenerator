@@ -27,7 +27,7 @@ public class HTMLOneToManyDependencyParserTest {
 	@Test
 	public void testParse() throws NoSuchObjectException {
 		
-		String expected = "type->name [arrowhead=\"vee\",style=\"dashed\",label=\"0..n\"];";
+		String expected = "type->name [arrowhead=\"vee\",style=\"dashed\",label=\"1..n\"];";
 		String actual = p.parse(o);
 		assertEquals(expected, actual);
 	}

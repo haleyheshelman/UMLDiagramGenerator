@@ -27,7 +27,7 @@ public class HTMLOneToManyAssociationParserTest {
 	@Test
 	public void testParse() throws NoSuchObjectException {
 		
-		String expected = "type->name [arrowhead=\"vee\",label=\"0..n\"];";
+		String expected = "type->name [arrowhead=\"vee\",label=\"1..n\"];";
 		String actual = p.parse(o);
 		assertEquals(expected, actual);
 	}
