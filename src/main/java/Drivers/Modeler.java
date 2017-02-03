@@ -465,7 +465,7 @@ public class Modeler {
 		this.models.addAll(newModels);
 	}
 
-	private List<UMLInstanceVariable> createInstanceVariableModels(List<FieldNode> vars) {
+	private List<ModelObject> createInstanceVariableModels(List<FieldNode> vars) {
 
 		/**
 		 * This creates a list of model objects for the instance variables in
@@ -476,7 +476,7 @@ public class Modeler {
 		 * @return Returns a list of variableModels
 		 */
 
-		List<UMLInstanceVariable> varModels = new ArrayList<UMLInstanceVariable>();
+		List<ModelObject> varModels = new ArrayList<ModelObject>();
 
 		for (FieldNode f : vars) {
 			Type t = Type.getType(f.desc);
@@ -497,7 +497,7 @@ public class Modeler {
 
 	}
 
-	private List<UMLMethod> createMethodModels(List<MethodNode> methods) {
+	private List<ModelObject> createMethodModels(List<MethodNode> methods) {
 
 		/**
 		 * This returns a list of model objects for the methods in the list of
@@ -508,7 +508,7 @@ public class Modeler {
 		 * @return List of method model objects.
 		 */
 
-		List<UMLMethod> output = new ArrayList<UMLMethod>();
+		List<ModelObject> output = new ArrayList<ModelObject>();
 
 		for (MethodNode m : methods) {
 			String returnType = Type.getReturnType(m.desc).getClassName();

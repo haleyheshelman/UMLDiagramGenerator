@@ -21,8 +21,9 @@ public class Driver {
 		int argsLength = args.length;
 		if (argsLength == 0) {
 			f.initialize(TheGreatFacadeOfChandan.DEFAULT_SETTINGS);
-		} 
-		f.initialize(args[0]);
+		}  else {
+			f.initialize(args[0]);
+		}
 				
 		f.addPatternDetector(new SingletonDetector());
 		f.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
