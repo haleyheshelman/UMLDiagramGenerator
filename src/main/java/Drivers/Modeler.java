@@ -66,6 +66,8 @@ public class Modeler {
 		this.primitives.add("boolean");
 		this.primitives.add("char");
 		this.primitives.add("void");
+		this.primitives.add("String");
+		this.primitives.add("Object");
 	}
 
 	private void createClassModel(String s) throws ClassNotFoundException, IOException {
@@ -103,6 +105,7 @@ public class Modeler {
 			String parsedName = superName.substring(superName.lastIndexOf("/") + 1);
 			// Use the following line to get just the name of the class rather
 			// than its full extension name.
+			System.out.println(superName + " " + parsedName);
 			if (!checkBlackList(superName)) {
 				if (!parsedName.equals("Object")) {					
 					superNames.add(superName);
@@ -163,9 +166,9 @@ public class Modeler {
 		return false;
 	}
 	
-	private boolean checkIfParsed(String s) {
-		for (ModelObject o : this.models) {
-			if (o.getName().equals(s)) {
+	private boolean checkIfPrimitive(String type) {
+		for (String prim : this.primitives) {
+			if (prim.equals(type)) {
 				return true;
 			}
 		}
@@ -194,11 +197,21 @@ public class Modeler {
 				return true;
 			}
 		}
+		for (ModelObject check : this.models) {
+			if (a.isEqual(check)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
 	private boolean containsDependency(Dependency d, List<ModelObject> dependencies) {
 		for (ModelObject check : dependencies) {
+			if (d.isEqual(check)) {
+				return true;
+			}
+		}
+		for (ModelObject check : this.models) {
 			if (d.isEqual(check)) {
 				return true;
 			}
@@ -212,58 +225,41 @@ public class Modeler {
 		for (ModelObject o : this.models) {
 
 			if (o instanceof UMLClass) {
-				UMLClass c = (UMLClass) o;
-				List<UMLInstanceVariable> vars = c.getInstanceVars();
+				List<UMLInstanceVariable> vars = ((UMLClass) o).getInstanceVars();
 				for (UMLInstanceVariable v : vars) {
 					String type = v.getType();
-
-					if (type.contains(":")) {
-						List<String> types = getTypes(type);
-						for (String t : types) {
-							Association a = new OneToManyAssociation(c.getName(), t);
-							if (checkIfParsed(t) && !containsAssociation(a, newModels))
-								newModels.add(a);
-
-						}
-					} else {
-						Association a = new OneToOneAssociation(c.getName(), type);
-						if (checkIfParsed(type) && !containsAssociation(a, newModels))
-							newModels.add(a);
-					}
-
+					addAssociation(type, o, newModels);
 				}
 
 			}
 
 			if (o instanceof UMLAbstractClass) {
-				UMLAbstractClass c = (UMLAbstractClass) o;
-				List<UMLInstanceVariable> vars = c.getInstanceVars();
+				List<UMLInstanceVariable> vars = ((UMLAbstractClass) o).getInstanceVars();
 				for (UMLInstanceVariable v : vars) {
 					String type = v.getType();
-
-					if (type.contains(":")) {
-						List<String> types = getTypes(type);
-						for (String t : types) {
-							Association a = new OneToManyAssociation(c.getName(), t);
-							if (checkIfParsed(t) && !containsAssociation(a, newModels))
-								newModels.add(a);
-
-						}
-					} else {
-						Association a = new OneToOneAssociation(c.getName(), type);
-						if (checkIfParsed(type) && !containsAssociation(a, newModels))
-							newModels.add(a);
-					}
-
+					addAssociation(type, o, newModels);
 				}
-
 			}
-
 		}
-
 		this.models.addAll(newModels);
 	}
 
+	private void addAssociation(String type, ModelObject o, List<ModelObject> newModels) {
+		if (type.contains(":")) {
+			List<String> types = getTypes(type);
+			for (String t : types) {
+				Association a = new OneToManyAssociation(o.getName(), t);
+				if (!checkIfPrimitive(t) && !containsAssociation(a, newModels))
+					newModels.add(a);
+
+			}
+		} else {
+			Association a = new OneToOneAssociation(o.getName(), type);
+			if (!checkIfPrimitive(type) && !containsAssociation(a, newModels))
+				newModels.add(a);
+		}
+	}
+	
 	private boolean checkAssociations(String name, String type) {
 		for (ModelObject o : this.models) {
 			if (o instanceof Association) {
@@ -288,27 +284,7 @@ public class Modeler {
 
 					// Return Type Dependency
 					String returnType = m.getReturnType();
-					if (returnType.contains("[]")) {
-						String parsedType = returnType.substring(0, returnType.indexOf("["));
-						Dependency d = new OneToManyDependency(o.getName(), parsedType);
-						if (checkIfParsed(parsedType) && !checkAssociations(o.getName(), parsedType)) {
-							newModels.add(d);
-						}
-					} else if (returnType.contains(":")) {
-						List<String> types = getTypes(returnType);
-						for (String t : types) {
-							Dependency d = new OneToManyDependency(o.getName(), t);
-							if (checkIfParsed(t) && !checkAssociations(o.getName(), t)
-									&& !containsDependency(d, newModels))
-								newModels.add(d);
-						}
-					} else {
-						Dependency d = new OneToOneDependency(o.getName(), returnType);
-
-						if (checkIfParsed(returnType) && !checkAssociations(o.getName(), returnType)
-								&& !containsDependency(d, newModels))
-							newModels.add(d);
-					}
+					addDependency(returnType, o, newModels);
 					
 					// Params
 					List<UMLParameter> params = m.getParameters();
@@ -316,27 +292,7 @@ public class Modeler {
 					
 					for (UMLParameter p : params) {
 						String type = p.getType();
-						if (type.contains("[]")) {
-							String parsedType = type.substring(0, type.indexOf("["));
-							Dependency d = new OneToManyDependency(o.getName(), parsedType);
-							if (checkIfParsed(parsedType) && !checkAssociations(o.getName(), parsedType)) {
-								newModels.add(d);
-							}
-						} else if (type.contains(":")) {
-							List<String> types = getTypes(type);
-							for (String t : types) {
-								Dependency d = new OneToManyDependency(o.getName(), t);
-								if (checkIfParsed(t) && !checkAssociations(o.getName(), t)
-										&& !containsDependency(d, newModels))
-									newModels.add(d);
-							}
-						} else {
-							Dependency d = new OneToOneDependency(o.getName(), type);
-
-							if (checkIfParsed(type) && !checkAssociations(o.getName(), type)
-									&& !containsDependency(d, newModels))
-								newModels.add(d);
-						}
+						addDependency(type, o, newModels);
 					}
 					
 				}
@@ -346,30 +302,10 @@ public class Modeler {
 
 				List<UMLMethod> methods = ((UMLAbstractClass) o).getMethods();
 				for (UMLMethod m : methods) {
-
+										
 					// Return Type Dependency
 					String returnType = m.getReturnType();
-					if (returnType.contains("[]")) {
-						String parsedType = returnType.substring(0, returnType.indexOf("["));
-						Dependency d = new OneToManyDependency(o.getName(), parsedType);
-						if (checkIfParsed(parsedType) && !checkAssociations(o.getName(), parsedType)) {
-							newModels.add(d);
-						}
-					} else if (returnType.contains(":")) {
-						List<String> types = getTypes(returnType);
-						for (String t : types) {
-							Dependency d = new OneToManyDependency(o.getName(), t);
-							if (checkIfParsed(t) && !checkAssociations(o.getName(), t)
-									&& !containsDependency(d, newModels))
-								newModels.add(d);
-						}
-					} else {
-						Dependency d = new OneToOneDependency(o.getName(), returnType);
-
-						if (checkIfParsed(returnType) && !checkAssociations(o.getName(), returnType)
-								&& !containsDependency(d, newModels))
-							newModels.add(d);
-					}
+					addDependency(returnType, o, newModels);
 					
 					// Params
 					List<UMLParameter> params = m.getParameters();
@@ -377,27 +313,7 @@ public class Modeler {
 					
 					for (UMLParameter p : params) {
 						String type = p.getType();
-						if (type.contains("[]")) {
-							String parsedType = returnType.substring(0, type.indexOf("["));
-							Dependency d = new OneToManyDependency(o.getName(), parsedType);
-							if (checkIfParsed(parsedType) && !checkAssociations(o.getName(), parsedType)) {
-								newModels.add(d);
-							}
-						} else if (type.contains(":")) {
-							List<String> types = getTypes(type);
-							for (String t : types) {
-								Dependency d = new OneToManyDependency(o.getName(), t);
-								if (checkIfParsed(t) && !checkAssociations(o.getName(), t)
-										&& !containsDependency(d, newModels))
-									newModels.add(d);
-							}
-						} else {
-							Dependency d = new OneToOneDependency(o.getName(), type);
-
-							if (checkIfParsed(type) && !checkAssociations(o.getName(), type)
-									&& !containsDependency(d, newModels))
-								newModels.add(d);
-						}
+						addDependency(type, o, newModels);
 					}
 					
 				}
@@ -409,27 +325,7 @@ public class Modeler {
 
 					// Return Type Dependency
 					String returnType = m.getReturnType();
-					if (returnType.contains("[]")) {
-						String parsedType = returnType.substring(0, returnType.indexOf("["));
-						Dependency d = new OneToManyDependency(o.getName(), parsedType);
-						if (checkIfParsed(parsedType) && !checkAssociations(o.getName(), parsedType)) {
-							newModels.add(d);
-						}
-					} else if (returnType.contains(":")) {
-						List<String> types = getTypes(returnType);
-						for (String t : types) {
-							Dependency d = new OneToManyDependency(o.getName(), t);
-							if (checkIfParsed(t) && !checkAssociations(o.getName(), t)
-									&& !containsDependency(d, newModels))
-								newModels.add(d);
-						}
-					} else {
-						Dependency d = new OneToOneDependency(o.getName(), returnType);
-
-						if (checkIfParsed(returnType) && !checkAssociations(o.getName(), returnType)
-								&& !containsDependency(d, newModels))
-							newModels.add(d);
-					}
+					addDependency(returnType, o, newModels);
 					
 					// Params
 					List<UMLParameter> params = m.getParameters();
@@ -437,32 +333,36 @@ public class Modeler {
 					
 					for (UMLParameter p : params) {
 						String type = p.getType();
-						if (type.contains("[]")) {
-							String parsedType = returnType.substring(0, type.indexOf("["));
-							Dependency d = new OneToManyDependency(o.getName(), parsedType);
-							if (checkIfParsed(parsedType) && !checkAssociations(o.getName(), parsedType)) {
-								newModels.add(d);
-							}
-						} else if (type.contains(":")) {
-							List<String> types = getTypes(type);
-							for (String t : types) {
-								Dependency d = new OneToManyDependency(o.getName(), t);
-								if (checkIfParsed(t) && !checkAssociations(o.getName(), t)
-										&& !containsDependency(d, newModels))
-									newModels.add(d);
-							}
-						} else {
-							Dependency d = new OneToOneDependency(o.getName(), type);
-
-							if (checkIfParsed(type) && !checkAssociations(o.getName(), type)
-									&& !containsDependency(d, newModels))
-								newModels.add(d);
-						}
+						addDependency(type, o, newModels);
 					}	
 				}
 			}
 		}
 		this.models.addAll(newModels);
+	}
+	
+	private void addDependency(String type, ModelObject o, List<ModelObject> newModels) {
+		if (type.contains("[]")) {
+			String parsedType = type.substring(0, type.indexOf("["));
+			Dependency d = new OneToManyDependency(o.getName(), parsedType);
+			if (!checkIfPrimitive(parsedType) && !checkAssociations(o.getName(), parsedType)) {
+				newModels.add(d);
+			}
+		} else if (type.contains(":")) {
+			List<String> types = getTypes(type);
+			for (String t : types) {
+				Dependency d = new OneToManyDependency(o.getName(), t);
+				if (!checkIfPrimitive(t) && !checkAssociations(o.getName(), t)
+						&& !containsDependency(d, newModels))
+					newModels.add(d);
+			}
+		} else {
+			Dependency d = new OneToOneDependency(o.getName(), type);
+
+			if (!checkIfPrimitive(type) && !checkAssociations(o.getName(), type)
+					&& !containsDependency(d, newModels))
+				newModels.add(d);
+		}
 	}
 
 	private List<ModelObject> createInstanceVariableModels(List<FieldNode> vars) {

@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Drivers.Modeler;
+import ModelObjects.Dependency;
 import ModelObjects.ModelObject;
 import ModelObjects.OneToOneDependency;
 import ModelObjects.UMLAbstractClass;
@@ -29,6 +30,8 @@ public class ModelerTest {
 	public void testCreateClassModelsInterface() throws Exception {
 		List<String> classes = new ArrayList<String>();
 		classes.add("Runners.Runner");
+		String[] black = {"ModelObject"};
+		m.setBlacklist(black);
 		m.setRecursion(true);
 		m.createClassModels(classes);
 		
@@ -36,17 +39,22 @@ public class ModelerTest {
 		assertFalse(models.isEmpty());
 		assertEquals("Runner", models.get(0).getName());
 		assertEquals(models.get(0).getClass(), UMLInterface.class);
+		
+		m.getModels().clear();
 	}
 	
 	@Test
 	public void testCreateClassModelsRecursion() throws Exception {
 		m.setRecursion(true);
 		List<String> classes = new ArrayList<String>();
-		classes.add("Parsers.HTMLClassParser");
+		classes.add("Factories.HTMLParserFactory");
 		m.createClassModels(classes);
 		
 		List<ModelObject> models = m.getModels();
-		assertEquals(2, models.size());
+		System.out.println(models);
+		assertEquals(7, models.size());
+		
+		m.getModels().clear();
 	}
 	
 	@Test
@@ -54,9 +62,27 @@ public class ModelerTest {
 		List<String> classes = new ArrayList<String>();
 		classes.add("Factories.AbstractParserFactory");
 		m.createClassModels(classes);
+		assertTrue(m.getModels().get(1) instanceof UMLAbstractClass);
 		
+		classes.clear();
+		classes.add("Parsers.RelationshipParserDecorator");
+		m.createClassModels(classes);
 		
-		assertTrue(m.getModels().get(0) instanceof UMLAbstractClass);
+		boolean containsReturnType = false;
+		boolean containsParamType = false;
+		for(ModelObject model : m.getModels()){
+			if (model instanceof Dependency && 
+					model.toString().contains("ModelObject")) {
+				containsParamType = true;
+			}
+			else if ((model instanceof Dependency && 
+					model.toString().contains("String"))) {
+				containsReturnType = true;
+			}
+		}
+		assertFalse(containsReturnType);
+		assertTrue(containsParamType);
+		m.getModels().clear();
 	}
 	
 	@Test
@@ -67,7 +93,13 @@ public class ModelerTest {
 		m.setBlacklist(black);
 		m.createClassModels(classes);
 		
-		assertEquals(2, m.getModels().size());
+		assertEquals(3, m.getModels().size());
+		
+		m.getModels().clear();
 	}
+	
+	
+	
+	
 
 }

@@ -3,6 +3,12 @@
 	p=true
 
 p=true
-Ž[HTMLParserFactory->AbstractParserFactory, HTMLParserFactory[void <init>() IParser makeParser(String param) HTMLParserFactory getInstance() ]
-%[false HTMLParserFactory instance, ]
-), HTMLParserFactory->HTMLParserFactory]
+java/lang/Object Object
+java/lang/Object Object
+java/lang/Object Object
+7Factories/AbstractParserFactory AbstractParserFactory
+7Factories/AbstractParserFactory AbstractParserFactory
+java/lang/Object Object
+ý[HTMLParserFactory->AbstractParserFactory, AbstractParserFactory->IParserFactory, ModelObjects.UMLAbstractClass@14a505a0, AbstractParserFactory->IParser, HTMLParserFactory[void <init>() IParser makeParser(String param) HTMLParserFactory getInstance() ]
+%[false HTMLParserFactory instance, ]
+E, HTMLParserFactory->HTMLParserFactory, HTMLParserFactory->IParser]
