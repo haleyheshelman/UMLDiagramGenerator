@@ -32,7 +32,7 @@ public class ModelerTest {
 		m.setRecursion(true);
 		m.createClassModels(classes);
 		
-		List<ModelObject> models = m.getObjects();
+		List<ModelObject> models = m.getModels();
 		assertFalse(models.isEmpty());
 		assertEquals("Runner", models.get(0).getName());
 		assertEquals(models.get(0).getClass(), UMLInterface.class);
@@ -45,7 +45,7 @@ public class ModelerTest {
 		classes.add("Parsers.HTMLClassParser");
 		m.createClassModels(classes);
 		
-		List<ModelObject> models = m.getObjects();
+		List<ModelObject> models = m.getModels();
 		assertEquals(2, models.size());
 	}
 	
@@ -55,7 +55,8 @@ public class ModelerTest {
 		classes.add("Factories.AbstractParserFactory");
 		m.createClassModels(classes);
 		
-		assertTrue(m.getObjects().get(0) instanceof UMLAbstractClass);
+		
+		assertTrue(m.getModels().get(0) instanceof UMLAbstractClass);
 	}
 	
 	@Test
@@ -66,8 +67,7 @@ public class ModelerTest {
 		m.setBlacklist(black);
 		m.createClassModels(classes);
 		
-		System.out.println(m.getObjects());
-		assertEquals(2, m.getObjects().size());
+		assertEquals(2, m.getModels().size());
 	}
 
 }

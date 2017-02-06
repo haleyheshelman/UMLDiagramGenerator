@@ -580,7 +580,7 @@ public class Modeler {
 		this.blacklist = black;
 	}
 	
-	public List<ModelObject> getObjects() {
+	public List<ModelObject> getModels() {
 		return this.models;
 	}
 
