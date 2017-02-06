@@ -36,10 +36,12 @@ public class ModelerTest {
 		m.createClassModels(classes);
 		
 		List<ModelObject> models = m.getModels();
+		assertTrue(m.getRecursion());
 		assertFalse(models.isEmpty());
 		assertEquals("Runner", models.get(0).getName());
 		assertEquals(models.get(0).getClass(), UMLInterface.class);
 		
+		m.setRecursion(false);
 		m.getModels().clear();
 	}
 	
@@ -51,7 +53,6 @@ public class ModelerTest {
 		m.createClassModels(classes);
 		
 		List<ModelObject> models = m.getModels();
-		System.out.println(models);
 		assertEquals(7, models.size());
 		
 		m.getModels().clear();
@@ -97,6 +98,16 @@ public class ModelerTest {
 		
 		m.getModels().clear();
 	}
+	
+	@Test
+	public void testMoreDependencies() {
+		List<String> classes = new ArrayList<String>();
+		classes.add("Drivers.Modeler");
+		m.createClassModels(classes);
+		
+		assertEquals(8, m.getModels().size());
+	}
+	
 	
 	
 	

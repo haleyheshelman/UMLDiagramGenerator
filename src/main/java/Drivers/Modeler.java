@@ -105,7 +105,6 @@ public class Modeler {
 			String parsedName = superName.substring(superName.lastIndexOf("/") + 1);
 			// Use the following line to get just the name of the class rather
 			// than its full extension name.
-			System.out.println(superName + " " + parsedName);
 			if (!checkBlackList(superName)) {
 				if (!parsedName.equals("Object")) {					
 					superNames.add(superName);
@@ -416,6 +415,7 @@ public class Modeler {
 			String sig = m.name;
 
 			List<UMLParameter> params = new ArrayList<UMLParameter>();
+			System.out.println(m.signature);
 			if (m.signature != null) {
 				String getReturnTypeFrom = m.signature.substring(m.signature.indexOf(")") + 1);
 				returnType = parseGeneric(getReturnTypeFrom);
