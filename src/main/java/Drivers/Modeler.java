@@ -156,7 +156,7 @@ public class Modeler {
 			return false;
 		}
 		for (String s : this.blacklist) {
-			if (name.startsWith(s)) {
+			if (name.startsWith(s) || name.endsWith(s)) {
 				return true;
 			}
 		}

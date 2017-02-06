@@ -1,4 +1,8 @@
-p=true
-p=true
-p=true
-p=true
+p=true
+p=true
+	p=true
+
+p=true
+Ž[HTMLParserFactory->AbstractParserFactory, HTMLParserFactory[void <init>() IParser makeParser(String param) HTMLParserFactory getInstance() ]
+%[false HTMLParserFactory instance, ]
+), HTMLParserFactory->HTMLParserFactory]

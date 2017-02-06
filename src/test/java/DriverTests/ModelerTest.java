@@ -11,6 +11,7 @@ import org.junit.Test;
 import Drivers.Modeler;
 import ModelObjects.ModelObject;
 import ModelObjects.OneToOneDependency;
+import ModelObjects.UMLAbstractClass;
 import ModelObjects.UMLInterface;
 
 public class ModelerTest {
@@ -20,14 +21,15 @@ public class ModelerTest {
 	@Before
 	public void setUp() throws Exception {
 		m = new Modeler();
+		m.setBlacklist(new String[0]);
+		m.setRecursion(false);
 	}
 
 	@Test
 	public void testCreateClassModelsInterface() throws Exception {
 		List<String> classes = new ArrayList<String>();
-		m.setBlacklist(new String[0]);
-		m.setRecursion(true);
 		classes.add("Runners.Runner");
+		m.setRecursion(true);
 		m.createClassModels(classes);
 		
 		List<ModelObject> models = m.getObjects();
@@ -40,7 +42,6 @@ public class ModelerTest {
 	public void testCreateClassModelsRecursion() throws Exception {
 		m.setRecursion(true);
 		List<String> classes = new ArrayList<String>();
-		m.setBlacklist(new String[0]);
 		classes.add("Parsers.HTMLClassParser");
 		m.createClassModels(classes);
 		
@@ -48,6 +49,25 @@ public class ModelerTest {
 		assertEquals(2, models.size());
 	}
 	
+	@Test
+	public void testAbstractObject() {
+		List<String> classes = new ArrayList<String>();
+		classes.add("Factories.AbstractParserFactory");
+		m.createClassModels(classes);
+		
+		assertTrue(m.getObjects().get(0) instanceof UMLAbstractClass);
+	}
 	
+	@Test
+	public void testCheckBlacklist() {
+		List<String> classes = new ArrayList<String>();
+		classes.add("Factories.HTMLParserFactory");
+		String[] black = {"AbstractParserFactory"};
+		m.setBlacklist(black);
+		m.createClassModels(classes);
+		
+		System.out.println(m.getObjects());
+		assertEquals(2, m.getObjects().size());
+	}
 
 }
