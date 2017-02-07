@@ -29,6 +29,8 @@ public abstract class IRelationship implements ModelObject{
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append(pair[0]);
+//		String type = this.getClass().toString();
+//		s.append(type.substring(type.indexOf('.') + 1)); 
 		s.append("->");
 		s.append(pair[1]);
 		return s.toString();

@@ -111,7 +111,7 @@ public class TheGreatFacadeOfChandan {
 		this.modeler.createClassModels(this.names);
 		Runner gRunner = new GraphVizRunner(this.outputFile);
 		this.designParser.setFactory(this.encoding);
-		if (gRunner.writeToFile(this.designParser.parseObjects(this.modeler.getObjects())) == -1) return;
+		if (gRunner.writeToFile(this.designParser.parseObjects(this.modeler.getModels())) == -1) return;
 		gRunner.launchApp();
 
 	}
