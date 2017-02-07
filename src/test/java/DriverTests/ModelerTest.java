@@ -11,7 +11,6 @@ import org.junit.Test;
 import Drivers.Modeler;
 import ModelObjects.Dependency;
 import ModelObjects.ModelObject;
-import ModelObjects.OneToOneDependency;
 import ModelObjects.UMLAbstractClass;
 import ModelObjects.UMLInterface;
 

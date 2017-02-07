@@ -51,7 +51,7 @@ public class Modeler {
 	private List<String> primitives;
 	private List<PatternDetector> pds;
 	private boolean synthetic = false;
-	private String[] blacklist;
+	private String[] blacklist = {};
 
 	public Modeler() {
 		this.models = new ArrayList<ModelObject>();
