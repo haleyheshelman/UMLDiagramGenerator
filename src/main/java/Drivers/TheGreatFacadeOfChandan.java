@@ -42,7 +42,6 @@ public class TheGreatFacadeOfChandan {
 		
 		//Read from package names setting
 		String pack = scan.nextLine();
-		System.out.println(pack);
 		pack = pack.substring(pack.indexOf('=') + 1);
 		boolean fromPackage = Boolean.parseBoolean(pack);
 

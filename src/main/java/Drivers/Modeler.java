@@ -244,7 +244,14 @@ public class Modeler {
 	}
 
 	private void addAssociation(String type, ModelObject o, List<ModelObject> newModels) {
-		if (type.contains(":")) {
+		if (type.contains("[]")) {
+			String parsedType = type.substring(0, type.indexOf("["));
+			Association d = new OneToManyAssociation(o.getName(), parsedType);
+			if (!checkIfPrimitive(parsedType) && !checkAssociations(o.getName(), parsedType)) {
+				System.out.println(parsedType);
+				newModels.add(d);
+			}
+		} else if (type.contains(":")) {
 			List<String> types = getTypes(type);
 			for (String t : types) {
 				Association a = new OneToManyAssociation(o.getName(), t);
@@ -345,6 +352,7 @@ public class Modeler {
 			String parsedType = type.substring(0, type.indexOf("["));
 			Dependency d = new OneToManyDependency(o.getName(), parsedType);
 			if (!checkIfPrimitive(parsedType) && !checkAssociations(o.getName(), parsedType)) {
+				System.out.println(parsedType);
 				newModels.add(d);
 			}
 		} else if (type.contains(":")) {
@@ -415,7 +423,6 @@ public class Modeler {
 			String sig = m.name;
 
 			List<UMLParameter> params = new ArrayList<UMLParameter>();
-			System.out.println(m.signature);
 			if (m.signature != null) {
 				String getReturnTypeFrom = m.signature.substring(m.signature.indexOf(")") + 1);
 				returnType = parseGeneric(getReturnTypeFrom);
