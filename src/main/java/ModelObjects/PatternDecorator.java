@@ -11,8 +11,8 @@ public abstract class PatternDecorator implements ModelObject {
 	}
 	
 	public boolean contains(ModelObject m) {
-		
-		return this.underlying.equals(m);
+		boolean r = this.underlying.equals(m);
+		return r;
 		
 	}
 }

@@ -8,7 +8,7 @@ public class HTMLDecoratesRelationshipParser extends RelationshipParserDecorator
 
 	@Override
 	public String addConfig() {
-		return "label=\"decorates\"";
+		return "label=\"decorates\" ";
 	}
 
 }

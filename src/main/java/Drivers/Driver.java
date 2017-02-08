@@ -26,9 +26,9 @@ public class Driver {
 			f.initialize(args[0]);
 		}
 				
-		f.addPatternDetector(new SingletonDetector());
+//		f.addPatternDetector(new SingletonDetector());
 		f.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
-		f.addPatternDetector(new DecoratorDetector());
+//		f.addPatternDetector(new DecoratorDetector());
 		f.go();
 	}
 

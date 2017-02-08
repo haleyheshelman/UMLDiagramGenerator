@@ -22,6 +22,7 @@ public class DecoratorDetector implements PatternDetector {
 		List<ModelObject> newModels = new ArrayList<ModelObject>();
 		
 		for (ModelObject m : models) {
+			System.out.println(m.getName());
 			if (m instanceof UMLAbstractClass) {
 				UMLAbstractClass c = (UMLAbstractClass) m;
 				String implement = findAncestor(c, models);
@@ -58,6 +59,8 @@ public class DecoratorDetector implements PatternDetector {
 	private boolean checkInDecorator(ModelObject m, List<ModelObject> newModels) {
 		for (ModelObject model : newModels) {
 			if (((PatternDecorator) model).contains(m)) {
+//				System.out.println(model.getName() + " : " + m.getName());
+//				System.out.println("here");
 				return true;
 			}
 		}
