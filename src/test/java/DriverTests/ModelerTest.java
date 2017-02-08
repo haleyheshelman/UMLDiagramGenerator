@@ -104,7 +104,7 @@ public class ModelerTest {
 		classes.add("Drivers.Modeler");
 		m.createClassModels(classes);
 		
-		assertEquals(8, m.getModels().size());
+		assertEquals(7, m.getModels().size());
 	}
 	
 	

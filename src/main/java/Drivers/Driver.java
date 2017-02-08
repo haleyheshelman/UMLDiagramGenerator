@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import PatternDetectors.DecoratorDetector;
 import PatternDetectors.SingletonDetector;
 import PatternDetectors.ViolateCompositionOverInheritanceDetector;
 import Runners.GraphVizRunner;
@@ -27,6 +28,7 @@ public class Driver {
 				
 		f.addPatternDetector(new SingletonDetector());
 		f.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
+		f.addPatternDetector(new DecoratorDetector());
 		f.go();
 	}
 

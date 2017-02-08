@@ -248,7 +248,6 @@ public class Modeler {
 			String parsedType = type.substring(0, type.indexOf("["));
 			Association d = new OneToManyAssociation(o.getName(), parsedType);
 			if (!checkIfPrimitive(parsedType) && !checkAssociations(o.getName(), parsedType)) {
-				System.out.println(parsedType);
 				newModels.add(d);
 			}
 		} else if (type.contains(":")) {

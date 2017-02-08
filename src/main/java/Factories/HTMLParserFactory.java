@@ -21,6 +21,9 @@ import ModelObjects.UMLParameter;
 import ModelObjects.ViolateCompositionOverInheritance;
 import Parsers.HTMLAbstractClassParser;
 import Parsers.HTMLClassParser;
+import Parsers.HTMLComponentParser;
+import Parsers.HTMLDecoratesRelationshipParser;
+import Parsers.HTMLDecoratorParser;
 import Parsers.HTMLExtendParser;
 import Parsers.HTMLImplementParser;
 import Parsers.HTMLInstanceVariableParser;
@@ -60,6 +63,10 @@ public class HTMLParserFactory extends AbstractParserFactory {
 		this.map.put("compoverinherabstractclass", new HTMLViolateCompositionOverInheritanceClassParser(new HTMLAbstractClassParser()));
 		this.map.put("compoverinherinterface", new HTMLViolateCompositionOverInheritanceClassParser(new HTMLInterfaceParser()));
 		this.map.put("compoverinherextend", new HTMLViolateCompositionOverInheritanceRelationshipParser(new HTMLExtendParser()));
+		this.map.put("decclass", new HTMLDecoratorParser(new HTMLClassParser()));
+		this.map.put("decabstractclass", new HTMLDecoratorParser(new HTMLAbstractClassParser()));
+		this.map.put("decrelimplement", new HTMLDecoratesRelationshipParser(new HTMLImplementParser()));
+		this.map.put("compinterface", new HTMLComponentParser(new HTMLInterfaceParser()));
 	}
 	
 	@Override
