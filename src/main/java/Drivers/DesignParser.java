@@ -26,7 +26,7 @@ public class DesignParser {
 	public String parseObjects(List<ModelObject> objects) throws Exception {
 		
 		StringBuilder s = new StringBuilder();
-		s.append("digraph uml{rankdir=BT;splines=ortho;concentrate=true;node[shape = box];");
+		s.append("digraph uml{rankdir=BT;splines=ortho;node[shape = box];");
 		
 		for (ModelObject o : objects) {
 			s.append(parseModelObject(o));

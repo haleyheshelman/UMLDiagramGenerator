@@ -1,5 +1,5 @@
-r=true
-p=true
-whitelist=Drivers
-blacklist=GraphVizRunner
+r=false
+p=false
+whitelist=ModelObjects.PatternDecorator,ModelObjects.ModelObject,ModelObjects.Singleton
+blacklist=
 synthetic=false

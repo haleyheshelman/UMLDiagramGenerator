@@ -22,7 +22,6 @@ public class DecoratorDetector implements PatternDetector {
 		List<ModelObject> newModels = new ArrayList<ModelObject>();
 		
 		for (ModelObject m : models) {
-			System.out.println(m.getName());
 			if (m instanceof UMLAbstractClass) {
 				UMLAbstractClass c = (UMLAbstractClass) m;
 				String implement = findAncestor(c, models);

@@ -1,49 +1,0 @@
-p=true
-p=true
-	p=true
-
-p=true
-null
-null
-)(Ljava/util/List<Ljava/lang/String;>;)V
-null
-null
-:(Ljava/lang/String;)Ljava/util/List<Ljava/lang/String;>;
-K(LModelObjects/Association;Ljava/util/List<LModelObjects/ModelObject;>;)Z
-J(LModelObjects/Dependency;Ljava/util/List<LModelObjects/ModelObject;>;)Z
-null
-](Ljava/lang/String;LModelObjects/ModelObject;Ljava/util/List<LModelObjects/ModelObject;>;)V
-null
-null
-](Ljava/lang/String;LModelObjects/ModelObject;Ljava/util/List<LModelObjects/ModelObject;>;)V
-d(Ljava/util/List<Lorg/objectweb/asm/tree/FieldNode;>;)Ljava/util/List<LModelObjects/ModelObject;>;
-e(Ljava/util/List<Lorg/objectweb/asm/tree/MethodNode;>;)Ljava/util/List<LModelObjects/ModelObject;>;
-null
-null
-null
-0()Ljava/util/List<LModelObjects/ModelObject;>;
-null
-null
-:(Ljava/lang/String;)Ljava/util/List<Ljava/lang/String;>;
-null
-null
-null
-null
-8()Ljava/util/List<LPatternDetectors/PatternDetector;>;
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
