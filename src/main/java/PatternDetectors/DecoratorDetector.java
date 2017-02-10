@@ -28,7 +28,7 @@ public class DecoratorDetector implements PatternDetector {
 				if (!implement.equals("Object")) {
 					List<UMLInstanceVariable> vars = c.getInstanceVars();
 					for (UMLInstanceVariable v : vars) {
-						if (v.getType().equals(implement)) {
+						if (v.getParsedType().equals(implement)) {
 							newModels.add(new Decorator(m));
 							newModels.addAll(getChildren(c, models));
 							newModels.add(getAncestor(implement, models));

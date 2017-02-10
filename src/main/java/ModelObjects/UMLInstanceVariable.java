@@ -21,8 +21,20 @@ public class UMLInstanceVariable implements ModelObject{
 		return this.name;
 	}
 	
+	public String getParsedName() {
+		String output = this.name.substring(this.name.lastIndexOf('.') + 1);
+		output = output.substring(output.lastIndexOf('/') + 1);
+		return output;
+	}
+	
 	public String getType() {
 		return this.type;
+	}
+	
+	public String getParsedType() {
+		String output = this.type.substring(this.type.lastIndexOf('.') + 1);
+		output = output.substring(output.lastIndexOf('/') + 1);
+		return output;
 	}
 	
 	public String toString(){

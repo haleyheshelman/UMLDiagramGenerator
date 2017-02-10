@@ -33,6 +33,12 @@ public class UMLMethod implements ModelObject {
 		return this.returnType;
 	}
 	
+	public String getParsedReturnType() {
+		String output = this.returnType.substring(this.returnType.lastIndexOf('.') + 1);
+		output = output.substring(output.lastIndexOf('/') + 1);
+		return output;
+	}
+	
 	public List<UMLParameter> getParameters() {
 		return Collections.unmodifiableList(params);
 	}

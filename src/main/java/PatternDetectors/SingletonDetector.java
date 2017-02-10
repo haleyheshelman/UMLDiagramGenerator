@@ -26,7 +26,7 @@ public class SingletonDetector implements PatternDetector {
 			for (UMLInstanceVariable v : vars) {
 				boolean isStatic = v.getIsStatic();
 				boolean isPublic = v.getIsPublic();
-				String type = v.getType();
+				String type = v.getParsedType();
 				
 				if (!type.equals(m.getName())) {
 					continue;
@@ -56,7 +56,7 @@ public class SingletonDetector implements PatternDetector {
 			for (UMLMethod method : methods) {
 				boolean isStatic = method.getIsStatic();
 				boolean isPublic = method.getIsPublic();
-				String returnType = method.getReturnType();
+				String returnType = method.getParsedReturnType();
 				
 				if (!returnType.equals(o.getName())) {
 					continue;

@@ -72,6 +72,7 @@ public class Modeler {
 		this.primitives.add("void");
 		this.primitives.add("java.lang.String");
 		this.primitives.add("java.lang.Object");
+		this.primitives.add("String");
 	}
 
 	private void createClassModel(String s) throws ClassNotFoundException, IOException {
