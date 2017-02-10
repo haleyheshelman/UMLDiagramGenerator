@@ -19,14 +19,14 @@ mainClassName = "Drivers.Driver"
 
 // TODO: Update the args value to choose what classes to run. Here is just an example. 
 run {
-   //args "docs/settings"
+   args "docs/settings"
    //args "docs/testsettings"
    //args "docs/settingsjframe"
    //args "docs/settingschocolate"
    
    //args "docs/autowiresettings"
    //args "docs/decoratorsettings"
-   args "docs/adaptorsettings"
+   //args "docs/adaptorsettings"
    //args "docs/iomousesettings"
    //args "docs/asmsettings"
    

@@ -97,7 +97,6 @@ public class Modeler {
 		List<String> superNames = new ArrayList<String>();
 		for (String className : classes) {
 			ClassReader reader = null;
-			System.out.println(className);
 			try {
 				reader = new ClassReader(className);
 			} catch (IOException e) {
@@ -459,11 +458,9 @@ public class Modeler {
 				if (returnType.equals("V")) {
 					returnType = "void";
 				}
-				System.out.println(returnType);
 				if (returnType.contains(";")) {
 					returnType = returnType.replace(";", "");
 				}
-				System.out.println(returnType);
 
 				String getParamsTypes = m.signature.substring(m.signature.indexOf("("), m.signature.indexOf(")") + 1);
 				List<String> argTypes = parseParamGeneric(getParamsTypes);
