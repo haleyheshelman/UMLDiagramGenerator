@@ -58,8 +58,6 @@ public class DecoratorDetector implements PatternDetector {
 	private boolean checkInDecorator(ModelObject m, List<ModelObject> newModels) {
 		for (ModelObject model : newModels) {
 			if (((PatternDecorator) model).contains(m)) {
-//				System.out.println(model.getName() + " : " + m.getName());
-//				System.out.println("here");
 				return true;
 			}
 		}

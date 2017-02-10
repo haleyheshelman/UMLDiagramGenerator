@@ -1,5 +1,5 @@
-r=false
+r=true
 p=true
 whitelist=client,lib
-blacklist=java
+blacklist=
 synthetic=false

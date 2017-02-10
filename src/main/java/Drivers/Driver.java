@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import PatternDetectors.AdapterDetector;
 import PatternDetectors.DecoratorDetector;
 import PatternDetectors.SingletonDetector;
 import PatternDetectors.ViolateCompositionOverInheritanceDetector;
@@ -27,10 +28,11 @@ public class Driver {
 			f.initialize(args[0]);
 		}
 				
-		f.addPatternDetector(new SingletonDetector());
-		f.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
-		f.addPatternDetector(new DecoratorDetector());
-		f.addPatternDetector(new ViolateDependencyInversionDetector());
+//		f.addPatternDetector(new SingletonDetector());
+//		f.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
+//		f.addPatternDetector(new DecoratorDetector());
+//		f.addPatternDetector(new ViolateDependencyInversionDetector());
+		f.addPatternDetector(new AdapterDetector());
 		f.go();
 	}
 }

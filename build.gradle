@@ -26,9 +26,9 @@ run {
    
    //args "docs/autowiresettings"
    //args "docs/decoratorsettings"
-   //args "docs/adaptorsettings"
+   args "docs/adaptorsettings"
    //args "docs/iomousesettings"
-   args "docs/asmsettings"
+   //args "docs/asmsettings"
    
    
 }

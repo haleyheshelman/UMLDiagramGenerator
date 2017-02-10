@@ -75,4 +75,8 @@ public class UMLMethod implements ModelObject {
 		return "method";
 	}
 
+	public InsnList getInstructions() {
+		return this.instructions;
+	}
+
 }

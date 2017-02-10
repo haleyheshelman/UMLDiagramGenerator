@@ -2,6 +2,10 @@ package ModelObjects;
 
 public class AdaptsRelationship extends PatternDecorator {
 
+	public AdaptsRelationship(ModelObject got) {
+		this.underlying = got;
+	}
+
 	@Override
 	public String getSelector() {
 		return "adaprel" + this.underlying.getSelector();
