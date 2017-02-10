@@ -9,5 +9,8 @@ To build this project from command line (note that it also computes test coverag
 **./gradlew build**
 
 
-To run this project from command line:
-**./gradlew run**
+To run this project from command line use the following followed by a settings file that you intend to use. Save this
+settings file in the proper directory in the project's buildpath.
+**java -jar parser.jar <enter your command line arguments here>**
+
+Image here:

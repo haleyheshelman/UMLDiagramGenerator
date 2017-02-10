@@ -25,6 +25,8 @@ public class TheGreatFacadeOfChandan {
 	
 	public void initialize(String settings) {
 		
+		System.out.println("Initializing...");
+		
 		this.designParser = new DesignParser();
 		this.modeler = new Modeler();		
 		File file = new File(settings);
@@ -44,7 +46,6 @@ public class TheGreatFacadeOfChandan {
 		String pack = scan.nextLine();
 		pack = pack.substring(pack.indexOf('=') + 1);
 		boolean fromPackage = Boolean.parseBoolean(pack);
-		System.out.println(fromPackage);
 
 		//Get classes or package names to parse
 		String whitelist = scan.nextLine();
@@ -103,7 +104,7 @@ public class TheGreatFacadeOfChandan {
 	}
 
 	public void go() throws Exception {
-		
+		System.out.println("Parsing files: " + this.names.toString());
 		if (this.names.isEmpty()) {
 			System.out.println("You have not initialized the program with settings. Rest in peace you");
 			System.exit(1);
@@ -113,7 +114,6 @@ public class TheGreatFacadeOfChandan {
 		this.designParser.setFactory(this.encoding);
 		if (gRunner.writeToFile(this.designParser.parseObjects(this.modeler.getModels())) == -1) return;
 		gRunner.launchApp();
-
 	}
 	
 	public void setOutputFile(String target) {

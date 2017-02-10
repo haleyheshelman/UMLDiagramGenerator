@@ -32,7 +32,7 @@ public class Driver {
 //		f.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
 //		f.addPatternDetector(new DecoratorDetector());
 //		f.addPatternDetector(new ViolateDependencyInversionDetector());
-		f.addPatternDetector(new AdapterDetector());
+//		f.addPatternDetector(new AdapterDetector());
 		f.go();
 	}
 }

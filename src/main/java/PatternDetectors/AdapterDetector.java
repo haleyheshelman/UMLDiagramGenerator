@@ -107,7 +107,6 @@ public class AdapterDetector implements PatternDetector {
 			Association a = (Association) o;
 			for (ModelObject m : models) {
 				if (a.getSecond().equals(m.getName())) {
-					System.out.println(a.getSecond() + " : " + m.getName());
 					adaptees.add(new Adaptee(m));
 				}
 			}
