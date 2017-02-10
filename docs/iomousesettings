@@ -1,0 +1,5 @@
+r=false
+p=false
+whitelist=java.io.InputStreamReader,java.io.OutputStreamWriter,java.awt.event.MouseAdapter
+blacklist=java,asm
+synthetic=false

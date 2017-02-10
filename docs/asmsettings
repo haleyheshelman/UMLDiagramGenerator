@@ -1,0 +1,5 @@
+r=false
+p=false
+whitelist=org.objectweb.asm.tree.ClassNode,org.objectweb.asm.ClassVisitor
+blacklist=java
+synthetic=false

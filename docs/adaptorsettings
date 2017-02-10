@@ -1,0 +1,5 @@
+r=false
+p=true
+whitelist=client,lib
+blacklist=java
+synthetic=false
