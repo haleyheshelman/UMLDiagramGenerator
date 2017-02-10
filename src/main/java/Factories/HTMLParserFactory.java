@@ -20,6 +20,9 @@ import ModelObjects.UMLMethod;
 import ModelObjects.UMLParameter;
 import ModelObjects.ViolateCompositionOverInheritance;
 import Parsers.HTMLAbstractClassParser;
+import Parsers.HTMLAdapteeParser;
+import Parsers.HTMLAdapterParser;
+import Parsers.HTMLAdaptsRelationshipParser;
 import Parsers.HTMLClassParser;
 import Parsers.HTMLComponentParser;
 import Parsers.HTMLDecoratesRelationshipParser;
@@ -35,6 +38,7 @@ import Parsers.HTMLOneToOneAssociationParser;
 import Parsers.HTMLOneToOneDependencyParser;
 import Parsers.HTMLParameterParser;
 import Parsers.HTMLSingletonParser;
+import Parsers.HTMLTargetParser;
 import Parsers.HTMLViolateCompositionOverInheritanceClassParser;
 import Parsers.HTMLViolateCompositionOverInheritanceRelationshipParser;
 import Parsers.HTMLViolateDependencyInversionRelationshipParser;
@@ -72,6 +76,11 @@ public class HTMLParserFactory extends AbstractParserFactory {
 		this.map.put("vdiotma", new HTMLViolateDependencyInversionRelationshipParser(new HTMLOneToManyAssociationParser()));
 		this.map.put("vdiotod", new HTMLViolateDependencyInversionRelationshipParser(new HTMLOneToOneDependencyParser()));
 		this.map.put("vdiotmd", new HTMLViolateDependencyInversionRelationshipParser(new HTMLOneToManyDependencyParser()));
+		this.map.put("tarinterface", new HTMLTargetParser(new HTMLInterfaceParser()));
+		this.map.put("adapclass", new HTMLAdapteeParser(new HTMLClassParser()));
+		this.map.put("adapinterface", new HTMLAdapteeParser(new HTMLInterfaceParser()));
+		this.map.put("adaprelotoa", new HTMLAdaptsRelationshipParser(new HTMLOneToOneAssociationParser()));
+		this.map.put("adapterclass", new HTMLAdapterParser(new HTMLClassParser()));
 	}
 	
 	@Override
