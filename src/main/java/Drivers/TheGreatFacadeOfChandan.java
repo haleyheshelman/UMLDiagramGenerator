@@ -59,6 +59,7 @@ public class TheGreatFacadeOfChandan {
 				ClassLoader cld = Thread.currentThread().getContextClassLoader();
 				String path = args[i];
 				URL resource = cld.getResource(path);
+				System.out.println(resource.getFile());
 				directory = new File(resource.getFile());
 				if (directory.exists()) {
 					String[] files = directory.list();

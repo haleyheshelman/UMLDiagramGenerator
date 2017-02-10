@@ -37,6 +37,7 @@ import Parsers.HTMLParameterParser;
 import Parsers.HTMLSingletonParser;
 import Parsers.HTMLViolateCompositionOverInheritanceClassParser;
 import Parsers.HTMLViolateCompositionOverInheritanceRelationshipParser;
+import Parsers.HTMLViolateDependencyInversionRelationshipParser;
 import Parsers.IParser;
 
 public class HTMLParserFactory extends AbstractParserFactory {
@@ -67,6 +68,10 @@ public class HTMLParserFactory extends AbstractParserFactory {
 		this.map.put("decabstractclass", new HTMLDecoratorParser(new HTMLAbstractClassParser()));
 		this.map.put("decrelimplement", new HTMLDecoratesRelationshipParser(new HTMLImplementParser()));
 		this.map.put("compinterface", new HTMLComponentParser(new HTMLInterfaceParser()));
+		this.map.put("vdiotoa", new HTMLViolateDependencyInversionRelationshipParser(new HTMLOneToOneAssociationParser()));
+		this.map.put("vdiotma", new HTMLViolateDependencyInversionRelationshipParser(new HTMLOneToManyAssociationParser()));
+		this.map.put("vdiotod", new HTMLViolateDependencyInversionRelationshipParser(new HTMLOneToOneDependencyParser()));
+		this.map.put("vdiotmd", new HTMLViolateDependencyInversionRelationshipParser(new HTMLOneToManyDependencyParser()));
 	}
 	
 	@Override

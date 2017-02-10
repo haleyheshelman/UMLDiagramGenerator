@@ -1,0 +1,5 @@
+r=false
+p=true
+whitelist=apps,pizzafactories,ingredients,pizzas
+blacklist=java
+synthetic=false

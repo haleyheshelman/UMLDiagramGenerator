@@ -22,8 +22,8 @@ public class MethodTest {
 		ArrayList<UMLParameter> p = new ArrayList<UMLParameter>();
 		p.add(new UMLParameter("type", "name"));
 		
-		m1 = new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), null, true, false);
-		m2 = new UMLMethod(null, null, p, null, false, false);
+		m1 = new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), null, null, true, false);
+		m2 = new UMLMethod(null, null, p, null, null, false, false);
 		
 	}
 

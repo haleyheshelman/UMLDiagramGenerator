@@ -11,6 +11,7 @@ import java.util.Set;
 import PatternDetectors.DecoratorDetector;
 import PatternDetectors.SingletonDetector;
 import PatternDetectors.ViolateCompositionOverInheritanceDetector;
+import PatternDetectors.ViolateDependencyInversionDetector;
 import Runners.GraphVizRunner;
 import Runners.Runner;
 
@@ -26,9 +27,10 @@ public class Driver {
 			f.initialize(args[0]);
 		}
 				
-		f.addPatternDetector(new SingletonDetector());
-		f.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
-		f.addPatternDetector(new DecoratorDetector());
+//		f.addPatternDetector(new SingletonDetector());
+//		f.addPatternDetector(new ViolateCompositionOverInheritanceDetector());
+//		f.addPatternDetector(new DecoratorDetector());
+		f.addPatternDetector(new ViolateDependencyInversionDetector());
 		f.go();
 	}
 

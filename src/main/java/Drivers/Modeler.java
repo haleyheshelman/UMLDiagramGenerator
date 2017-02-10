@@ -487,12 +487,11 @@ public class Modeler {
 					MethodInsnNode mNode = (MethodInsnNode) node;
 					String toAdd = mNode.owner;
 					if (!inLines.contains(toAdd)) {
-						System.out.println(toAdd);
 						inLines.add(toAdd);
 					}
 				}
 			}
-			output.add(new UMLMethod(sig, returnType, params, inLines, p, stat));
+			output.add(new UMLMethod(sig, returnType, params, inLines, inst, p, stat));
 		}
 
 		return output;

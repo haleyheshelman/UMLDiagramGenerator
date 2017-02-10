@@ -3,19 +3,23 @@ package ModelObjects;
 import java.util.Collections;
 import java.util.List;
 
+import org.objectweb.asm.tree.InsnList;
+
 public class UMLMethod implements ModelObject {
 	
 	String sig;
 	String returnType;
 	List<UMLParameter> params;
 	List<String> inLineDependencies;
+	InsnList instructions;
 	boolean isPublic;
 	boolean isStatic;
 	
-	public UMLMethod(String sig, String returnType, List<UMLParameter> params, List<String> inLines, boolean isPublic, boolean isStatic) {
+	public UMLMethod(String sig, String returnType, List<UMLParameter> params, List<String> inLines, InsnList instructions, boolean isPublic, boolean isStatic) {
 		this.sig = sig;
 		this.returnType = returnType;
 		this.params = params;
+		this.instructions = instructions;
 		this.inLineDependencies = inLines;
 		this.isPublic = isPublic;
 		this.isStatic = isStatic;

@@ -52,7 +52,7 @@ public class HTMLParserFactoryTest {
 		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLAbstractClassParser);
 		dummy = new UMLInterface(null, null);
 		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLInterfaceParser);
-		dummy = new UMLMethod(null, null, null, null, false, false);
+		dummy = new UMLMethod(null, null, null, null, null, false, false);
 		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLMethodParser);
 		dummy = new UMLInstanceVariable(null, null, false, false);
 		assertTrue(f.makeParser(dummy.getSelector()) instanceof HTMLInstanceVariableParser);
