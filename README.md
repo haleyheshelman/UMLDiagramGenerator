@@ -14,3 +14,4 @@ settings file in the proper directory. Also, place the parser in the directory y
 **java -jar parser.jar <enter your command line arguments here>**
 
 Image here:
+![Screen_Shot_2017-02-10_at_1.41.40_PM](/uploads/9a0ac501f6e41ecd40a567a3e0476380/Screen_Shot_2017-02-10_at_1.41.40_PM.png)
