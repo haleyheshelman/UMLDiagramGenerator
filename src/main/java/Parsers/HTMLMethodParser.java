@@ -36,7 +36,7 @@ public class HTMLMethodParser implements IParser{
 			s.append(", ");
 		}
 //		s.delete(s.length()-2, s.length()-1);
-		s.append(") : " + m.getReturnType());
+		s.append(") : " + m.getReturnType().substring(m.getReturnType().lastIndexOf('.') + 1));
 		s.append("<br/>");
 		
 		String output = s.toString();

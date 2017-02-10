@@ -20,6 +20,7 @@ public class DecoratorTests {
 	Modeler m;
 	List<String> classes;
 	PatternDetector p;
+	String[] b = {"java"};
 	
 	@Before
 	public void setUp() throws Exception {
@@ -30,6 +31,7 @@ public class DecoratorTests {
 	@Test
 	public void basicDecoratorTest() {
 		m = new Modeler();
+		m.setBlacklist(b);
 		classes.add("ModelObjects.PatternDecorator");
 		classes.add("ModelObjects.ModelObject");
 		classes.add("ModelObjects.Singleton");
@@ -59,6 +61,7 @@ public class DecoratorTests {
 	@Test
 	public void basicDecoratorTestIntegrationStyle() {
 		m = new Modeler();
+		m.setBlacklist(b);
 		classes.add("ModelObjects.PatternDecorator");
 		classes.add("ModelObjects.ModelObject");
 		classes.add("ModelObjects.Singleton");

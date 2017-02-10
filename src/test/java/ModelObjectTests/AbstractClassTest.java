@@ -33,7 +33,7 @@ public class AbstractClassTest {
 	public void testGetMethods() {
 		
 		ArrayList<UMLMethod> methods = new ArrayList<UMLMethod>();
-		methods.add(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true, false));
+		methods.add(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), null, true, false));
 		class1 = new UMLAbstractClass("name", methods, new ArrayList<UMLInstanceVariable>());
 		
 		assertEquals(class1.getMethods().size(), 1);

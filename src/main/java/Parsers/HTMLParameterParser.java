@@ -14,7 +14,7 @@ public class HTMLParameterParser implements IParser {
 		UMLParameter p = (UMLParameter) o;
 		
 		StringBuilder s = new StringBuilder();
-		s.append(p.getType() + " " + p.getName());
+		s.append(p.getType().substring(p.getType().lastIndexOf('.') + 1) + " " + p.getName());
 		return s.toString();
 		
 	}

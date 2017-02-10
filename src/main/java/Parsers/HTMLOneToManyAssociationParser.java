@@ -11,7 +11,15 @@ public class HTMLOneToManyAssociationParser implements IParser {
 		OneToManyAssociation e =  (OneToManyAssociation) o;
 
 		StringBuilder s = new StringBuilder();
-		s.append(e.getFirst() + "->" + e.getSecond());
+		String first = e.getFirst();
+		String second = e.getSecond();
+		if (first.contains(".")) {
+			first = first.substring(first.lastIndexOf('.') + 1);
+		}
+		if (second.contains(".")) {
+			second = second.substring(second.lastIndexOf('.') + 1);
+		}
+		s.append(first + "->" + second);
 		s.append(" [arrowhead=\"vee\",label=\"1..n\"];");
 
 		return s.toString();

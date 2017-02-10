@@ -23,7 +23,7 @@ public class HTMLInstanceVariableParser implements IParser {
 		}
 		
 		s.append(var.getName() + " : ");
-		s.append(var.getType() +"<br/>");
+		s.append(var.getType().substring(var.getType().lastIndexOf('.') + 1) +"<br/>");
 	
 		return s.toString();
 		

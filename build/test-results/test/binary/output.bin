@@ -1,0 +1,171 @@
+java/lang/Object
+java/util/ArrayList
+java/util/List
+java/util/ArrayList
+java/util/List
+Drivers/Modeler
+java/util/ArrayList
+java/util/List
+java/util/Iterator
+org/objectweb/asm/ClassReader
+java/io/IOException
+"org/objectweb/asm/tree/ClassNode
+java/lang/String
+Drivers/Modeler
+ModelObjects/Extend
+java/lang/Exception
+ModelObjects/Implement
+java/lang/reflect/Modifier
+ModelObjects/UMLInterface
+ModelObjects/UMLAbstractClass
+ModelObjects/UMLClass
+java/lang/String
+java/util/List
+java/util/Iterator
+java/lang/String
+java/lang/String
+java/util/ArrayList
+java/util/List
+java/util/List
+java/util/Iterator
+ModelObjects/Association
+java/util/List
+java/util/Iterator
+ModelObjects/Dependency
+java/util/ArrayList
+java/util/List
+java/util/Iterator
+ModelObjects/UMLClass
+"ModelObjects/UMLInstanceVariable
+Drivers/Modeler
+ModelObjects/UMLAbstractClass
+Drivers/Modeler
+java/lang/String
+ModelObjects/ModelObject
+#ModelObjects/OneToManyAssociation
+java/util/List
+java/util/Iterator
+"ModelObjects/OneToOneAssociation
+java/util/List
+java/util/Iterator
+ModelObjects/Association
+java/lang/String
+java/util/ArrayList
+java/util/List
+java/util/Iterator
+ModelObjects/UMLClass
+ModelObjects/UMLMethod
+Drivers/Modeler
+ModelObjects/UMLParameter
+ModelObjects/UMLAbstractClass
+ModelObjects/UMLInterface
+Drivers/Modeler
+java/lang/String
+ModelObjects/ModelObject
+"ModelObjects/OneToManyDependency
+java/util/List
+java/util/Iterator
+!ModelObjects/OneToOneDependency
+java/util/ArrayList
+java/util/List
+java/util/Iterator
+org/objectweb/asm/Type
+java/lang/String
+Drivers/Modeler
+"ModelObjects/UMLInstanceVariable
+java/util/ArrayList
+java/util/List
+java/util/Iterator
+org/objectweb/asm/Type
+java/lang/String
+Drivers/Modeler
+ModelObjects/UMLParameter
+!org/objectweb/asm/tree/InsnList
+)org/objectweb/asm/tree/AbstractInsnNode
+java/io/PrintStream
+ModelObjects/UMLMethod
+java/util/List
+java/util/List
+java/util/Iterator
+"PatternDetectors/PatternDetector
+java/util/ArrayList
+java/lang/String
+java/lang/StringBuilder
+java/util/Iterator
+Drivers/Modeler
+java/lang/String
+java/lang/Math
+java/lang/StringBuilder
+Drivers/Modeler
+java/lang/Object
+java/util/Map
+java/lang/Object
+java/lang/StringBuilder
+ModelObjects/PatternDecorator
+Parsers/IParser
+java/lang/String
+%Parsers/RelationshipParserDecorator
+!Factories/AbstractParserFactory
+java/util/HashMap
+Parsers/HTMLClassParser
+java/util/Map
+!Parsers/HTMLAbstractClassParser
+Parsers/HTMLInterfaceParser
+Parsers/HTMLMethodParser
+$Parsers/HTMLInstanceVariableParser
+Parsers/HTMLParameterParser
+Parsers/HTMLExtendParser
+Parsers/HTMLImplementParser
+'Parsers/HTMLOneToOneAssociationParser
+(Parsers/HTMLOneToManyAssociationParser
+&Parsers/HTMLOneToOneDependencyParser
+'Parsers/HTMLOneToManyDependencyParser
+Parsers/HTMLSingletonParser
+:Parsers/HTMLViolateCompositionOverInheritanceClassParser
+AParsers/HTMLViolateCompositionOverInheritanceRelationshipParser
+Parsers/HTMLDecoratorParser
+)Parsers/HTMLDecoratesRelationshipParser
+Parsers/HTMLComponentParser
+java/util/Map
+java/lang/StringBuilder
+ java/rmi/NoSuchObjectException
+Factories/HTMLParserFactory
+java/lang/Object
+java/util/Map
+!Factories/AbstractParserFactory
+java/util/HashMap
+Parsers/HTMLClassParser
+java/util/Map
+!Parsers/HTMLAbstractClassParser
+Parsers/HTMLInterfaceParser
+Parsers/HTMLMethodParser
+$Parsers/HTMLInstanceVariableParser
+Parsers/HTMLParameterParser
+Parsers/HTMLExtendParser
+Parsers/HTMLImplementParser
+'Parsers/HTMLOneToOneAssociationParser
+(Parsers/HTMLOneToManyAssociationParser
+&Parsers/HTMLOneToOneDependencyParser
+'Parsers/HTMLOneToManyDependencyParser
+Parsers/HTMLSingletonParser
+:Parsers/HTMLViolateCompositionOverInheritanceClassParser
+AParsers/HTMLViolateCompositionOverInheritanceRelationshipParser
+Parsers/HTMLDecoratorParser
+)Parsers/HTMLDecoratesRelationshipParser
+Parsers/HTMLComponentParser
+java/util/Map
+java/lang/StringBuilder
+ java/rmi/NoSuchObjectException
+Factories/HTMLParserFactory
+kjjava/lang/Object
+kjjava/lang/Object
+kjModelObjects/PatternDecorator
+kjjava/lang/StringBuilder
+kjModelObjects/ModelObject
+kljava/lang/Object
+kljava/lang/Object
+klModelObjects/PatternDecorator
+kljava/lang/StringBuilder
+klModelObjects/ModelObject
+nmjava/lang/Object
+nmTesters/EagerSingleton

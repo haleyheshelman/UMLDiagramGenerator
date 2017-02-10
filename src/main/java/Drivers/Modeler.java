@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,9 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
+import org.objectweb.asm.tree.InsnList;
+import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import ModelObjects.Association;
@@ -66,8 +70,8 @@ public class Modeler {
 		this.primitives.add("boolean");
 		this.primitives.add("char");
 		this.primitives.add("void");
-		this.primitives.add("String");
-		this.primitives.add("Object");
+		this.primitives.add("java.lang.String");
+		this.primitives.add("java.lang.Object");
 	}
 
 	private void createClassModel(String s) throws ClassNotFoundException, IOException {
@@ -154,7 +158,7 @@ public class Modeler {
 
 	private boolean checkBlackList(String name) {
 		
-		if (blacklist.length == 0) {
+		if (this.blacklist.length == 0) {
 			return false;
 		}
 		for (String s : this.blacklist) {
@@ -244,6 +248,9 @@ public class Modeler {
 	}
 
 	private void addAssociation(String type, ModelObject o, List<ModelObject> newModels) {
+		if (checkBlackList(type)) {
+			return;
+		}
 		if (type.contains("[]")) {
 			String parsedType = type.substring(0, type.indexOf("["));
 			Association d = new OneToManyAssociation(o.getName(), parsedType);
@@ -266,6 +273,8 @@ public class Modeler {
 	}
 	
 	private boolean checkAssociations(String name, String type) {
+		type = type.substring(type.lastIndexOf('.') + 1);
+		type = type.substring(type.lastIndexOf('/') + 1);
 		for (ModelObject o : this.models) {
 			if (o instanceof Association) {
 				boolean checkOne = ((Association) o).getFirst().equals(name);
@@ -293,13 +302,16 @@ public class Modeler {
 					
 					// Params
 					List<UMLParameter> params = m.getParameters();
-					if (params.isEmpty()) continue;
 					
 					for (UMLParameter p : params) {
 						String type = p.getType();
 						addDependency(type, o, newModels);
 					}
 					
+					List<String> inLines = m.getInLineDependencies();
+					for (String type : inLines) {
+						addDependency(type, o, newModels);
+					}
 				}
 			}
 			
@@ -314,10 +326,14 @@ public class Modeler {
 					
 					// Params
 					List<UMLParameter> params = m.getParameters();
-					if (params.isEmpty()) continue;
 					
 					for (UMLParameter p : params) {
 						String type = p.getType();
+						addDependency(type, o, newModels);
+					}
+					
+					List<String> inLines = m.getInLineDependencies();
+					for (String type : inLines) {
 						addDependency(type, o, newModels);
 					}
 					
@@ -339,7 +355,12 @@ public class Modeler {
 					for (UMLParameter p : params) {
 						String type = p.getType();
 						addDependency(type, o, newModels);
-					}	
+					}
+					
+					List<String> inLines = m.getInLineDependencies();
+					for (String type : inLines) {
+						addDependency(type, o, newModels);
+					}
 				}
 			}
 		}
@@ -347,11 +368,13 @@ public class Modeler {
 	}
 	
 	private void addDependency(String type, ModelObject o, List<ModelObject> newModels) {
+		if (checkBlackList(type)) {
+			return;
+		}
 		if (type.contains("[]")) {
 			String parsedType = type.substring(0, type.indexOf("["));
 			Dependency d = new OneToManyDependency(o.getName(), parsedType);
 			if (!checkIfPrimitive(parsedType) && !checkAssociations(o.getName(), parsedType)) {
-				System.out.println(parsedType);
 				newModels.add(d);
 			}
 		} else if (type.contains(":")) {
@@ -387,7 +410,6 @@ public class Modeler {
 		for (FieldNode f : vars) {
 			Type t = Type.getType(f.desc);
 			String s = t.getClassName();
-			s = s.substring(s.lastIndexOf('.') + 1);
 
 			if (f.signature != null && f.signature.contains("<")) {
 				String add = parseGeneric(f.signature);
@@ -403,6 +425,7 @@ public class Modeler {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private List<ModelObject> createMethodModels(List<MethodNode> methods) {
 
 		/**
@@ -418,11 +441,11 @@ public class Modeler {
 
 		for (MethodNode m : methods) {
 			String returnType = Type.getReturnType(m.desc).getClassName();
-			returnType = returnType.substring(returnType.lastIndexOf('.') + 1);
 			String sig = m.name;
 
 			List<UMLParameter> params = new ArrayList<UMLParameter>();
 			if (m.signature != null) {
+				// TODO: Come back here. Fix param types for compound types
 				String getReturnTypeFrom = m.signature.substring(m.signature.indexOf(")") + 1);
 				returnType = parseGeneric(getReturnTypeFrom);
 				if (returnType.equals("Z")) {
@@ -441,7 +464,6 @@ public class Modeler {
 			} else {
 				for (Type argType : Type.getArgumentTypes(m.desc)) {
 					String s = argType.getClassName();
-					s = s.substring(s.lastIndexOf('.') + 1);
 
 					params.add(new UMLParameter(s, "param"));
 				}
@@ -450,17 +472,26 @@ public class Modeler {
 			boolean p = (m.access & Opcodes.ACC_PUBLIC) > 0;
 			boolean stat = (m.access & Opcodes.ACC_STATIC) > 0;
 
-			output.add(new UMLMethod(sig, returnType, params, p, stat));
 
 			// In code inspection
-
-			// System.out.println("Method name: " + m.name);
-			// for (AbstractInsnNode i : m.) {
-			// System.out.println(i.toString());
-			// }
-			// System.out.println(m.instructions);
-			// System.out.println(m.parameters);
-
+			
+			InsnList inst = m.instructions;
+			Iterator<AbstractInsnNode> i = inst.iterator();
+			AbstractInsnNode node = null;
+			List<String> inLines = new ArrayList<String>();
+			while (i.hasNext()) {
+				node = (AbstractInsnNode) i.next();
+				int type = node.getType();
+				if (type == AbstractInsnNode.METHOD_INSN) {
+					MethodInsnNode mNode = (MethodInsnNode) node;
+					String toAdd = mNode.owner;
+					if (!inLines.contains(toAdd)) {
+						System.out.println(toAdd);
+						inLines.add(toAdd);
+					}
+				}
+			}
+			output.add(new UMLMethod(sig, returnType, params, inLines, p, stat));
 		}
 
 		return output;

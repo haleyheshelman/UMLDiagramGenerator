@@ -8,17 +8,23 @@ public class UMLMethod implements ModelObject {
 	String sig;
 	String returnType;
 	List<UMLParameter> params;
+	List<String> inLineDependencies;
 	boolean isPublic;
 	boolean isStatic;
 	
-	public UMLMethod(String sig, String returnType, List<UMLParameter> params, boolean isPublic, boolean isStatic) {
+	public UMLMethod(String sig, String returnType, List<UMLParameter> params, List<String> inLines, boolean isPublic, boolean isStatic) {
 		this.sig = sig;
 		this.returnType = returnType;
 		this.params = params;
+		this.inLineDependencies = inLines;
 		this.isPublic = isPublic;
 		this.isStatic = isStatic;
 	}
 	
+	public List<String> getInLineDependencies() {
+		return inLineDependencies;
+	}
+
 	public String getSignature() {
 		return this.sig;
 	}

@@ -30,7 +30,7 @@ public class ClassTest {
 	@Test
 	public void testAddGetMethods() {
 		
-		class1.addMethod(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true, false));
+		class1.addMethod(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), null, true, false));
 		
 		assertEquals(class1.getMethods().size(), 1);
 		assertEquals(class1.getMethods().get(0).getName(), "sig");
@@ -64,7 +64,7 @@ public class ClassTest {
 		instVars.add(new UMLInstanceVariable("type", "name", true, false));
 		
 		class1 = new UMLClass("name", new ArrayList<UMLMethod>(), instVars);
-		class1.addMethod(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), true, false));
+		class1.addMethod(new UMLMethod("sig", "returnType", new ArrayList<UMLParameter>(), null, true, false));
 
 		String expected = "name[returnType sig() ]\n[true type name, ]\n";
 		String actual = class1.toString();

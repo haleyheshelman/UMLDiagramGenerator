@@ -8,12 +8,13 @@ public abstract class IRelationship implements ModelObject{
 		this.pair = new String[2];
 		if(name != null) {
 			this.pair[0] = name;
-			this.pair[0] = name.substring(name.lastIndexOf('/') + 1);
+			this.pair[0] = this.pair[0].substring(this.pair[0].lastIndexOf('/') + 1);
 		}
 		if(superName != null) {
 			
 			this.pair[1] = superName;
-			this.pair[1] = superName.substring(superName.lastIndexOf('/') + 1);
+			this.pair[1] = this.pair[1].substring(this.pair[1].lastIndexOf('/') + 1);
+			this.pair[1] = this.pair[1].substring(this.pair[1].lastIndexOf('.') + 1);
 		}
 		
 	}

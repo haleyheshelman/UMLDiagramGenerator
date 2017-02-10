@@ -27,7 +27,7 @@ public class HTMLClassParserTest {
 		p = new HTMLClassParser();
 		ArrayList<UMLParameter> params = new ArrayList<UMLParameter>();
 		params.add(new UMLParameter("type", "name"));
-		UMLMethod method = new UMLMethod("<init>", "returnType", params, true, false);
+		UMLMethod method = new UMLMethod("<init>", "returnType", params, null, true, false);
 		ArrayList<UMLMethod> methods = new ArrayList<UMLMethod>();
 		methods.add(method);
 		ArrayList<UMLInstanceVariable> instVars = new ArrayList<UMLInstanceVariable>();
