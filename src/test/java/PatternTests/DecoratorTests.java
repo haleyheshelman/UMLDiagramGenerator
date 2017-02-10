@@ -52,7 +52,7 @@ public class DecoratorTests {
 			}
 		}
 		
-		assertEquals(7, newmodels.size());
+		assertEquals(8, newmodels.size());
 		assertEquals(1, components);
 		assertEquals(2, decorators);
 		assertEquals(1, relationship);
@@ -82,7 +82,7 @@ public class DecoratorTests {
 			}
 		}
 		
-		assertEquals(7, models.size());
+		assertEquals(8, models.size());
 		assertEquals(1, components);
 		assertEquals(2, decorators);
 		assertEquals(1, relationship);

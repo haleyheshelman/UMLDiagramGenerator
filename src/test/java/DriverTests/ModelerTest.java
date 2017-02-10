@@ -52,7 +52,7 @@ public class ModelerTest {
 		m.createClassModels(classes);
 		
 		List<ModelObject> models = m.getModels();
-		assertEquals(7, models.size());
+		assertEquals(37, models.size());
 		
 		m.getModels().clear();
 	}
@@ -67,6 +67,8 @@ public class ModelerTest {
 		classes.clear();
 		classes.add("Parsers.RelationshipParserDecorator");
 		m.createClassModels(classes);
+		String[] black ={"java"};
+		m.setBlacklist(black);
 		
 		boolean containsReturnType = false;
 		boolean containsParamType = false;
@@ -80,7 +82,7 @@ public class ModelerTest {
 				containsReturnType = true;
 			}
 		}
-		assertFalse(containsReturnType);
+		assertTrue(containsReturnType);
 		assertTrue(containsParamType);
 		m.getModels().clear();
 	}
@@ -93,7 +95,7 @@ public class ModelerTest {
 		m.setBlacklist(black);
 		m.createClassModels(classes);
 		
-		assertEquals(3, m.getModels().size());
+		assertEquals(30, m.getModels().size());
 		
 		m.getModels().clear();
 	}
@@ -104,7 +106,7 @@ public class ModelerTest {
 		classes.add("Drivers.Modeler");
 		m.createClassModels(classes);
 		
-		assertEquals(7, m.getModels().size());
+		assertEquals(35, m.getModels().size());
 	}
 	
 	

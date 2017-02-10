@@ -37,7 +37,7 @@ public class DesignParserTest {
 		ArrayList<ModelObject> objects = new ArrayList<ModelObject>();
 		objects.add(new UMLClass("name", new ArrayList<UMLMethod>(), new ArrayList<UMLInstanceVariable>()));
 		
-		String expected = "digraph uml{rankdir=BT;splines=ortho;concentrate=true;node[shape = box];name[shape = \"record\",label=<{ name|}>];}";
+		String expected = "digraph uml{rankdir=BT;splines=ortho;node[shape = box];name[shape = \"record\",label=<{ name|}>];}";
 		String actual = p.parseObjects(objects);
 		assertEquals(expected, actual);
 	}
