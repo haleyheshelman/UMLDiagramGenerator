@@ -23,8 +23,7 @@ public class ViolateDependencyInversionDetector implements PatternDetector {
 				ModelObject two = findObject(r.getSecond(), models);
 				
 				if (two == null) {
-					ModelObject violation = new ViolateDependencyInversion(o);
-					newModels.add(violation);
+					newModels.add(o);
 				} else if (!(two instanceof UMLInterface) && !(two instanceof UMLAbstractClass)) {
 					ModelObject violation = new ViolateDependencyInversion(o);
 					newModels.add(violation);

@@ -44,6 +44,7 @@ public class TheGreatFacadeOfChandan {
 		String pack = scan.nextLine();
 		pack = pack.substring(pack.indexOf('=') + 1);
 		boolean fromPackage = Boolean.parseBoolean(pack);
+		System.out.println(fromPackage);
 
 		//Get classes or package names to parse
 		String whitelist = scan.nextLine();
@@ -59,7 +60,6 @@ public class TheGreatFacadeOfChandan {
 				ClassLoader cld = Thread.currentThread().getContextClassLoader();
 				String path = args[i];
 				URL resource = cld.getResource(path);
-				System.out.println(resource.getFile());
 				directory = new File(resource.getFile());
 				if (directory.exists()) {
 					String[] files = directory.list();

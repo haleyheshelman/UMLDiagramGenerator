@@ -24,7 +24,11 @@ run {
    //args "docs/settingsjframe"
    //args "docs/settingschocolate"
    
-   args "docs/autowiresettings"
+   //args "docs/autowiresettings"
+   //args "docs/decoratorsettings"
+   //args "docs/adaptorsettings"
+   //args "docs/iomousesettings"
+   args "docs/asmsettings"
    
    
 }

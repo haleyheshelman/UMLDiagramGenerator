@@ -97,6 +97,7 @@ public class Modeler {
 		List<String> superNames = new ArrayList<String>();
 		for (String className : classes) {
 			ClassReader reader = null;
+			System.out.println(className);
 			try {
 				reader = new ClassReader(className);
 			} catch (IOException e) {
@@ -411,9 +412,12 @@ public class Modeler {
 		for (FieldNode f : vars) {
 			Type t = Type.getType(f.desc);
 			String s = t.getClassName();
-
+			
 			if (f.signature != null && f.signature.contains("<")) {
 				String add = parseGeneric(f.signature);
+				if (add.contains(";")) {
+					add = add.replace(";", "");
+				}
 				s = add;
 			}
 
@@ -443,7 +447,7 @@ public class Modeler {
 		for (MethodNode m : methods) {
 			String returnType = Type.getReturnType(m.desc).getClassName();
 			String sig = m.name;
-
+			
 			List<UMLParameter> params = new ArrayList<UMLParameter>();
 			if (m.signature != null) {
 				// TODO: Come back here. Fix param types for compound types
@@ -455,11 +459,20 @@ public class Modeler {
 				if (returnType.equals("V")) {
 					returnType = "void";
 				}
+				System.out.println(returnType);
+				if (returnType.contains(";")) {
+					returnType = returnType.replace(";", "");
+				}
+				System.out.println(returnType);
 
 				String getParamsTypes = m.signature.substring(m.signature.indexOf("("), m.signature.indexOf(")") + 1);
 				List<String> argTypes = parseParamGeneric(getParamsTypes);
 
 				for (String t : argTypes) {
+					if (t.contains(";")) {
+						t = t.replace(";", "");
+					}
+					
 					params.add(new UMLParameter(t, "param"));
 				}
 			} else {
